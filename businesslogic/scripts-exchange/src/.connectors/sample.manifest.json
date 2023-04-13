@@ -1,0 +1,104 @@
+{
+	"id": "e50df587-ca78-4184-8e9d-08bd820c6fd9",
+	"acceptMappedClaims": null,
+	"accessTokenAcceptedVersion": null,
+	"addIns": [],
+	"allowPublicClient": true,
+	"appId": "d88f5e30-c292-4c2d-ba38-e6d8011a5ca5",
+	"appRoles": [],
+	"oauth2AllowUrlPathMatching": false,
+	"createdDateTime": "2023-02-06T08:49:36Z",
+	"description": null,
+	"certification": null,
+	"disabledByMicrosoftStatus": null,
+	"groupMembershipClaims": null,
+	"identifierUris": [],
+	"informationalUrls": {
+		"termsOfService": null,
+		"support": null,
+		"privacy": null,
+		"marketing": null
+	},
+	"keyCredentials": [
+		{
+			"customKeyIdentifier": "3BC5D6FCCD7275074120CBB10A6DF7AA7D25A610",
+			"endDate": "2024-03-31T11:17:35Z",
+			"keyId": "606ed42e-cebc-4aba-a777-dbc9e866f15c",
+			"startDate": "2023-03-31T11:17:35Z",
+			"type": "AsymmetricX509Cert",
+			"usage": "Verify",
+			"value": "MIICoTCCAYkCAgPoMA0GCSqGSIb3DQEBBQUAMBQxEjAQBgNVBAMMCUNMSS1Mb2dpbjAiGA8yMDIzMDMzMTExMTczNFoYDzIwMjQwMzMxMTExNzM2WjAUMRIwEAYDVQQDDAlDTEktTG9naW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC6QEcHho7X55Jpml5Ytl/OOCnckQ8xEKk2LhJ5gPYyYGaixHhWkQkJOxGumlHWotvuqcQmPHduznXRLzrOoQOwUUTSZvefN95Y7ID/yW52vY7NkB1v5TGS3W/RnSw+hgqfTeSiGiZzGPnynfrVPaYY7IPD3/Tfydm1OuqBV5qHsj79ATGEi8XGhzzMumeW3Jv2rwGHyB1YpyuPk8oRdDWD4SJQ3OMEBkUm0dqjrNPa/HfW+1tuv75w8OfR/a+MB19PFQAJ1XMlnVH06uvY6LPbTGpA66qDpbNZQlMS34R9ZGH9TLFlF79s2kaeI7UFtmD+GWw++fO1QmJx+vx4qYYRAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBADFwKoI8B5XWbQTIMIuVCKf6JzViCXdfG/0Q2Dkx8sAAvpt5bAsvW19GjJEJQxKGpas1ecR81LcvzCbm60hwBxFPh9sriAUMpcVm9LIu5RhIca9H6lczepDKdgD0Q9Bl4P9TQtaX/he7vv+KKa93PS/oRKlI8wcAS3d4VeNQuK/cGc1pvLOktj3kKLr4tMNk/V4D236eV6Mq0/ULr3xl/r+mn+MVjRqN3rYgwQr1KkHXiAPHkZaeX+DGHxs1ciZdsu9RaPsBV/IKHWY6KvdZa0OWBDjQjCIrxPE4wLtr1D00ZPIRHscGvlZzG7S9m0W/taIHt4vX4ojdUQlyrjSLh6A=",
+			"displayName": "CN=CLI-Login"
+		}
+	],
+	"knownClientApplications": [],
+	"logoUrl": null,
+	"logoutUrl": null,
+	"name": "MagicBox",
+	"notes": null,
+	"oauth2AllowIdTokenImplicitFlow": false,
+	"oauth2AllowImplicitFlow": false,
+	"oauth2Permissions": [],
+	"oauth2RequirePostResponse": false,
+	"optionalClaims": null,
+	"orgRestrictions": [],
+	"parentalControlSettings": {
+		"countriesBlockedForMinors": [],
+		"legalAgeGroupRule": "Allow"
+	},
+	"passwordCredentials": [],
+	"preAuthorizedApplications": [],
+	"publisherDomain": "M365x88142400.onmicrosoft.com",
+	"replyUrlsWithType": [
+		{
+			"url": "https://pnp.github.io/powershell/consent.html",
+			"type": "InstalledClient"
+		},
+		{
+			"url": "https://login.microsoftonline.com/common/oauth2/nativeclient",
+			"type": "InstalledClient"
+		}
+	],
+	"requiredResourceAccess": [
+		{
+			"resourceAppId": "00000002-0000-0ff1-ce00-000000000000",
+			"resourceAccess": [
+				{
+					"id": "dc50a0fb-09a3-484d-be87-e023b12c6440",
+					"type": "Role"
+				}
+			]
+		},
+		{
+			"resourceAppId": "00000003-0000-0ff1-ce00-000000000000",
+			"resourceAccess": [
+				{
+					"id": "678536fe-1083-478a-9c59-b99265e6b0d3",
+					"type": "Role"
+				},
+				{
+					"id": "56680e0d-d2a3-4ae1-80d8-3c4f2100e3d0",
+					"type": "Scope"
+				}
+			]
+		},
+		{
+			"resourceAppId": "00000003-0000-0000-c000-000000000000",
+			"resourceAccess": [
+				{
+					"id": "62a82d76-70ea-41e2-9197-370581804d09",
+					"type": "Role"
+				},
+				{
+					"id": "4e46008b-f24c-477d-8fff-7bb4ec7aafe0",
+					"type": "Scope"
+				}
+			]
+		}
+	],
+	"samlMetadataUrl": null,
+	"signInUrl": null,
+	"signInAudience": "AzureADMyOrg",
+	"tags": [],
+	"tokenEncryptionKeyId": null
+}

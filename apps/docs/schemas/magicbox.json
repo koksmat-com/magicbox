@@ -1,0 +1,172 @@
+{
+    "info": {
+        "version": "1.0.0",
+        "title": "MagicBox",
+        "description": "MagicBox API"
+    },
+    "servers": [
+        {
+            "url": "v1"
+        }
+    ],
+    "openapi": "3.0.0",
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {},
+        "parameters": {}
+    },
+    "paths": {
+        "/exchange/sharedmailbox2": {
+            "delete": {
+                "summary": "Deletes a shared mailbox",
+                "requestBody": {
+                    "description": "Deletes a shared mailbox",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "Deletes a Shared Mailbox",
+                                        "example": "xxdfs@M1243xx11.onmicrosoft.com"
+                                    }
+                                },
+                                "required": [
+                                    "email"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Mailbox deleted"
+                                        }
+                                    },
+                                    "required": [
+                                        "Message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates a shared mailbox",
+                "requestBody": {
+                    "description": "Creates a shared mailbox",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "sharedmailbox"
+                                    },
+                                    "displayName": {
+                                        "type": "string",
+                                        "example": "Shared Mailbox"
+                                    },
+                                    "alias": {
+                                        "type": "string",
+                                        "example": "sharedmailbox"
+                                    },
+                                    "owners": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "example": [
+                                            "AlexW"
+                                        ]
+                                    },
+                                    "members": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "example": [
+                                            "AlexW",
+                                            "DebraB"
+                                        ]
+                                    },
+                                    "readers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "example": [
+                                            "AlexW",
+                                            "DebraB"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "displayName",
+                                    "alias",
+                                    "owners",
+                                    "members"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Identity": {
+                                            "type": "string",
+                                            "example": "5b9c7f32-1245-42da-b96c-186362475009"
+                                        },
+                                        "Name": {
+                                            "type": "string",
+                                            "example": "sharedmailbox"
+                                        },
+                                        "DisplayName": {
+                                            "type": "string",
+                                            "example": "Shared Mailbox"
+                                        },
+                                        "PrimarySmtpAddress": {
+                                            "type": "string",
+                                            "example": "sharedmailbox@M1243xx11.onmicrosoft.com"
+                                        }
+                                    },
+                                    "required": [
+                                        "Identity",
+                                        "Name",
+                                        "DisplayName",
+                                        "PrimarySmtpAddress"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

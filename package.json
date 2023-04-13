@@ -1,0 +1,33 @@
+{
+  "name": "@koksmat/magicbox",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koksmat-com/magicbox"},
+  "scripts": {
+    "build": "turbo run build",
+    "graph": "turbo run build --graph",
+    "dev": "export DEBUG=magicbox* && dotenv -- turbo run dev --no-cache --continue  --concurrency 20",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "inst": "pnpm install",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+
+    "release": "turbo run build --filter=docs^... && changeset publish"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "eslint": "^8.36.0",
+    "eslint-config-acme": "workspace:0.0.0",
+    "prettier": "^2.8.7",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@7.15.0",
+  "dependencies": {
+    "dotenv-cli": "^7.1.0",
+    "node-powershell": "^5.0.1"
+  }
+}

@@ -1,0 +1,217 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2a7ab9;
+  --ifm-color-primary-dark: #266ea7;
+  --ifm-color-primary-darker: #226294;
+  --ifm-color-primary-darkest: #1d5582;
+  --ifm-color-primary-light: #3f87c0;
+  --ifm-color-primary-lighter: #5595c7;
+  --ifm-color-primary-lightest: #6aa2ce;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #2a7ab9;
+  --ifm-color-primary-dark: #266ea7;
+  --ifm-color-primary-darker: #226294;
+  --ifm-color-primary-darkest: #1d5582;
+  --ifm-color-primary-light: #3f87c0;
+  --ifm-color-primary-lighter: #5595c7;
+  --ifm-color-primary-lightest: #6aa2ce;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.koksmat-button {
+  box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.75);
+  position: fixed;
+  bottom: 80px;
+  right: 0px;
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+  padding: 0px;
+  text-align: center;
+  line-height: 90px;
+  border-radius: 50px;
+  background-color: #0000ee;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 500ms;
+  border: 5px dashed #ff0000;
+}
+
+.koksmat-button:hover {
+  transition: 500ms;
+  color: #0000ee  ease-in-out;
+  background-color: #ffffff;
+  border: 5px dashed #ff0000;
+}
+
+
+.koksmat-interaction{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  height: calc( 100vh - 260px);
+  
+  width: 300px;
+  margin: 20px;
+  padding: 0px;
+  
+  width: 300px;
+  text-align: center;
+  line-height: 50px;
+  
+  background-color: #0000ee;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 1500ms ease-in-out;
+  z-index: 5;
+  ;
+}
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2a7ab9;
+  --ifm-color-primary-dark: #266ea7;
+  --ifm-color-primary-darker: #226294;
+  --ifm-color-primary-darkest: #1d5582;
+  --ifm-color-primary-light: #3f87c0;
+  --ifm-color-primary-lighter: #5595c7;
+  --ifm-color-primary-lightest: #6aa2ce;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #2a7ab9;
+  --ifm-color-primary-dark: #266ea7;
+  --ifm-color-primary-darker: #226294;
+  --ifm-color-primary-darkest: #1d5582;
+  --ifm-color-primary-light: #3f87c0;
+  --ifm-color-primary-lighter: #5595c7;
+  --ifm-color-primary-lightest: #6aa2ce;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.koksmat-button {
+  box-shadow: 5px 5px 7px 0px rgba(0,0,0,0.75);
+  position: fixed;
+  bottom: 80px;
+  right: 0px;
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+  padding: 0px;
+  text-align: center;
+  line-height: 90px;
+  border-radius: 50px;
+  background-color: #0000ee;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 500ms;
+  border: 5px dashed #ff0000;
+}
+
+.koksmat-button:hover {
+  transition: 500ms;
+  color: #0000ee  ease-in-out;
+  background-color: #ffffff;
+  border: 5px dashed #ff0000;
+}
+
+
+.koksmat-interaction{
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  height:  90vh;
+  margin: 0px;
+  width: 100vw;
+  
+  /* background-color: #0000ee; */
+  
+  transition: 1500ms ease-in-out;
+  z-index: 1000000001;
+  ;
+}
+
+.koksmat-callforaction {
+  cursor:pointer;
+  padding:10px;
+  padding-left:40px;
+  padding-right:40px;
+  position:fixed;
+  top:14px;
+  right:300px;
+  z-index: 1000000000;
+  color:#ffffff;
+   height:36px;
+   border-radius:15px;
+   background-color:#265771;
+   font-size:14px;
+   line-height:14px;
+   font-weight:900;
+   border: 2px dashed #265771;
+}
+
+
+
+.koksmat-callforaction:hover {
+  transition: 500ms ease-in-out;
+  color: #265771;
+  background-color: #ffffff;
+  border: 2px solid #265771;
+}
+
+.koksmat-comehome {
+  cursor:pointer;
+  padding:10px;
+  padding-left:40px;
+  padding-right:40px;
+  position:fixed;
+  top:14px;
+  right:300px;
+  z-index: 1000000002;
+  color:#ffffff;
+   height:36px;
+   border-radius:15px;
+   background-color:#265771;
+   font-size:14px;
+   line-height:14px;
+   font-weight:900;
+   border: 2px dashed #265771;
+}
+
+
+
+.koksmat-comehome:hover {
+  transition: 500ms ease-in-out;
+  color: #265771;
+  background-color: #ffffff;
+  border: 2px solid #265771;
+}
+
+
+

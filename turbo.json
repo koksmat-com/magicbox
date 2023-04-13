@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["EXCHCERTIFICATEPASSWORD","EXCHAPPID","EXCHORGANIZATION","EXCHCERTIFICATE","EXCHAPPSECRET","EXCHTENANTID","PNPCERTIFICATE","PNPCERTIFICATEPASSWORD","PNPAPPID","PNPTENANTID"],
+  "pipeline": {
+    "build": {
+      "outputs": ["dist/**", "storybook-static/**"],
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

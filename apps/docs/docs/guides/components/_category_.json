@@ -1,0 +1,10 @@
+{
+  "label": "Components",
+  
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Component overview",
+    "description": "Components are elements which naturally fits into different types of solutions. In a kitchen analogy this is the equivalent of cooked potatoes.",
+  }
+}

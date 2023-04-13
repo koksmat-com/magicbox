@@ -1,0 +1,16 @@
+
+ .koksmat {
+    box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.75);
+    position: "fixed";
+    bottom: 80;
+    right: 0;
+    margin: 20;
+    padding: 40;
+    border-radius: 20;
+    background-color: "#0000ee";
+    color: "#ffffff"
+  }
+  
+  

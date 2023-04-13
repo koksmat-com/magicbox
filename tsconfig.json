@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node 14/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true
+  },
+  "ts-node": {
+    "swc": true
+  }
+}
