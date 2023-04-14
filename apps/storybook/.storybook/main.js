@@ -14,7 +14,7 @@ module.exports = {
       resolve: {
         alias: [
           {
-            find: "@nexi-magicbox/core",
+            find: "@koksmat/core",
             replacement: path.resolve(
               __dirname,
               "../../../packages/acme-core/"

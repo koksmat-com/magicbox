@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IResult } from "@nexi-magicbox/core";
+import { IResult } from "@koksmat/core";
 import { PowerPacks } from "./powerpacks";
 import { IScript } from "./PowerPack";
 import { Request, Response } from ".";

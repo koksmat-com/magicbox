@@ -3,8 +3,8 @@
 const figlet = require("figlet");
 const { Command } = require("commander");
 const program = new Command();
-import { register,SharedMailboxCreate } from "@nexi-magicbox/scripts-exchange";
-import { PowerPacks } from "@nexi-magicbox/powerpacks";
+import { register,SharedMailboxCreate } from "@koksmat/scripts-exchange";
+import { PowerPacks } from "@koksmat/powerpacks";
 import connectorValidation from "./connector-validation"
 import { CommanderError } from "commander";
 import chalk from "chalk";

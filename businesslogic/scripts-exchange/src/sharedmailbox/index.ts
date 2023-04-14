@@ -6,8 +6,8 @@ import {
   IEndPointHandler,
   Request,
   Response,
-} from "@nexi-magicbox/powerpacks";
-import { IResult } from "@nexi-magicbox/core";
+} from "@koksmat/powerpacks";
+import { IResult } from "@koksmat/core";
 
 import Create from "./create";
 import Remove from "./remove";

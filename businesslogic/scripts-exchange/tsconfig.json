@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@nexi-magicbox/tsconfig/react-library.json",
+  "extends": "./node_modules/@koksmat/tsconfig/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "resolveJsonModule": true

@@ -9,13 +9,13 @@
     "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "dependencies": {
-    "@nexi-magicbox/core": "workspace:0.0.0",
-    "@nexi-magicbox/powerpacks": "workspace:1.0.0",
+    "@koksmat/core": "workspace:0.0.0",
+    "@koksmat/powerpacks": "workspace:1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@nexi-magicbox/tsconfig": "workspace:0.0.0",
+    "@koksmat/tsconfig": "workspace:0.0.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-docs": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",

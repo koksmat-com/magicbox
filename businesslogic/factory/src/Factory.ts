@@ -1,5 +1,5 @@
-import { register as registerExchange } from "@nexi-magicbox/scripts-exchange";
-import { PowerPacks } from "@nexi-magicbox/powerpacks";
+import { register as registerExchange } from "@koksmat/scripts-exchange";
+import { PowerPacks } from "@koksmat/powerpacks";
 import { IRouter, Router } from "./Router";
 
 
@@ -13,7 +13,7 @@ import { IRouter, Router } from "./Router";
  * ## How to use it
  * The factoryy is implemented using a singleton, so you can access it from anywhere in your code.
  * ```typescript
- * import { Factory } from "@nexi-magicbox/factory";
+ * import { Factory } from "@koksmat/factory";
  * 
  * const factory = Factory.getInstance();
  * 

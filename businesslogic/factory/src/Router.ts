@@ -4,7 +4,7 @@ import {
   IEndPointHandler,
   Request,
   Response,
-} from "@nexi-magicbox/powerpacks";
+} from "@koksmat/powerpacks";
 import debug from "debug";
 
 export interface IRouter {

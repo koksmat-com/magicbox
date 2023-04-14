@@ -15,7 +15,7 @@ From here you can access to all the other modules.
 ## How to use it
 The factoryy is implemented using a singleton, so you can access it from anywhere in your code.
 ```typescript
-import { Factory } from "@nexi-magicbox/factory";
+import { Factory } from "@koksmat/factory";
 
 const factory = Factory.getInstance();
 
@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-Factory.ts:31
+[Factory.ts:31](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L31)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Factory.ts:31
 
 #### Defined in
 
-Factory.ts:26
+[Factory.ts:26](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L26)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-Factory.ts:24
+[Factory.ts:24](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L24)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ Factory.ts:24
 
 #### Defined in
 
-Factory.ts:59
+[Factory.ts:59](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L59)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-Factory.ts:50
+[Factory.ts:50](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L50)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-Factory.ts:55
+[Factory.ts:55](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L55)
 
 ## Methods
 
@@ -107,4 +107,4 @@ Factory.ts:55
 
 #### Defined in
 
-Factory.ts:42
+[Factory.ts:42](https://github.com/koksmat-com/magicbox/blob/917124f/businesslogic/factory/src/Factory.ts#L42)

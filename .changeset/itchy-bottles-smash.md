@@ -1,5 +1,5 @@
 ---
-"@nexi-magicbox/packs": minor
+"@koksmat/packs": minor
 "logic": minor
 ---
 

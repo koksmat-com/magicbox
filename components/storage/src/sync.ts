@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { Files } from "@nexi-magicbox/core";
+import { Files } from "@koksmat/core";
 import { Db } from "mongodb";
-import { Logger } from "@nexi-magicbox/core";
+import { Logger } from "@koksmat/core";
 
 
 
