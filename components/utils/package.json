@@ -27,5 +27,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@koksmat/core": "workspace:*",
+    "exceljs": "^4.3.0"
   }
 }

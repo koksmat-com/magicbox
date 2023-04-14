@@ -14,7 +14,7 @@
     "inst": "pnpm install",
     "changeset": "changeset",
     "version-packages": "changeset version",
-
+    "publish:docs": "npx vercel --prod  ",
     "release": "turbo run build --filter=docs^... && changeset publish"
   },
   "license": "MIT",

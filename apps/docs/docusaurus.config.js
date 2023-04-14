@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "KOKSMAT",
   staticDirectories: ['public', 'static'],
-  tagline: "A lot of magic in a box, recipes and solutions lfor your inspiration",
+  tagline: "A lot of magic in a box, recipes and solutions for your inspiration - Primarly for Microsoft Online products",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -46,14 +46,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/koksmat-com/magicbox/tree/master/apps/docs",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          "https://github.com/koksmat-com/magicbox/tree/master/apps/docs",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -72,7 +72,7 @@ const config = {
         items: [
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/nexi-intra/magicbox",
+            href: "https://github.com/koksmat-com/magicbox",
             label: "GitHub",
             position: "right",
           },
@@ -104,7 +104,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/nexi-intra/magicbox",
+                href: "https://github.com/koksmat-com/magicbox",
               },
             ],
           },

@@ -16,7 +16,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'API Development',
+    title: 'Admin automation',
     img: img1,
     description: (
       <>
@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'SharePoint',
+    title: 'Microsoft 365',
     img: img2,
     description: (
       <>

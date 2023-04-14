@@ -1,8 +1,9 @@
 ---
-sidebar_position: -1
+sidebar_position: -2
+title: Welcome
 ---
 
-# Welcome to KOKSMAT MAGICBOX !
+# Welcome to KOKSMAT MAGICBOX
 
 KOKSMAT MAGICBOX is a project that aims to consolidate whatever components and integrations which I'm involved in developing. It's a playground for me to try out new things and to learn new things. It's also a place where I can share my knowledge and experience with others. I hope you find it useful.
 

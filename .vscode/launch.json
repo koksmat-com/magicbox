@@ -26,6 +26,14 @@
       "command": "npm run run:validate:exchange "
     },
     {
+      "name": "CLI run:excel:orgdl debug",
+      "type": "node-terminal",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/apps/cli",
+      "command": "npm run run:excel:orgdl "
+    },
+    {
       "name": "CLI create debug",
       "type": "node-terminal",
       "request": "launch",
