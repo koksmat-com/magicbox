@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
+import {TopBar} from "@/components-lowlevel/TopBar"
 
 
 // The approach used in this component shows how to built a sign in and sign out
@@ -14,6 +15,7 @@ export default function Header() {
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
+      <TopBar/>
       <div >
         <p
           className={`nojs-show `}

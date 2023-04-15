@@ -28,8 +28,10 @@ export default NextAuth({
     
     GithubProvider({
             // @ts-ignore
+      // eslint-disable-next-line turbo/no-undeclared-env-vars
       clientId: process.env.GITHUB_ID,
           // @ts-ignore
+      // eslint-disable-next-line turbo/no-undeclared-env-vars
       clientSecret: process.env.GITHUB_SECRET,
       // https://docs.github.com/en/developers/apps/building-oauth-apps/scopes-for-oauth-apps
       // @ts-ignore
@@ -49,6 +51,7 @@ export default NextAuth({
   // The secret should be set to a reasonably long random string.
   // It is used to sign cookies and to sign and encrypt JSON Web Tokens, unless
   // a separate secret is defined explicitly for encrypting the JWT.
+  // eslint-disable-next-line turbo/no-undeclared-env-vars
   secret: process.env.SECRET,
 
   session: {
@@ -71,6 +74,7 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/options#jwt
   jwt: {
     // A secret to use for key generation (you should set this explicitly)
+    // eslint-disable-next-line turbo/no-undeclared-env-vars
     secret: process.env.TOKEN_SECRET,
     // Set to true to use encryption (default: false)
     // encryption: true,

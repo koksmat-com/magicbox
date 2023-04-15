@@ -1,48 +1,26 @@
 import {
-    Toolbar,
-    ToolbarButton,
-    ToolbarDivider,
+    Button,
     Menu,
     MenuTrigger,
-    MenuPopover,
     MenuList,
     MenuItem,
-    ToolbarProps,
+    MenuPopover,
   } from "@fluentui/react-components";
   import * as React from "react";
-  import {
-    FontIncrease24Regular,
-    FontDecrease24Regular,
-    TextFont24Regular,
-    MoreHorizontal24Filled,
-  } from "@fluentui/react-icons";
   
-  export const Default = (props: Partial<ToolbarProps>) => (
-    <Toolbar aria-label="Default" {...props}>
-      <ToolbarButton
-        aria-label="Increase Font Size"
-        appearance="primary"
-        icon={<FontIncrease24Regular />}
-      />
-      <ToolbarButton
-        aria-label="Decrease Font Size"
-        icon={<FontDecrease24Regular />}
-      />
-      <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
-      <ToolbarDivider />
-      <Menu>
-        <MenuTrigger>
-          <ToolbarButton aria-label="More" icon={<MoreHorizontal24Filled />} />
-        </MenuTrigger>
+  export const TopBar = () => (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
   
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>New </MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>Open File</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </Toolbar>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
