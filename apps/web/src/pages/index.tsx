@@ -1,8 +1,3 @@
 import * as react from "react"
-export default function HomePage () {
-
-    return <div>
-        Hello
-        </div>
-    
-}
+import  { HomePage as Page } from  "../components-highlevel/HomePage"
+export default Page

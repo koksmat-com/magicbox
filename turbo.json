@@ -1,6 +1,21 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["EXCHCERTIFICATEPASSWORD","EXCHAPPID","EXCHORGANIZATION","EXCHCERTIFICATE","EXCHAPPSECRET","EXCHTENANTID","PNPCERTIFICATE","PNPCERTIFICATEPASSWORD","PNPAPPID","PNPTENANTID"],
+  "globalEnv": [
+    "EXCHCERTIFICATEPASSWORD",
+    "EXCHAPPID",
+    "EXCHORGANIZATION",
+    "EXCHCERTIFICATE",
+    "EXCHAPPSECRET",
+    "EXCHTENANTID",
+    "PNPCERTIFICATE",
+    "PNPCERTIFICATEPASSWORD",
+    "PNPAPPID",
+    "PNPTENANTID",
+    "GITHUB_ID",
+    "GITHUB_SECRET",
+    "SECRET",
+    "TOKEN_SECRET"
+  ],
   "pipeline": {
     "build": {
       "outputs": ["dist/**", "storybook-static/**"],

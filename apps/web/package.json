@@ -10,16 +10,18 @@
     "clean": "rm -rf .turbo && rm -rf node_modules "
   },
   "dependencies": {
-    "@koksmat/scripts-exchange": "workspace:*",
-    "@koksmat/powerpacks": "workspace:*",
-    "@koksmat/factory": "workspace:*",
+    "@fluentui/react-components": "^9.18.9",
     "@koksmat/core": "workspace:*",
+    "@koksmat/factory": "workspace:*",
+    "@koksmat/powerpacks": "workspace:*",
+    "@koksmat/scripts-exchange": "workspace:*",
     "@types/node": "18.15.10",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
+    "next-auth": "^4.22.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.2"
