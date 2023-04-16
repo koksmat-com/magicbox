@@ -1,3 +1,4 @@
+
 import Header from "./Header"
 import Footer from "./Footer"
 
@@ -7,10 +8,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <>
+    <div style={{width:"100vw"}}>
       <Header />
       <main>{children}</main>
       <Footer />
-    </>
+    </div>
   )
 }

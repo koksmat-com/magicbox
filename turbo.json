@@ -14,7 +14,11 @@
     "GITHUB_ID",
     "GITHUB_SECRET",
     "SECRET",
-    "TOKEN_SECRET"
+    "TOKEN_SECRET",
+    "NODE_ENV",
+    "VERCEL_URL",
+    "PORT",
+    "NODE_ENV"
   ],
   "pipeline": {
     "build": {

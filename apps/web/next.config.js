@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
+//await import("./src/env.mjs");
 const nextConfig = {
   
   experimental: {
     
-    appDir: false,
+    appDir: true,
   },
 }
 
