@@ -1,6 +1,7 @@
 import * as Excel from 'exceljs'
 import { IResult, webRequest } from '@koksmat/core'
-import { parseOrganisationalData } from './parseExcel'
+import parseOrganisationalData  from './parseOrganisationalData'
+import parseSheets from './parseSheets'
 import * as fs from 'fs'
 export interface PipelineDefinition {
     id: string
@@ -15,7 +16,7 @@ export interface PipelineDefinition {
 export  class ExcelUtility {
 
 
-     private async processExcel(workbook: Excel.Workbook,companyName:string): Promise<IResult<any>> {
+     private async processOrganisationalData(workbook: Excel.Workbook,companyName:string): Promise<IResult<any>> {
         return new Promise(async (resolve, reject) => {
       
           var sheets : any[] = [];
@@ -41,10 +42,29 @@ export  class ExcelUtility {
         });
       
       }
+
+      private async processSheets(workbook: Excel.Workbook): Promise<IResult<any>> {
+        return new Promise(async (resolve, reject) => {
+      
+   
+      
+          var onSheetLoaded = await parseSheets(workbook);
+        
+          resolve({ hasError: false, data: { sheets:[], columns:[], results: { onSheetLoaded } } });
+      
+        });
+      
+      }
     async extractOrganisationalData (workbook: Excel.Workbook, companyName:string) : Promise<string>{
       
-        var d = await this.processExcel(workbook,companyName)
+        var d = await this.processOrganisationalData(workbook,companyName)
 
        return JSON.stringify(d.data, null, 2)
+    }
+
+
+    async extractSheets(workbook: Excel.Workbook) : Promise<string> {
+        var d = await this.processSheets(workbook)
+        return JSON.stringify(d.data, null, 2)
     }
 }

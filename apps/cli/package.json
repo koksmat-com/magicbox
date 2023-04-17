@@ -11,8 +11,10 @@
     "clean": "rm -rf .turbo && rm -rf node_modules ",
     "dev": "npx tsc --watch",
     "run:schema": "ts-node ./src/. -S",
-    "run:validate:exchange": "export DEBUG=magicbox* && dotenv -e ../../.env ts-node ./src/. validate exchange",
-    "run:excel:orgdl": "export DEBUG=magicbox* && dotenv -e ../../.env ts-node ./src/. excel ./data/MailList.XLSX ACME  ./data/MailList.json",
+    "run:validate:exchange": "node ./dist/. validate exchange",
+    "run:excel:orgdl": "node ./dist/. excel ./data/org.XLSX org  ./data/MailList.json --companyname ACME  ",
+    "run:excel:sheets": "node ./dist/. excel ./data/sheets.XLSX sheets  ./data/sheets.json   ",
+    "debug":"export DEBUG=mxagicbox* && dotenv -e ../../.env npm run run:excel:sheets",
     "run:create": "ts-node ./src/. -C",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

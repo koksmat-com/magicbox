@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "KOKSMAT",
   staticDirectories: ['public', 'static'],
-  tagline: "A lot of magic in a box, recipes and solutions for your inspiration - Primarly for Microsoft Online products",
+  tagline: "A lot of magic in a box, recipes and solutions for your inspiration and reuse - Primarly for Microsoft Online products",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here

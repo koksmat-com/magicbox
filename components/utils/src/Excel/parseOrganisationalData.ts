@@ -1,8 +1,9 @@
-import { hash } from "../hash";
+
 const version = "0.2.Blob"
 import * as Excel from 'exceljs'
 import { PipelineDefinition } from ".";
-export function parseOrganisationalData(sheet:Excel.Worksheet, companyName: string ) {
+import mapToKeyValues from "./mapToKeyValues";
+export default function parseOrganisationalData(sheet:Excel.Worksheet, companyName: string ) {
 
     function isManager(row: { getCell: (arg0: string) => any }) {
         var I = row.getCell("I")
@@ -18,29 +19,7 @@ export function parseOrganisationalData(sheet:Excel.Worksheet, companyName: stri
         return true
 
     }
-    function mapToKeyValues(map: Map<any, any>,tag = "",suffix = " [Nets]") {
-        var result = []
-        for (const keyValue of map.keys()) {
 
-            
-            var key = keyValue + suffix
-            var keyHash = tag + "-"+  hash(keyValue)
-            result.push({ key, keyHash, values: map.get(keyValue) })
-
-        }
-
-        return result.sort((a, b) => {
-
-            if (a.key < b.key) {
-                return -1;
-            }
-            if (a.key > b.key) {
-                return 1;
-            }
-            return 0;
-
-        })
-    }
     function uniqueColumns(column: string, managersOnly: boolean, prefix: string,tag: string | undefined,suffix: string | undefined) {
         var map = new Map()
         var values = []

@@ -17,21 +17,14 @@
       "cwd": "${workspaceFolder}/apps/web",
       "command": "npm run dev2"
     },
+   
     {
-      "name": "CLI run:validate:exchange debug",
+      "name": "CLI debug",
       "type": "node-terminal",
       "request": "launch",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/apps/cli",
-      "command": "npm run run:validate:exchange "
-    },
-    {
-      "name": "CLI run:excel:orgdl debug",
-      "type": "node-terminal",
-      "request": "launch",
-      "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}/apps/cli",
-      "command": "npm run run:excel:orgdl "
+      "command": "npm run debug "
     },
     {
       "name": "CLI create debug",
