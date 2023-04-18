@@ -27,6 +27,14 @@
       "command": "npm run debug "
     },
     {
+      "name": "Workers debug",
+      "type": "node-terminal",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/apps/workers",
+      "command": "npm run run "
+    },
+    {
       "name": "CLI create debug",
       "type": "node-terminal",
       "request": "launch",

@@ -2,7 +2,7 @@ import {Command} from "commander"
 
 import fs from "fs"
 import path from "path"
-import chalk from "chalk";
+   import chalk from "chalk";
 import {PowershellService  } from "@koksmat/core"
 import debug from "debug"
 export default function register(name:string,program:Command) : void{
