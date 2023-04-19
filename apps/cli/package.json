@@ -14,7 +14,9 @@
     "run:validate:exchange": "node ./dist/. validate exchange",
     "run:excel:orgdl": "node ./dist/. excel ./data/org.XLSX org  ./data/MailList.json --companyname ACME  ",
     "run:excel:sheets": "node ./dist/. excel ./data/sheets.XLSX sheets  ./data/sheets.json   ",
+    "run:message": "node ./dist/. sharedmailbox test1 test2 test3 test4 test5 test6 ",
     "debug":"export DEBUG=mxagicbox* && dotenv -e ../../.env npm run run:excel:sheets",
+
     "debug:validate:exchange":"export DEBUG=mxagicbox* && dotenv -e ../../.env npm run run:validate:exchange",
     "run:create": "ts-node ./src/. -C",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +28,8 @@
     "@koksmat/core": "workspace:*",
     "@koksmat/utils": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
+    "@koksmat/messaging": "workspace:*",
+    "@koksmat/factory": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",
     "chalk": "^4.1.2",
     "commander": "^10.0.0",

@@ -1,5 +1,5 @@
 import { register as registerExchange } from "@koksmat/scripts-exchange";
-import { PowerPacks } from "@koksmat/powerpacks";
+import { IEndPointHandler, PowerPacks } from "@koksmat/powerpacks";
 import { IRouter, Router } from "./Router";
 
 
@@ -59,5 +59,12 @@ export class Factory {
     public get powerPacks(): PowerPacks {
         return PowerPacks.getInstance();
     }
+    validateInput(endPoint: IEndPointHandler, input: any): any {
+        return endPoint.input.schema.safeParse(input);
 
+    }
+    validateOutput(endPoint: IEndPointHandler, output: any): any {
+        return endPoint.output.schema.safeParse(output);
+
+    }
 }

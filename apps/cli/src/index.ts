@@ -7,6 +7,8 @@ import { register, SharedMailboxCreate } from "@koksmat/scripts-exchange";
 import { PowerPacks } from "@koksmat/powerpacks";
 import connectorValidation from "./connector-validation";
 import excel from "./excel";
+import message from "./message";
+import sharedmailbox from "./sharedmailbox";
 import { CommanderError } from "commander";
 import chalk from "chalk";
 
@@ -16,7 +18,8 @@ program.version("1.0.0").description("CLI for KOKSMAT MagicBox");
 
 connectorValidation("validate", program);
 excel("excel", program);
-
+message("message", program);
+sharedmailbox("sharedmailbox", program);
 program.exitOverride((err: CommanderError) => {
   if (err) {
     chalk.redBright("Command Error", err.message);

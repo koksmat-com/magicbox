@@ -11,6 +11,7 @@ import { IResult } from "@koksmat/core";
 
 import Create from "./create";
 import Remove from "./remove";
+import { xor } from "lodash";
 export const path = "/sharedmailbox";
 export class SharedMailboxCreate implements IEndPointHandler {
   method: Method = "post";
@@ -34,17 +35,13 @@ export class SharedMailboxCreate implements IEndPointHandler {
         alias: z.string().trim().openapi({ example: "sharedmailbox" }),
         owners: z
           .string()
-          .array()
-          .openapi({ example: ["AlexW"] }),
+          .openapi({ example: '["AlexW"]' }),
         members: z
           .string()
-          .array()
-          .openapi({ example: ["AlexW", "DebraB"] }),
+          .openapi({ example: '["AlexW", "DebraB"]' }),
         readers: z
           .string()
-          .array()
-          .optional()
-          .openapi({ example: ["AlexW", "DebraB"] }),
+          .openapi({ example: '["AlexW", "DebraB"]' }),
       }),
     };
     this.output = {
@@ -71,6 +68,7 @@ export class SharedMailboxCreate implements IEndPointHandler {
       result.errorMessage = JSON.parse(zodParse.error.message);
       return result;
     }
+
 
     result.data = {
       Identity: "5b9c7f32-1245-42da-b96c-186362475009",

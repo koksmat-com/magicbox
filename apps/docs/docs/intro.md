@@ -7,6 +7,13 @@ title: Welcome
 
 KOKSMAT MAGICBOX is a project that aims to consolidate whatever components and integrations which I'm involved in developing. It's a playground for me to try out new things and to learn new things. It's also a place where I can share my knowledge and experience with others. I hope you find it useful.
 
+:::info
+
+Like sailing single handed around the globe in a small boat, this project is a work in progress. It's a journey and not a destination. I'm learning as I go and I'm happy to share my journey with you.
+:::
+
+
+![KOKSMAT MAGICBOX](singlehandedacrosstheocean.png)
 
 ## What's in KOKSMAT ?
 

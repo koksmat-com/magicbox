@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:31](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L31)
+[Factory.ts:31](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L31)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:26](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L26)
+[Factory.ts:26](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L26)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:24](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L24)
+[Factory.ts:24](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L24)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:59](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L59)
+[Factory.ts:59](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L59)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:50](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L50)
+[Factory.ts:50](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L50)
 
 ___
 
@@ -93,9 +93,51 @@ ___
 
 #### Defined in
 
-[Factory.ts:55](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L55)
+[Factory.ts:55](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L55)
 
 ## Methods
+
+### validateInput
+
+▸ **validateInput**(`endPoint`, `input`): `any`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `endPoint` | `IEndPointHandler` |
+| `input` | `any` |
+
+#### Returns
+
+`any`
+
+#### Defined in
+
+[Factory.ts:62](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L62)
+
+___
+
+### validateOutput
+
+▸ **validateOutput**(`endPoint`, `output`): `any`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `endPoint` | `IEndPointHandler` |
+| `output` | `any` |
+
+#### Returns
+
+`any`
+
+#### Defined in
+
+[Factory.ts:66](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L66)
+
+___
 
 ### getInstance
 
@@ -107,4 +149,4 @@ ___
 
 #### Defined in
 
-[Factory.ts:42](https://github.com/koksmat-com/magicbox/blob/3bcde2f/businesslogic/factory/src/Factory.ts#L42)
+[Factory.ts:42](https://github.com/koksmat-com/magicbox/blob/4d10261/businesslogic/factory/src/Factory.ts#L42)
