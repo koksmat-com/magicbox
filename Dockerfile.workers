@@ -23,5 +23,5 @@ COPY . .
 RUN npm install -g pnpm turbo
 RUN pnpm install
 RUN mkdir -p /tmp/root/365admin-nodejs
-RUN turbo run build --filter=/apps/workers
+RUN turbo run build --filter=@koksmat/workers
 CMD [ "node","./apps/workers/dist/." ]

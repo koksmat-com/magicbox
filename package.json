@@ -6,6 +6,7 @@
     "url": "https://github.com/koksmat-com/magicbox"},
   "scripts": {
     "build": "turbo run build",
+    "build:workers": "turbo run build --filter=/apps/workers",
     "docker:build:workers" : "docker buildx build --platform linux/amd64 -t magicbox-workers:v1 -f ./Dockerfile.workers .",
     "docker:build:powershell" : "docker buildx build --platform linux/amd64 -t powershell-test:v1 -f ./Dockerfile.powershell .",
     "graph": "turbo run build --graph",
