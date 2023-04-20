@@ -6,6 +6,7 @@
     "url": "https://github.com/koksmat-com/magicbox"},
   "scripts": {
     "build": "turbo run build",
+    "docker:build:workers" : "docker build -t magicbox-workers:v1 -f ./Dockerfile.workers .",
     "graph": "turbo run build --graph",
     "dev": "export DEBUG=magicbox* && dotenv -- turbo run dev --no-cache --continue  --concurrency 20",
     "lint": "turbo run lint",

@@ -14,9 +14,9 @@ export class Worker {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   async run() {
-    const _messageServer = await Messaging.getInstance();
+    //const _messageServer = await Messaging.getInstance();
     console.log("setting up");
-    _messageServer.hookup();
+    //_messageServer.hookup();
 
     while (!this._shutdown) {
       await this.sleep(1000);

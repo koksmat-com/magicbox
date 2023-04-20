@@ -1,0 +1,10 @@
+{
+  "extends": "./node_modules/@koksmat/tsconfig/react-library.json",
+  "compilerOptions": {
+   
+    "baseUrl": "."
+   
+  },
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

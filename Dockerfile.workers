@@ -1,0 +1,27 @@
+FROM node:16 
+
+# Install system components
+RUN sudo apt update  && sudo apt install -y curl gnupg apt-transport-https
+
+# Import the public repository GPG keys
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+# Register the Microsoft Product feed
+RUN sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/microsoft.list'
+
+# Install PowerShell
+RUN sudo apt update && sudo apt install -y powershell
+
+
+RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
+RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.Administration.PowerShell -force"
+RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.PowerShell -AllowClobber -force"
+
+#FROM node:16 AS build
+WORKDIR /usr/src/app
+COPY . .
+RUN npm install -g pnpm turbo
+RUN pnpm install
+RUN mkdir -p /tmp/root/365admin-nodejs
+RUN turbo run build --filter=/apps/workers
+CMD [ "node","./apps/workers/dist/." ]
