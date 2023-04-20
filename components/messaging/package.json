@@ -22,12 +22,14 @@
     "@koksmat/core": "workspace:*",
     "@types/amqplib": "^0.10.1",
     "@types/lodash": "^4.14.191",
+    "@types/uuid": "^9.0.1",
     "amqplib": "^0.10.3",
     "debug": "^4.3.4",
     "glob": "^9.3.2",
     "lodash": "^4.17.21",
     "mongodb": "^5.2.0",
     "rimraf": "^4.4.1",
+    "uuid": "^9.0.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {

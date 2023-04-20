@@ -1,4 +1,5 @@
 import { Connection, Channel, connect, ConsumeMessage } from "amqplib";
+import { v4 as uuidv4 } from "uuid";
 
 // https://www.rabbitmq.com/direct-reply-to.html
 
@@ -10,9 +11,15 @@ export interface IReplyToMessage {
   call(message: any): Promise<any>;
 }
 
+export interface IEnvelope {
+  correlationId: string;
+  payload: object;
+}
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 export class Messaging {
   private static _instance: Messaging;
-
 
   private _connectionString: string;
   constructor(connectionString: string) {
@@ -23,58 +30,93 @@ export class Messaging {
     // open for connection pooling based on connectiong string differences
     if (!this._instance) {
       this._instance = new Messaging(connectionString);
-   
     }
     return this._instance;
   }
 
-   async send(exchange_name : string,exchange_type : string,queueName:string, message:string) {
+  async send(queueName: string, message: object) {
     const connection = await connect(this._connectionString);
-    const channel = await connection.createChannel();
-    // https://amqp-node.github.io/amqplib/channel_api.html#channel_assertExchange
-    await channel.assertExchange(exchange_name, exchange_type, {
-        durable: false
-    })
-    return await channel.publish(
-        exchange_name,
-        queueName, 
-        Buffer.from(message)
-    );
+    const correlationId = uuidv4()
+    var envelope: IEnvelope = {
+      correlationId,
+      payload: message,
+    };
 
-    
+    // return a GUID
+
+    const channel = await connection.createChannel();
+    try {
+      await channel.assertQueue(queueName, {
+        durable: true,
+      });
+      const responseQueue = channel.assertQueue("",{  exclusive: true})
+      await channel.sendToQueue(
+        queueName,
+        Buffer.from(JSON.stringify(envelope)),
+        {
+          correlationId: correlationId,
+          replyTo: (await responseQueue).queue }
+      );
+
+
+      channel.consume((await responseQueue).queue, function(msg : any) {
+        if (msg.properties.correlationId == correlationId) {
+          console.log(' [.] Got %s', msg.content.toString());
+          setTimeout(function() {
+            connection.close();
+            process.exit(0)
+          }, 500);
+        }
+      }, {
+        noAck: true
+      });
+
+
+      
+    } catch (error) {
+    } finally {
+      await channel.close();
+    }
   }
 
-
-  private async receive(queueName: string, processMessage: IProcessMessage) {
+  async receive(queueName: string, processMessage: IProcessMessage) {
     console.log("connect");
     const connection = await connect(this._connectionString);
     const channel = await connection.createChannel();
+    try {
+      await channel.assertQueue(queueName, {
+        durable: true,
+      });
+      console.log("consuming messages from queue: ", queueName);
+      let counter = 0;
+      while (true) {
+        await channel.prefetch(1);
+        await channel.consume(queueName, async (msgRaw) => {
+          if ((msgRaw as ConsumeMessage)?.content) {
+            const msg = msgRaw as ConsumeMessage;
+            console.log("Received message: ", msg.content.toString());
 
-    const exchange_name = "test-exchange";
-    const exchange_type = "fanout";
-    const queue_name = "test-queue1";
-
-    // binding the queue
-    const binding_key = "";
-
-    // https://amqp-node.github.io/amqplib/channel_api.html#channel_assertExchange
-    await channel.assertExchange(exchange_name, exchange_type, {
-      durable: false,
-    });
-
-    const q = await channel.assertQueue(queueName);
-    channel.bindQueue(q.queue, exchange_name, binding_key);
-    console.log("consuming messages from queue: ", q.queue);
-    channel.consume(q.queue,async (msgRaw) => {
-      if ((msgRaw as ConsumeMessage)?.content) {
-        const msg = msgRaw as ConsumeMessage;
-        console.log("Received message: ", msg.content.toString());
- 
-        await processMessage.call(msg.content.toString())
-        
-        channel.ack(msg);
+            const result = await processMessage.call(msg.content.toString());
+            if (msg?.properties.replyTo){
+            await channel.sendToQueue(msg.properties.replyTo,
+              Buffer.from(result), {
+                correlationId: msg.properties.correlationId
+              });
+            }
+            channel.ack(msg);
+          }
+        });
+        await sleep(100);
+        counter++;
+        if (counter > 100) {
+          console.log("Waiting for message");
+          counter = 0;
+        }
       }
-    });
+    } catch (error) {
+    } finally {
+      await connection.close();
+    }
   }
   hookup() {
     console.log("hookup");

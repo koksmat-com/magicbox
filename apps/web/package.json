@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev2": "export DEBUG=magicbox* && next dev -p 5301",
+    "dev:web": "export DEBUG=magicbox* && next dev -p 5301",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

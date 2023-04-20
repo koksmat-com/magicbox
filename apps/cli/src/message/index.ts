@@ -12,14 +12,14 @@ export default function register(name: string, program: Command): void {
     .command(name)
     .description("Place a message on a queue")
     .argument("message", "Message")
-    .option("--companyname [name]", "Company name")
+    .option("--companyname [name]", "Company name") 
     .action(async (message) => {
       //const options = program.opts();
       const logger = debug("magicbox.cli");
       logger("Message", message);
       
       const messaging = await Messaging.getInstance("amqp://localhost");
-      const output = await messaging.send("test", "direct", "", message);
+      const output = await messaging.send("test",  message);
     
       console.log(chalk.grey("Result"),chalk.yellow(output));
       

@@ -1,4 +1,9 @@
-# Koksmat "Packages"
+---
+sidebar_position: -2
+---
+# Modules
+
+Koksmat "Packages"
 
 The koksmat-magicbox project is a monorepo. It contains packages divided into 3 categories:
 

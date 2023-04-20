@@ -2,19 +2,20 @@
 sidebar_position: -2
 title: Welcome
 ---
+# Welcome to KOKSMAT 
 
-# Welcome to KOKSMAT MAGICBOX
+> ###  *I see myself sailing single handed around the world on the largest cruise ship in the world. Destination pretty unclear. Really would have loved to have a full crew with me, but being a cost in a cost centre, I have given up on trying to staff up.*
 
-KOKSMAT MAGICBOX is a project that aims to consolidate whatever components and integrations which I'm involved in developing. It's a playground for me to try out new things and to learn new things. It's also a place where I can share my knowledge and experience with others. I hope you find it useful.
-
-:::info
-
-Like sailing single handed around the globe in a small boat, this project is a work in progress. It's a journey and not a destination. I'm learning as I go and I'm happy to share my journey with you.
-:::
-
+So KOKSMAT is a project that aims to consolidate whatever components and integrations which I'm involved in developing. It's a playground for me to try out new things and to learn new things. It's also a place where I can share my knowledge and experience with others. I hope you find it useful.
 
 ![KOKSMAT MAGICBOX](singlehandedacrosstheocean.png)
 
+
+:::info What is a `KOKSMAT`
+Koksmat is a Danish word which means "Cooking Mat". It is a wordplay on the word "Cookbook" which is a book of recipes. 
+
+
+:::
 ## What's in KOKSMAT ?
 
 - API wrapping PowerShell command lets for managing Exchange Online, SharePoint Online, Azure AD, PowerApps and Microsoft Teams

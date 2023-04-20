@@ -1,7 +1,10 @@
 import { register as registerExchange } from "@koksmat/scripts-exchange";
 import { IEndPointHandler, PowerPacks } from "@koksmat/powerpacks";
 import { IRouter, Router } from "./Router";
-
+import chalk from "chalk";
+import { Messaging } from "@koksmat/messaging";
+import debug from "debug";
+import { IResult } from "@koksmat/core";
 
 /**
  * Factory class
@@ -66,5 +69,47 @@ export class Factory {
     validateOutput(endPoint: IEndPointHandler, output: any): any {
         return endPoint.output.schema.safeParse(output);
 
+    }
+
+    public async processMessage(method:string, path:string,payload:object) : Promise<IResult<any>>{
+        const logger = debug("magicbox.factory");
+        const result : IResult<any> = {
+            hasError: false
+        }
+        const handler = this.router.matchRoute(method,path)
+        if (!handler){
+            result.hasError = true
+            result.errorMessage = "No handler found"
+            return result
+        }
+  
+       
+  
+        const validationResult = this.validateInput(handler,payload)
+        if (!validationResult.success){
+            result.hasError = true
+            result.errorMessage = JSON.stringify(validationResult.error,null,2)
+            return result
+          
+        }
+     
+    
+        const message = {
+          "name": path,
+          exchangeScripts: {
+            commandsToLoad : handler.script.commands,
+            script: handler.script.code,
+            payload
+          }
+        }
+  
+        
+  
+           // eslint-disable-next-line turbo/no-undeclared-env-vars
+        const host = process.env.RABBITMQ_HOST ? process.env.RABBITMQ_HOST as string : "amqp://localhost"
+        const messaging = await Messaging.getInstance(host);
+        const response = await messaging.send("exchangeonline",  message);
+        result.data = response
+        return result
     }
 }

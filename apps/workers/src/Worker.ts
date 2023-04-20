@@ -14,28 +14,20 @@ export class Worker {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   async run() {
-    //const _messageServer = await Messaging.getInstance();
+    // eslint-disable-next-line turbo/no-undeclared-env-vars
+    const messageServer = await Messaging.getInstance(process.env.AMQP_URL as string);
     console.log("setting up");
-    //_messageServer.hookup();
+    
 
     while (!this._shutdown) {
-      await this.sleep(1000);
-      console.log("run");
+      await messageServer.receive( "exchangeonline",  async (message: string) => {
+        console.log(message)
+
+      });
+      
+      console.log("Never going hit this");
     }
   }
 
-  async testExchange() {
-    const shell = new PowershellService();
-    const result = await shell.executeExchange({
-      commandsToLoad: ["get-mailbox"],
-      script: "get-mailbox -resultsize 1 | select *name*",
-      certificate: process.env.EXCHCERTIFICATE as string,
-      appId: process.env.EXCHAPPID as string,
-      appSecret: "x",
-      organization: process.env.EXCHORGANIZATION as string,
-    });
-    console.log("Exchange First mailbox");
-    console.log((result.success[0] as any)?.UserPrincipalName);
-    return result;
-  }
+ 
 }

@@ -24,4 +24,6 @@ The connect to [http://localhost:15672/](http://localhost:15672/) with the defau
 
 ### References
 
-https://blog.devops.dev/publish-subscribe-model-with-rabbitmq-in-node-js-1be74234df60s
+https://blog.tericcabrel.com/rabbitmq-pub-sub-nodejs/
+
+https://www.rabbitmq.com/tutorials/tutorial-two-javascript.html
