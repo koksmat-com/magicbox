@@ -3,12 +3,13 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/koksmat-com/magicbox"},
+    "url": "https://github.com/koksmat-com/magicbox"
+  },
   "scripts": {
     "build": "turbo run build",
     "build:workers": "turbo run build --filter=/apps/workers",
-    "docker:build:workers" : "docker buildx build --platform linux/amd64 -t magicbox-workers:v1 -f ./Dockerfile.workers .",
-    "docker:build:powershell" : "docker buildx build --platform linux/amd64 -t powershell-test:v1 -f ./Dockerfile.powershell .",
+    "docker:build:workers": "docker buildx build --platform linux/amd64 -t magicbox-workers:v1 -f ./Dockerfile.workers .",
+    "docker:build:powershell": "docker buildx build --platform linux/amd64 -t powershell-test:v1 -f ./Dockerfile.powershell .",
     "graph": "turbo run build --graph",
     "dev": "export DEBUG=magicbox* && dotenv -- turbo run dev --no-cache --continue  --concurrency 20",
     "lint": "turbo run lint",
@@ -27,7 +28,7 @@
     "eslint": "^8.36.0",
     "eslint-config-acme": "workspace:0.0.0",
     "prettier": "^2.8.7",
-    "turbo": "latest"
+    "turbo": "^1.9.3"
   },
   "packageManager": "pnpm@7.15.0",
   "dependencies": {
