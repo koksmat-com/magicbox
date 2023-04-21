@@ -1,6 +1,7 @@
 ##
 ## This does work on a MAC ARM
 ##
+
 FROM node:16 
 WORKDIR /usr/src/app
 COPY . .
@@ -10,4 +11,4 @@ RUN mkdir -p /tmp/root/365admin-nodejs
 RUN turbo run build --filter=@koksmat/web
 WORKDIR /usr/src/app/apps/web
 
-CMD ["pnpm", "start"]
+CMD ["npm", "run","start"]
