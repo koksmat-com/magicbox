@@ -269,6 +269,9 @@ importers:
       '@koksmat/core':
         specifier: workspace:*
         version: link:../../components/core
+      '@koksmat/factory':
+        specifier: workspace:*
+        version: link:../../businesslogic/factory
       '@koksmat/messaging':
         specifier: workspace:*
         version: link:../../components/messaging
@@ -519,43 +522,6 @@ importers:
       eslint-plugin-react:
         specifier: 7.29.4
         version: 7.29.4(eslint@8.36.0)
-
-  components/infrastructure:
-    dependencies:
-      debug:
-        specifier: ^4.3.2
-        version: 4.3.4
-      env-paths-ts:
-        specifier: ^1.0.1
-        version: 1.0.1
-      zod:
-        specifier: ^3.21.4
-        version: 3.21.4
-    devDependencies:
-      '@koksmat/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/react':
-        specifier: ^18.0.29
-        version: 18.0.29
-      '@types/react-dom':
-        specifier: ^18.0.11
-        version: 18.0.11
-      eslint:
-        specifier: ^8.36.0
-        version: 8.36.0
-      eslint-config-acme:
-        specifier: workspace:*
-        version: link:../eslint-config-acme
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      tsup:
-        specifier: ^5.12.9
-        version: 5.12.9(typescript@4.9.5)
-      typescript:
-        specifier: ^4.9.5
-        version: 4.9.5
 
   components/messaging:
     dependencies:

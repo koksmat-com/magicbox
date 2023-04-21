@@ -15,7 +15,7 @@
     "run:excel:orgdl": "node ./dist/. excel ./data/org.XLSX org  ./data/MailList.json --companyname ACME  ",
     "run:excel:sheets": "node ./dist/. excel ./data/sheets.XLSX sheets  ./data/sheets.json   ",
     "run:message": "node ./dist/. sharedmailbox test1 test2 test3 test4 test5  ",
-    "debug":"export DEBUG=magicbox* && dotenv -e ../../.env npm run run:excel:sheets",
+    "debug":"export DEBUG=magicbox* && dotenv -e ../../.env npm run run:message",
 
     "debug:validate:exchange":"export DEBUG=mxagicbox* && dotenv -e ../../.env npm run run:validate:exchange",
     "run:create": "ts-node ./src/. -C",

@@ -21,7 +21,7 @@ export default function register(name: string, program: Command): void {
       //const options = program.opts();
       const logger = debug("magicbox.cli");
 
-     const result = await Factory.getInstance().processMessage("post", "exchange/sharedmailbox", {
+     const result = await Factory.getInstance().postMessage("post", "exchange/sharedmailbox", {
         name,
         displayName,
         alias,
@@ -33,7 +33,7 @@ export default function register(name: string, program: Command): void {
         console.log(chalk.grey("Error"), chalk.red(result.errorMessage));
       }else
       {
-      console.log(chalk.grey("Result"), chalk.yellow(result.data));
+      console.log(chalk.grey("Result"), chalk.yellow(JSON.stringify(result.data, null, 2)));
     }
 
       console.log(chalk.green("Ctrl+C to quit"));

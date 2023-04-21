@@ -20,6 +20,7 @@
     "@koksmat/core": "workspace:*",
     "@koksmat/utils": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
+    "@koksmat/factory": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",
     "@koksmat/messaging": "workspace:*",
     "chalk": "^4.1.2",

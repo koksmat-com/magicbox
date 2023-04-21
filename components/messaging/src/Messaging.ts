@@ -2,6 +2,7 @@ import { IResult } from "@koksmat/core";
 import { Connection, Channel, connect, ConsumeMessage } from "amqplib";
 import { v4 as uuidv4 } from "uuid";
 
+
 // https://www.rabbitmq.com/direct-reply-to.html
 
 export interface IProcessMessage {
@@ -14,9 +15,18 @@ export interface IReplyToMessage {
 
 export interface IEnvelope {
   correlationId: string;
+  route: string;
+  method:string;
+  context?:any;
   payload: object;
 }
 
+
+export interface IMessage{
+  method:string
+  path: string
+  payload: object
+}
 export interface ISendOptions {
   timeoutSeconds? : number
 
@@ -41,7 +51,7 @@ export class Messaging {
     return this._instance;
   }
 
-  send(queueName: string, message: object,options? :ISendOptions) : Promise<IResult<any>> {
+  send(queueName: string, message: IMessage,options? :ISendOptions) : Promise<IResult<any>> {
     
     return new Promise(async (resolve, reject) => {
     const result : IResult<any> = {
@@ -51,6 +61,8 @@ export class Messaging {
     const correlationId = uuidv4()
     var envelope: IEnvelope = {
       correlationId,
+      route: message.path,
+      method : message.method,
       payload: message,
     };
 

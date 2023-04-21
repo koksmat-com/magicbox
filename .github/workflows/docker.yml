@@ -27,4 +27,4 @@ jobs:
         with:
           file: ./Dockerfile.workers
           push: true
-          tags: nielsgregers/magicbox-workers:latest
+          tags: nielsgregers/magicbox-workers:v1

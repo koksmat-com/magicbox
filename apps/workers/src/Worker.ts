@@ -1,5 +1,7 @@
-import { Messaging } from "@koksmat/messaging";
+import { Messaging ,IMessage} from "@koksmat/messaging";
+import { Factory } from "@koksmat/factory";
 import { PowershellService } from "@koksmat/core";
+
 /**
  * The Worker is respobsible for monitor a queue and process the jobs placed in that, and respond by sending the result back to a response queue.
  */
@@ -20,7 +22,9 @@ export class Worker {
     
 
     while (!this._shutdown) {
-      await messageServer.receive( "exchangeonline",  async (message: string) => {
+      await messageServer.receive( "exchangeonline",  async (message: IMessage) => {
+        
+        Factory.getInstance().processMessage(message.method,message.path,message.payload)
         console.log(message)
         return "OK"
       });
