@@ -1,3 +1,6 @@
+##
+## This does work on a MAC ARM
+##
 FROM node:16 
 
 # Install system components

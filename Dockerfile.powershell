@@ -1,9 +1,0 @@
-
-FROM mcr.microsoft.com/powershell:lts-7.2-ubuntu-18.04-arm32
-
-RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
-RUN pwsh -c "Install-Module -Name PnP.PowerShell -force"
-
-RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.Administration.PowerShell -force"
-
-CMD [ "pwsh" ]
