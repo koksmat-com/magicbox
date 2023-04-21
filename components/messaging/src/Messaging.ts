@@ -1,3 +1,4 @@
+import { IResult } from "@koksmat/core";
 import { Connection, Channel, connect, ConsumeMessage } from "amqplib";
 import { v4 as uuidv4 } from "uuid";
 
@@ -14,6 +15,12 @@ export interface IReplyToMessage {
 export interface IEnvelope {
   correlationId: string;
   payload: object;
+}
+
+export interface ISendOptions {
+  timeoutSeconds? : number
+
+
 }
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,7 +41,12 @@ export class Messaging {
     return this._instance;
   }
 
-  async send(queueName: string, message: object) {
+  send(queueName: string, message: object,options? :ISendOptions) : Promise<IResult<any>> {
+    
+    return new Promise(async (resolve, reject) => {
+    const result : IResult<any> = {
+      hasError: false
+    }
     const connection = await connect(this._connectionString);
     const correlationId = uuidv4()
     var envelope: IEnvelope = {
@@ -49,34 +61,42 @@ export class Messaging {
       await channel.assertQueue(queueName, {
         durable: true,
       });
-      const responseQueue = channel.assertQueue("",{  exclusive: true})
+      const responseQueue = await channel.assertQueue("",{  exclusive: true})
       await channel.sendToQueue(
         queueName,
         Buffer.from(JSON.stringify(envelope)),
         {
           correlationId: correlationId,
-          replyTo: (await responseQueue).queue }
+          replyTo: responseQueue.queue }
       );
 
 
-      channel.consume((await responseQueue).queue, function(msg : any) {
+      await channel.consume(responseQueue.queue, function(msg : any) {
         if (msg.properties.correlationId == correlationId) {
           console.log(' [.] Got %s', msg.content.toString());
-          setTimeout(function() {
-            connection.close();
-            process.exit(0)
-          }, 500);
+          result.data = msg.content.toString()
+          resolve(result)
         }
       }, {
+
         noAck: true
       });
-
-
+      const timeout = (options?.timeoutSeconds ? options.timeoutSeconds : 30) * 1000 
+      setTimeout(async function() {
+        result.hasError = true
+        result.errorMessage = "Timeout after " +timeout+ " seconds"
+        await connection.close();
+        resolve(result)
+      }, timeout);
       
-    } catch (error) {
-    } finally {
-      await channel.close();
-    }
+    } catch (error : any) {
+      result.hasError = true
+      result.errorMessage = error.message
+      await connection.close();
+      resolve(result)
+    } 
+    
+  });
   }
 
   async receive(queueName: string, processMessage: IProcessMessage) {

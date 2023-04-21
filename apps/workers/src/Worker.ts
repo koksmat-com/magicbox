@@ -22,7 +22,7 @@ export class Worker {
     while (!this._shutdown) {
       await messageServer.receive( "exchangeonline",  async (message: string) => {
         console.log(message)
-
+        return "OK"
       });
       
       console.log("Never going hit this");

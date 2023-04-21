@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:34](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L34)
+[Factory.ts:34](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L34)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:29](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L29)
+[Factory.ts:29](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L29)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:27](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L27)
+[Factory.ts:27](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L27)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:62](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L62)
+[Factory.ts:62](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L62)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:53](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L53)
+[Factory.ts:53](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L53)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:58](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L58)
+[Factory.ts:58](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L58)
 
 ## Methods
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:74](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L74)
+[Factory.ts:74](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L74)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:65](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L65)
+[Factory.ts:65](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L65)
 
 ___
 
@@ -157,7 +157,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:69](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L69)
+[Factory.ts:69](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L69)
 
 ___
 
@@ -171,4 +171,4 @@ ___
 
 #### Defined in
 
-[Factory.ts:45](https://github.com/koksmat-com/magicbox/blob/58c8013/businesslogic/factory/src/Factory.ts#L45)
+[Factory.ts:45](https://github.com/koksmat-com/magicbox/blob/238ceea/businesslogic/factory/src/Factory.ts#L45)

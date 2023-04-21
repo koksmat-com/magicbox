@@ -73,7 +73,7 @@ export class Factory {
 
     public async processMessage(method:string, path:string,payload:object) : Promise<IResult<any>>{
         const logger = debug("magicbox.factory");
-        const result : IResult<any> = {
+        let result : IResult<any> = {
             hasError: false
         }
         const handler = this.router.matchRoute(method,path)
@@ -109,7 +109,7 @@ export class Factory {
         const host = process.env.RABBITMQ_HOST ? process.env.RABBITMQ_HOST as string : "amqp://localhost"
         const messaging = await Messaging.getInstance(host);
         const response = await messaging.send("exchangeonline",  message);
-        result.data = response
+        result = response
         return result
     }
 }

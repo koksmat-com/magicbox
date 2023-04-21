@@ -29,8 +29,12 @@ export default function register(name: string, program: Command): void {
         members,
         readers: "",
       });
-
-      console.log(chalk.grey("Result"), chalk.yellow(result));
+      if (result.hasError) {
+        console.log(chalk.grey("Error"), chalk.red(result.errorMessage));
+      }else
+      {
+      console.log(chalk.grey("Result"), chalk.yellow(result.data));
+    }
 
       console.log(chalk.green("Ctrl+C to quit"));
       logger("Done");
