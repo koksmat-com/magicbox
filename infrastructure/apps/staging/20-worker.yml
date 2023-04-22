@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: nielsgregers/magicbox-workers:v1
+        image: nielsgregers/magicbox-workers:v2
         env:
         - name: RABBITMQ_HOST
           value: amqp://worker:worker@magicbox-rabbitmq
