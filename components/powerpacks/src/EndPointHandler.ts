@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { IResult } from "@koksmat/core";
 import { PowerPacks } from "./powerpacks";
-import { IScript } from "./PowerPack";
+import { IScript } from "./IScript";
 import { Request, Response } from ".";
 export type Method = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'options' | 'trace';
 

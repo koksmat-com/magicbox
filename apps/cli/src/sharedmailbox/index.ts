@@ -28,7 +28,7 @@ export default function register(name: string, program: Command): void {
         owners,
         members,
         readers: "",
-      });
+      }); 
       if (result.hasError) {
         console.log(chalk.grey("Error"), chalk.red(result.errorMessage));
       }else

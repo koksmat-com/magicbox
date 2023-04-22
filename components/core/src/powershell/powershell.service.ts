@@ -5,6 +5,7 @@ import * as fs from "fs";
 import z from "zod";
 import debug from "debug";
 import { Files } from "src/Files";
+import { IResult } from "src/IResult";
 extendZodWithOpenApi(z);
 
 const exchangePowerShellRequest = z.object({
@@ -13,11 +14,21 @@ const exchangePowerShellRequest = z.object({
     .array()
     .openapi({ example: ["get-mailbox", "update-mailbox"] }),
   script: z.string().openapi({ example: "get-mailbox -resultsize 10" }),
-  certificate: z.string().openapi({ description:"Base64 encoded certificate", example: "kjlasdfi87zxzlkd..." }),
-  cerficatePassword:z.string().optional().openapi({ example: "password" }),
-  appId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
-  appSecret:z.string().openapi({ example: "asdfiopxcv!sd8" }),
-  organization:z.string().openapi({ example: "M355x65867376.onmicrosoft.com" })
+  certificate: z
+    .string()
+    .openapi({
+      description: "Base64 encoded certificate",
+      example: "kjlasdfi87zxzlkd...",
+    }),
+  cerficatePassword: z.string().optional().openapi({ example: "password" }),
+  appId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  appSecret: z.string().openapi({ example: "asdfiopxcv!sd8" }),
+  organization: z
+    .string()
+    .openapi({ example: "M355x65867376.onmicrosoft.com" }),
 });
 
 const genericPowerShellRequest = z.object({
@@ -25,12 +36,22 @@ const genericPowerShellRequest = z.object({
 });
 
 const azureCLIShellRequest = z.object({
- 
-  certificate: z.string().openapi({ description:"Base64 encoded certificate", example: "kjlasdfi87zxzlkd..." }),
-  cerficatePassword:z.string().optional().openapi({ example: "password" }),
-  appId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
-  appSecret:z.string().openapi({ example: "asdfiopxcv!sd8" }),
-  tenantId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  certificate: z
+    .string()
+    .openapi({
+      description: "Base64 encoded certificate",
+      example: "kjlasdfi87zxzlkd...",
+    }),
+  cerficatePassword: z.string().optional().openapi({ example: "password" }),
+  appId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  appSecret: z.string().openapi({ example: "asdfiopxcv!sd8" }),
+  tenantId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
   script: z.string().openapi({ example: "get-pnpsiteinfo" }),
 });
 
@@ -39,10 +60,21 @@ const powerAppsPowerShellRequest = z.object({
     .string()
 
     .openapi({ example: "https://xxxyyyzzz.sharepoint.com" }),
-  certificate: z.string().openapi({ description:"Base64 encoded certificate", example: "kjlasdfi87zxzlkd..." }),
-  appSecret:z.string().openapi({ example: "password" }),
-  appId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
-  tenantId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  certificate: z
+    .string()
+    .openapi({
+      description: "Base64 encoded certificate",
+      example: "kjlasdfi87zxzlkd...",
+    }),
+  appSecret: z.string().openapi({ example: "password" }),
+  appId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  tenantId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
   script: z.string().openapi({ example: "get-pnpsiteinfo" }),
 });
 const pnpPowerShellRequest = z.object({
@@ -50,10 +82,21 @@ const pnpPowerShellRequest = z.object({
     .string()
 
     .openapi({ example: "https://xxxyyyzzz.sharepoint.com" }),
-  certificate: z.string().openapi({ description:"Base64 encoded certificate", example: "kjlasdfi87zxzlkd..." }),
-  cerficatePassword:z.string().optional().openapi({ example: "password" }),
-  appId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
-  tenantId:z.string().uuid().openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  certificate: z
+    .string()
+    .openapi({
+      description: "Base64 encoded certificate",
+      example: "kjlasdfi87zxzlkd...",
+    }),
+  cerficatePassword: z.string().optional().openapi({ example: "password" }),
+  appId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
+  tenantId: z
+    .string()
+    .uuid()
+    .openapi({ example: "923ff24d-49b6-44db-8d5a-84dd8f7cfa28" }),
   script: z.string().openapi({ example: "get-pnpsiteinfo" }),
 });
 export class PowershellService {
@@ -61,40 +104,40 @@ export class PowershellService {
 
   async executeExchange(
     requestParameters: z.infer<typeof exchangePowerShellRequest>
-  ): Promise<any> {
-    
-      this._log("Executing powershell", "PowershellService");
+  ): Promise<IResult<any>> {
+    this._log("Executing powershell", "PowershellService");
+    const parseResult = exchangePowerShellRequest.safeParse(requestParameters);
+    if (!parseResult.success) {
+      return {hasError:true,errorMessage:parseResult.error.message};
+    }
 
-      const certificate = requestParameters.certificate;
-      const tempPath = Files.createTempDir();
-      const filepath = path.join(tempPath, "HEXATOWNNETS.pfx");
-      fs.writeFileSync(filepath, certificate, { encoding: "base64" });
-      this._log(
-        requestParameters.commandsToLoad,
-        "PowershellService"
-      );
+    const certificate = requestParameters.certificate;
+    const tempPath = Files.createTempDir();
+    const filepath = path.join(tempPath, "HEXATOWNNETS.pfx");
+    fs.writeFileSync(filepath, certificate, { encoding: "base64" });
+    this._log(requestParameters.commandsToLoad, "PowershellService");
 
-      const exchangePassword = !requestParameters.cerficatePassword
-        ? ""
-        : ` -CertificatePassword (ConvertTo-SecureString -String $EXCHCERTIFICATEPASSWORD -AsPlainText -Force) `;
-      const script = `
+    const exchangePassword = !requestParameters.cerficatePassword
+      ? ""
+      : ` -CertificatePassword (ConvertTo-SecureString -String $EXCHCERTIFICATEPASSWORD -AsPlainText -Force) `;
+    const script = `
 $EXCHCERTIFICATEPASSWORD="${requestParameters.cerficatePassword}"
 $EXCHAPPID="${requestParameters.appId}"
 $EXCHORGANIZATION="${requestParameters.organization}"
 $EXCHCERTIFICATEPATH = "${filepath}"
 
 Connect-ExchangeOnline -CommandName ${requestParameters.commandsToLoad.join(
-        ","
-      )}  -CertificateFilePath $EXCHCERTIFICATEPATH ${exchangePassword} -AppID $EXCHAPPID -Organization $EXCHORGANIZATION -ShowBanner:$false #   -BypassMailboxAnchoring:$true
+      ","
+    )}  -CertificateFilePath $EXCHCERTIFICATEPATH ${exchangePassword} -AppID $EXCHAPPID -Organization $EXCHORGANIZATION -ShowBanner:$false #   -BypassMailboxAnchoring:$true
 
 ${requestParameters.script}
 
 Disconnect-ExchangeOnline -Confirm:$false
             `;
-      const result = await executePowerShell(script);
-      fs.rmSync(tempPath, { recursive: true, force: true });
-   
-      return result;
+    const result = await executePowerShell(script);
+    fs.rmSync(tempPath, { recursive: true, force: true });
+
+    return {hasError:false,data:result};
   }
 
   async executePowerAdmin(
@@ -129,7 +172,7 @@ ${requestParameters.script}
   ): Promise<any> {
     this._log("Executing powershell", "PowershellService");
 
-    const certificate = requestParameters.certificate
+    const certificate = requestParameters.certificate;
     const tempPath = Files.createTempDir();
     const filepath = path.join(tempPath, "HEXATOWNNETS.pfx");
     fs.writeFileSync(filepath, certificate, { encoding: "base64" });
@@ -148,10 +191,10 @@ ${requestParameters.script}
 
 
             `;
-            const result = await executePowerShell(script);
-            fs.rmSync(tempPath, { recursive: true, force: true });
-           
-            return result;
+    const result = await executePowerShell(script);
+    fs.rmSync(tempPath, { recursive: true, force: true });
+
+    return result;
   }
 
   async executePNP(
@@ -159,7 +202,7 @@ ${requestParameters.script}
   ): Promise<any> {
     this._log("Executing powershell", "PowershellService");
 
-    const certificate =  requestParameters.certificate
+    const certificate = requestParameters.certificate;
     const tempPath = Files.createTempDir();
     const filepath = path.join(tempPath, "PNP.pfx");
     fs.writeFileSync(filepath, certificate, { encoding: "base64" });
@@ -176,7 +219,7 @@ ${requestParameters.script}
             `;
     const result = await executePowerShell(script);
     fs.rmSync(tempPath, { recursive: true, force: true });
-   
+
     return result;
   }
 

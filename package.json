@@ -6,7 +6,7 @@
     "url": "https://github.com/koksmat-com/magicbox"
   },
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build ",
     "build:workers": "turbo run build --filter=/apps/workers",
     "docker:build:workers": "docker buildx build --platform linux/amd64 -t magicbox-workers:v1 -f ./Dockerfile.workers .",
     "docker:build:powershell": "docker buildx build --platform linux/amd64 -t powershell-test:v1 -f ./Dockerfile.powershell .",
@@ -20,7 +20,8 @@
     "version-packages": "changeset version",
     "publish:docs": "npx vercel --prod  ",
     "release": "turbo run build --filter=docs^... && changeset publish",
-    "powershellinstall": "pwsh ./scripts/install.ps1"
+    "powershellinstall": "pwsh ./scripts/install.ps1",
+    "forward:rabbitmq:staging":"kubectl port-forward pods/magicbox-rabbitmq-0 5672:5672 25672:25672 15672:15672 4369:4369 -n magicbox"
   },
   "license": "MIT",
   "devDependencies": {

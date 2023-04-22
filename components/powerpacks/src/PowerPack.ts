@@ -28,8 +28,3 @@ export abstract class PowerPack {
     }
 }
 
-export interface IScript {
-
-code: string;
-commands?: string[];
-}

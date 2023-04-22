@@ -6,5 +6,7 @@ export { PowerPacks  } from "./powerpacks"
 export { EndPointHandler, type Method, type IEndPointHandler} from "./EndPointHandler"
 export { Route , type Request,type Response} from "./Route"
 
-export {  type IDefinitions,type IPowerPackDefinition, type IScript} from "./PowerPack";
+export {  type IDefinitions,type IPowerPackDefinition} from "./PowerPack";
+export {  type IScript} from "./IScript";
+
 //export {SharedMailbox } from "./packs/sharedmailbox"}

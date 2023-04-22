@@ -31,7 +31,7 @@ program.command(name)
                organization: process.env.EXCHORGANIZATION as string,
             })
             console.log(chalk.whiteBright("Exchange First mailbox"))
-            console.log(chalk.yellowBright((result.success[0] as any)?.UserPrincipalName))
+            console.log(chalk.yellowBright((result.data.success[0] as any)?.UserPrincipalName))
             logger("Exchange Result",result)
             break;
       

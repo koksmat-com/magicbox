@@ -6,21 +6,24 @@ import {
   IEndPointHandler,
   Request,
   Response,
+  IScript,
 } from "@koksmat/powerpacks";
-import { IResult } from "@koksmat/core";
+import { Files, IResult, PowershellService } from "@koksmat/core";
+import * as path from "path";
+import * as fs from "fs";
 
 import Create from "./create";
 import Remove from "./remove";
-import { xor } from "lodash";
-export const path = "/sharedmailbox";
+import debug from 'debug';
+export const routePath = "/sharedmailbox";
 export class SharedMailboxCreate implements IEndPointHandler {
   method: Method = "post";
-  path = path;
+  path = routePath;
   summary = "Creates a shared mailbox";
   operationDescription = "Creates a shared mailbox";
   resultDescription = "Response";
 
-  script: any;
+  script: IScript;
   input: { identity: string; schema: z.ZodType<any, z.ZodTypeDef, any> };
   output: { identity: string; schema: z.ZodType<any, z.ZodTypeDef, any> };
 
@@ -33,15 +36,9 @@ export class SharedMailboxCreate implements IEndPointHandler {
         name: z.string().trim().openapi({ example: "sharedmailbox" }),
         displayName: z.string().trim().openapi({ example: "Shared Mailbox" }),
         alias: z.string().trim().openapi({ example: "sharedmailbox" }),
-        owners: z
-          .string()
-          .openapi({ example: '["AlexW"]' }),
-        members: z
-          .string()
-          .openapi({ example: '["AlexW", "DebraB"]' }),
-        readers: z
-          .string()
-          .openapi({ example: '["AlexW", "DebraB"]' }),
+        owners: z.string().openapi({ example: '["AlexW"]' }),
+        members: z.string().openapi({ example: '["AlexW", "DebraB"]' }),
+        readers: z.string().openapi({ example: '["AlexW", "DebraB"]' }),
       }),
     };
     this.output = {
@@ -58,17 +55,52 @@ export class SharedMailboxCreate implements IEndPointHandler {
       }),
     };
   }
-  async process(input: Request): Promise<IResult<any>> {
-    const result: IResult<z.infer<typeof this.output.schema>> = {
+  async process(rawInput: Request): Promise<IResult<any>> {
+    const log = debug("magicbox:businesslogic:scripts-exchange:sharedmailbox:create")
+    let result: IResult<z.infer<typeof this.output.schema>> = {
       hasError: false,
     };
-    const zodParse = this.input.schema.safeParse(input.body);
+    const zodParse = this.input.schema.safeParse(rawInput.body);
     if (!zodParse.success) {
       result.hasError = true;
       result.errorMessage = JSON.parse(zodParse.error.message);
       return result;
     }
+    const input = zodParse.data;
+    const shell = new PowershellService();
+    const tempPath = Files.createTempDir();
+    const filepath = path.join(tempPath, "powerbrick.ps1");
+    log("Writing code to %s", filepath)
+    fs.writeFileSync(filepath, this.script.code);
 
+    const script = `
+    . ${this.script.code}
+
+    `
+
+   const powerShellResult = await shell.executeExchange({
+      commandsToLoad: this.script.commands,
+      script,
+      certificate: process.env.EXCHCERTIFICATE as string,
+      appId: process.env.EXCHAPPID as string,
+      appSecret: "x",
+      organization: process.env.EXCHORGANIZATION as string,
+    });
+    
+    fs.rmSync(tempPath, { recursive: true, force: true });
+    if (powerShellResult.hasError) {
+      return powerShellResult
+    }
+    
+    const outputParse = this.output.schema.safeParse(powerShellResult.data.success[0]);
+
+    if (!outputParse.success) {
+      result.hasError = true;
+      result.errorMessage = JSON.parse(outputParse.error.message);
+      return result;
+    }
+
+    result.data = outputParse.data;
 
     result.data = {
       Identity: "5b9c7f32-1245-42da-b96c-186362475009",
@@ -81,7 +113,7 @@ export class SharedMailboxCreate implements IEndPointHandler {
 }
 export class SharedMailboxRemove implements IEndPointHandler {
   method: Method = "delete";
-  path = path;
+  path = routePath;
   summary = "Deletes a shared mailbox";
   operationDescription = "Deletes a shared mailbox";
   resultDescription = "Response";
