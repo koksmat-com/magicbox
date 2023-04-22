@@ -15,6 +15,7 @@ import * as fs from "fs";
 import Create from "./create";
 import Remove from "./remove";
 import debug from 'debug';
+import { v4 as uuidv4 } from "uuid";
 export const routePath = "/sharedmailbox";
 export class SharedMailboxCreate implements IEndPointHandler {
   method: Method = "post";
@@ -68,16 +69,26 @@ export class SharedMailboxCreate implements IEndPointHandler {
     }
     const input = zodParse.data;
     const shell = new PowershellService();
-    const tempPath = Files.createTempDir();
-    const filepath = path.join(tempPath, "powerbrick.ps1");
-    log("Writing code to %s", filepath)
-    fs.writeFileSync(filepath, this.script.code);
+    const uuid = uuidv4()
+    // const tempPath = Files.createTempDir();
+    // const filepath = path.join(tempPath, "powerbrick.ps1");
+    // log("Writing code to %s", filepath)
+    // fs.writeFileSync(filepath, this.script.code);
 
-    const script = `
-    . ${this.script.code}
+    let script = `
+    write-warning "Starting script"
+
+    function powerbrick {
+      ${this.script.code}
+    }
+
+    powerbrick -Name "test${uuid}" -DisplayName "test${uuid}" -Alias "test${uuid}" -Owner "test" -Members "test" -Readers "test"
 
     `
+// script = `
+// write-warning "Starting script"
 
+// `
    const powerShellResult = await shell.executeExchange({
       commandsToLoad: this.script.commands,
       script,
@@ -87,9 +98,16 @@ export class SharedMailboxCreate implements IEndPointHandler {
       organization: process.env.EXCHORGANIZATION as string,
     });
     
-    fs.rmSync(tempPath, { recursive: true, force: true });
+ //   fs.rmSync(tempPath, { recursive: true, force: true });
     if (powerShellResult.hasError) {
       return powerShellResult
+    }
+
+    if (powerShellResult.data.error.length>0) {
+      result.hasError = true;
+      result.errorMessage = powerShellResult.data.error[0];
+      return result;
+
     }
     
     const outputParse = this.output.schema.safeParse(powerShellResult.data.success[0]);
@@ -102,12 +120,12 @@ export class SharedMailboxCreate implements IEndPointHandler {
 
     result.data = outputParse.data;
 
-    result.data = {
-      Identity: "5b9c7f32-1245-42da-b96c-186362475009",
-      Name: zodParse.data.name,
-      DisplayName: zodParse.data.displayName,
-      PrimarySmtpAddress: zodParse.data.alias + "@M1243xx11.onmicrosoft.com",
-    };
+    // result.data = {
+    //   Identity: "5b9c7f32-1245-42da-b96c-186362475009",
+    //   Name: zodParse.data.name,
+    //   DisplayName: zodParse.data.displayName,
+    //   PrimarySmtpAddress: zodParse.data.alias + "@M1243xx11.onmicrosoft.com",
+    // };
     return result;
   }
 }

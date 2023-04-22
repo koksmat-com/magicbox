@@ -121,6 +121,7 @@ export class PowershellService {
       ? ""
       : ` -CertificatePassword (ConvertTo-SecureString -String $EXCHCERTIFICATEPASSWORD -AsPlainText -Force) `;
     const script = `
+write-verbose "Connecting to Exchange Online"    
 $EXCHCERTIFICATEPASSWORD="${requestParameters.cerficatePassword}"
 $EXCHAPPID="${requestParameters.appId}"
 $EXCHORGANIZATION="${requestParameters.organization}"

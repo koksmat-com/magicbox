@@ -30,7 +30,7 @@ export default function register(name: string, program: Command): void {
         readers: "",
       }); 
       if (result.hasError) {
-        console.log(chalk.grey("Error"), chalk.red(result.errorMessage));
+        console.log(chalk.redBright("Error "), chalk.red(JSON.stringify(result.errorMessage,null,2)));
       }else
       {
       console.log(chalk.grey("Result"), chalk.yellow(JSON.stringify(result.data, null, 2)));
