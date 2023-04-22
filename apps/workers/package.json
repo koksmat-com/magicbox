@@ -11,6 +11,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules ",
     "dev": "npx tsc --watch",
     "run": "export DEBUG=magicbox* && dotenv -e ../../.env node ./dist/. ",
+    "debug": "export DEBUG=magicbox* && dotenv -e ../../.env node ./dist/. ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -17,16 +17,18 @@ export class Worker {
   }
   async run() {
     // eslint-disable-next-line turbo/no-undeclared-env-vars
-    const messageServer = await Messaging.getInstance(process.env.AMQP_URL as string);
+    const messageServer = await Messaging.getInstance(process.env.RABBITMQ_HOST as string);
     console.log("setting up");
     
 
     while (!this._shutdown) {
       await messageServer.receive( "exchangeonline",  async (message: IMessage) => {
-        
-        Factory.getInstance().processMessage(message.method,message.path,message.payload)
-        console.log(message)
-        return "OK"
+        if (!message.route){
+          return {hasError:true,errorMessage:"No route specified"}
+        }
+        const result = await Factory.getInstance().processMessage(message.method,message.route,message.payload)
+       
+        return result
       });
       
       console.log("Never going hit this");

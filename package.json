@@ -21,7 +21,7 @@
     "publish:docs": "npx vercel --prod  ",
     "release": "turbo run build --filter=docs^... && changeset publish",
     "powershellinstall": "pwsh ./scripts/install.ps1",
-    "forward:rabbitmq:staging":"kubectl port-forward pods/magicbox-rabbitmq-0 5672:5672 25672:25672 15672:15672 4369:4369 -n magicbox"
+    "forward:rabbitmq:staging":"kubectl port-forward service/magicbox-rabbitmq 5672:5672 25672:25672 15672:15672 4369:4369 -n magicbox"
   },
   "license": "MIT",
   "devDependencies": {

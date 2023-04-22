@@ -32,7 +32,7 @@
       "request": "launch",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/apps/workers",
-      "command": "npm run run "
+      "command": "npm run debug "
     },
 
    

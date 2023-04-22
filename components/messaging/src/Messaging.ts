@@ -24,7 +24,7 @@ export interface IEnvelope {
 
 export interface IMessage{
   method:string
-  path: string
+  route: string
   payload: object
 }
 export interface ISendOptions {
@@ -61,9 +61,9 @@ export class Messaging {
     const correlationId = uuidv4()
     var envelope: IEnvelope = {
       correlationId,
-      route: message.path,
+      route: message.route,
       method : message.method,
-      payload: message,
+      payload: message.payload
     };
 
     // return a GUID
@@ -111,7 +111,7 @@ export class Messaging {
   });
   }
 
-  async receive(queueName: string, processMessage: IProcessMessage) {
+  async receive(queueName: string, processMessage: (message: any) => Promise<any>) {
     console.log("connect");
     const connection = await connect(this._connectionString);
     const channel = await connection.createChannel();
@@ -127,11 +127,11 @@ export class Messaging {
           if ((msgRaw as ConsumeMessage)?.content) {
             const msg = msgRaw as ConsumeMessage;
             console.log("Received message: ", msg.content.toString());
-
-            const result = await processMessage.call(msg.content.toString());
+            const msgDecoded : IMessage = JSON.parse(msg.content.toString())
+            const result = await processMessage(msgDecoded);
             if (msg?.properties.replyTo){
             await channel.sendToQueue(msg.properties.replyTo,
-              Buffer.from(result), {
+              Buffer.from(JSON.stringify(result)), {
                 correlationId: msg.properties.correlationId
               });
             }

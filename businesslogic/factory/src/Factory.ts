@@ -71,12 +71,12 @@ export class Factory {
 
     }
 
-    public async processMessage(method:string, path:string,payload:object) : Promise<IResult<any>>{
+    public async processMessage(method:string, route:string,message:IMessage) : Promise<IResult<any>>{
         const logger = debug("magicbox.factory");
         let result : IResult<any> = {
             hasError: false
         }
-        const handler = this.router.matchRoute(method,path)
+        const handler = this.router.matchRoute(method,route)
         if (!handler){
             result.hasError = true
             result.errorMessage = "No handler found"
@@ -85,7 +85,7 @@ export class Factory {
   
        
   
-        const validationResult = this.validateInput(handler,payload)
+        const validationResult = this.validateInput(handler,message.payload)
         if (!validationResult.success){
             result.hasError = true
             result.errorMessage = JSON.stringify(validationResult.error,null,2)
@@ -94,17 +94,17 @@ export class Factory {
         }
      
         
-        const request : Request = {query:"",body:payload}
+        const request : Request = {query:"",body:message.payload}
         result = await handler.process(request)
         return result
     }
 
-    public async postMessage(method:string, path:string,payload:object) : Promise<IResult<any>>{
+    public async postMessage(method:string, route:string,payload:object) : Promise<IResult<any>>{
         const logger = debug("magicbox.factory");
         let result : IResult<any> = {
             hasError: false
         }
-        const handler = this.router.matchRoute(method,path)
+        const handler = this.router.matchRoute(method,route)
         if (!handler){
             result.hasError = true
             result.errorMessage = "No handler found"
@@ -123,7 +123,7 @@ export class Factory {
      
     
         const message : IMessage= {
-          path,
+          route,
           method,
           payload: {
             commandsToLoad : handler.script.commands,
