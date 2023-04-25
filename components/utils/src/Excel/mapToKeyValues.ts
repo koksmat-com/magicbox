@@ -4,7 +4,7 @@ export default function mapToKeyValues(map: Map<any, any>,tag = "",suffix?:strin
     for (const keyValue of map.keys()) {
 
         
-        var key = keyValue + suffix ? String(suffix) : ""
+        var key = keyValue + (suffix ? String(suffix) : "")
         var keyHash = (tag ? (tag + "-") : "") +  hash(keyValue)
         result.push({ key, keyHash, values: map.get(keyValue) })
 

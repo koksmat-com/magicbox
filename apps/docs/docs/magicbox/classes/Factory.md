@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-Factory.ts:34
+[Factory.ts:34](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L34)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Factory.ts:34
 
 #### Defined in
 
-Factory.ts:29
+[Factory.ts:29](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L29)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-Factory.ts:27
+[Factory.ts:27](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L27)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ Factory.ts:27
 
 #### Defined in
 
-Factory.ts:62
+[Factory.ts:62](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L62)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-Factory.ts:53
+[Factory.ts:53](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L53)
 
 ___
 
@@ -93,20 +93,20 @@ ___
 
 #### Defined in
 
-Factory.ts:58
+[Factory.ts:58](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L58)
 
 ## Methods
 
 ### postMessage
 
-▸ **postMessage**(`method`, `path`, `payload`): `Promise`<`IResult`<`any`\>\>
+▸ **postMessage**(`method`, `route`, `payload`): `Promise`<`IResult`<`any`\>\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `method` | `string` |
-| `path` | `string` |
+| `route` | `string` |
 | `payload` | `object` |
 
 #### Returns
@@ -115,21 +115,21 @@ Factory.ts:58
 
 #### Defined in
 
-Factory.ts:102
+[Factory.ts:102](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L102)
 
 ___
 
 ### processMessage
 
-▸ **processMessage**(`method`, `path`, `payload`): `Promise`<`IResult`<`any`\>\>
+▸ **processMessage**(`method`, `route`, `message`): `Promise`<`IResult`<`any`\>\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `method` | `string` |
-| `path` | `string` |
-| `payload` | `object` |
+| `route` | `string` |
+| `message` | `IMessage` |
 
 #### Returns
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-Factory.ts:74
+[Factory.ts:74](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L74)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-Factory.ts:65
+[Factory.ts:65](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L65)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-Factory.ts:69
+[Factory.ts:69](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L69)
 
 ___
 
@@ -193,4 +193,4 @@ ___
 
 #### Defined in
 
-Factory.ts:45
+[Factory.ts:45](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L45)

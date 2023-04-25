@@ -1,0 +1,7 @@
+.env
+.env**
+build/**
+dist
+
+node_modules
+.testdata/**/*.json

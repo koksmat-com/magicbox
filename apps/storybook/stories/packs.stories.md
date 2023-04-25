@@ -1,6 +1,5 @@
-
 import { Pack } from "@koksmat/powerpacks/src";
-import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs"
 import { DocumentUpload } from "@koksmat/utils"
 
 <Meta title="Packs/Button" component={Pack} />

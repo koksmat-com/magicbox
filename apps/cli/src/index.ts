@@ -9,6 +9,7 @@ import connectorValidation from "./connector-validation";
 import excel from "./excel";
 import message from "./message";
 import sharedmailbox from "./sharedmailbox";
+import transform from "./transform";
 import { CommanderError } from "commander";
 import chalk from "chalk";
 
@@ -20,6 +21,7 @@ connectorValidation("validate", program);
 excel("excel", program);
 message("message", program);
 sharedmailbox("sharedmailbox", program);
+transform("transform", program);
 program.exitOverride((err: CommanderError) => {
   if (err) {
     chalk.redBright("Command Error", err.message);

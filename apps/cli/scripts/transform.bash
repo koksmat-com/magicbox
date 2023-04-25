@@ -1,0 +1,2 @@
+node ../dist/. transform recipients /Users/nielsgregersjohansen/Downloads/exchange.recipients.json /Users/nielsgregersjohansen/Downloads/recipients.csv
+node ../dist/. transform emails /Users/nielsgregersjohansen/Downloads/exchange.recipients.json /Users/nielsgregersjohansen/Downloads/emails.csv

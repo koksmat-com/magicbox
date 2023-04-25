@@ -27,6 +27,15 @@
       "command": "npm run debug "
     },
     {
+      "name": "CLI  debug:validate:exchange",
+      "type": "node-terminal",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/apps/cli",
+      "command": "npm run  debug:validate:exchange "
+    },
+   
+    {
       "name": "Workers debug",
       "type": "node-terminal",
       "request": "launch",
