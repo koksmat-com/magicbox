@@ -6,23 +6,23 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
-  
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "typedoc" : "npx typedoc ",
+    "typedoc": "npx typedoc ",
     "build": "tsup src/index.ts  --sourcemap --format esm,cjs --dts ",
     "dev": "tsup src/index.ts  --sourcemap --format esm,cjs --watch --dts",
     "lint": "eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
-      },
+  },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^4.5.0",
     "@koksmat/scripts-exchange": "workspace:*",
     "@koksmat/messaging": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
     "@koksmat/core": "workspace:*",
+    "@koksmat/search": "workspace:*",
     "@koksmat/utils": "workspace:*",
     "@types/lodash": "^4.14.191",
     "debug": "^4.3.4",

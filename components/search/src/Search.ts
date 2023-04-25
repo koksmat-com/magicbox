@@ -10,4 +10,9 @@ export default class Search {
   constructor( connectionObject: object) { 
 
   }
+
+  async resolveEmailAddress(address:string){
+    return address;
+  }
+
 }
