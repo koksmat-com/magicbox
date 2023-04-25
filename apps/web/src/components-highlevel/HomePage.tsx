@@ -4,6 +4,7 @@ import * as react from "react"
 import { useState } from "react"
 import Layout from "./Layout"
 import { api } from "@/utils/api"
+import { Search } from "@koksmat/search"
 
 export  function HomePage () {
     const [tab, setTab] = useState("")
@@ -21,6 +22,8 @@ export  function HomePage () {
             <Tab value="cards">Cards</Tab>
             <Tab value="inputs">Inputs</Tab>
           </TabList>
+
+          <Search />
 {message?.greeting}</>
 {JSON.stringify(sessionData,null,2)}
           </Layout>
