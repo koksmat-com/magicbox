@@ -1,7 +1,16 @@
 import * as fs from "fs";
 import { IResult } from "@koksmat/core";
 import { stringify } from "csv-stringify";
-import { IRecipient } from "./IRecipient";
+export interface IRecipient {
+  Id: string;
+  Guid: string;
+  Alias: string;
+  RecipientTypeDetails: string;
+  EmailAddresses: string[];
+  DisplayName: string;
+  DistinguishedName: string;
+}
+
 
 export async function extractAddressBook(
   fromFile: string,

@@ -6,9 +6,8 @@ import { Messaging } from "@koksmat/messaging";
 import debug from "debug";
 import { Factory } from "@koksmat/factory";
 import { IResult } from "@koksmat/core";
+import { extractEmails,extractAddressBook } from "@koksmat/models";
 
-import { extractEmails } from "./extractEmails";
-import { extractAddressBook } from "./extractAddressBook";
 export default function register(name: string, program: Command): void {
   program
     .command(name)
