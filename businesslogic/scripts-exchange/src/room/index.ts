@@ -7,50 +7,50 @@ import {
   IScript,
 } from "@koksmat/powerpacks";
 
-import { mailbox } from "@koksmat/schemas"
+import { resource } from "@koksmat/schemas"
 
 import Create from "./create";
 import Remove from "./remove";
 
-export const routePath = "/sharedmailbox";
-export class SharedMailboxCreate implements IEndPointHandler {
+export const routePath = "/Room";
+export class RoomCreate implements IEndPointHandler {
   method: Method = "post";
   path = routePath;
-  summary = "Creates a shared mailbox";
-  operationDescription = "Creates a shared mailbox";
+  summary = "Creates a room";
+  operationDescription = "Creates a room";
   resultDescription = "Response";
 
   script: IScript = new Create();
   input = {
     identity: this.constructor.name + "RequestDTO",
-    schema: mailbox.shared.createRequest
+    schema: resource.room.createRequest
   }
   output= {
     identity: this.constructor.name + "ResponseDTO",
-    schema: mailbox.shared.createRequestResult
+    schema: resource.room.createRequestResult
   };
 
  
   
 }
-export class SharedMailboxRemove implements IEndPointHandler {
+export class RoomRemove implements IEndPointHandler {
   method: Method = "delete";
   path = routePath;
-  summary = "Deletes a shared mailbox";
-  operationDescription = "Deletes a shared mailbox";
+  summary = "Deletes a room";
+  operationDescription = "Deletes a room";
   resultDescription = "Process result";
   output = {
     identity: this.constructor.name + "ResponseDTO",
-    schema: mailbox.shared.deleteRequestResult,
+    schema: resource.room.deleteRequestResult,
   };
   input = {
     identity: this.constructor.name + "RequestDTO",
-    schema:  mailbox.shared.deleteRequest
+    schema:  resource.room.deleteRequest
   };
   script =  new Remove();
  
 }
 export function register(path: string, registry: PowerPacks) {
-  EndPointHandler.register(new SharedMailboxRemove(), path, registry);
-  EndPointHandler.register(new SharedMailboxCreate(), path, registry);
+  EndPointHandler.register(new RoomRemove(), path, registry);
+  EndPointHandler.register(new RoomCreate(), path, registry);
 }

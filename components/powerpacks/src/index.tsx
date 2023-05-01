@@ -8,5 +8,6 @@ export { Route , type Request,type Response} from "./Route"
 
 export {  type IDefinitions,type IPowerPackDefinition} from "./PowerPack";
 export {  type IScript} from "./IScript";
+export {processPowerPack} from "./processPowerPack";
 
 //export {SharedMailbox } from "./packs/sharedmailbox"}

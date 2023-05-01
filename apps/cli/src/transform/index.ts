@@ -6,7 +6,7 @@ import { Messaging } from "@koksmat/messaging";
 import debug from "debug";
 import { Factory } from "@koksmat/factory";
 import { IResult } from "@koksmat/core";
-import { extractEmails,extractAddressBook } from "@koksmat/models";
+import { extractEmails,extractAddressBook } from "@koksmat/schemas";
 
 export default function register(name: string, program: Command): void {
   program

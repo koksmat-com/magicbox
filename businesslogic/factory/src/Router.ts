@@ -4,6 +4,7 @@ import {
   IEndPointHandler,
   Request,
   Response,
+  processPowerPack
 } from "@koksmat/powerpacks";
 import debug from "debug";
 
@@ -56,7 +57,7 @@ export class Router implements IRouter {
 
         log("query", req.query);
         log("body", req.body);
-        const result = await endPointHandler.process(req);
+        const result = await processPowerPack(endPointHandler,req);
       
         if (result.hasError){
           log("error", result.errorMessage);

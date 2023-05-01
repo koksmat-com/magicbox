@@ -49,8 +49,17 @@
       "name": "scripts-exchange pack",
       "type": "node-terminal",
       "request": "launch",
-      "cwd": "${workspaceFolder}/integrations/scripts-exchange",
+      "cwd": "${workspaceFolder}/businesslogic/scripts-exchange",
       "command": "npm run build:pack"
+    },
+
+   
+    {
+      "name": "scripts-exchange parsecsv",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/businesslogic/scripts-exchange",
+      "command": "npm run parsecsv"
     }
   ]
 }

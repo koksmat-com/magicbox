@@ -12,8 +12,8 @@ export interface IEndPointHandler {
    operationDescription : string;
    resultDescription : string;
    input: { identity: string; schema: z.ZodSchema<any> };
-   output: { identity: string; schema: z.ZodSchema<any> };
-   process(input: Request): Promise<IResult<any>> 
+   output: { identity: string; schema: z.ZodSchema<any> }
+  
   
 
 }
