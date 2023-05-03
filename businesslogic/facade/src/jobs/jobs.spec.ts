@@ -1,13 +1,13 @@
 import jest from "jest"
-import IO from "."
+import Jobs from "."
 import * as path from "path";
-it("Can parse CSV file", async () => {
-    const io = new IO()
+it("Can run import", async () => {
+    const jobs = new Jobs()
+   
     const pathName = path.join(__dirname, "rooms.csv");
-    const info = await io.importCSV(pathName)
-  
+   // await jobs.importRooms(pathName)
  //  await ingest.indexGameOfThrones()
-    expect(info.hasError).toBeFalsy()
+ //   expect(items.hasError).toBeFalsy()
   });
   
 

@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-Facade.ts:34
+[Facade.ts:34](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L34)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Facade.ts:34
 
 #### Defined in
 
-Facade.ts:29
+[Facade.ts:29](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L29)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-Facade.ts:27
+[Facade.ts:27](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L27)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ Facade.ts:27
 
 #### Defined in
 
-Facade.ts:62
+[Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L62)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-Facade.ts:53
+[Facade.ts:53](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L53)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-Facade.ts:58
+[Facade.ts:58](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L58)
 
 ## Methods
 
@@ -115,7 +115,7 @@ Facade.ts:58
 
 #### Defined in
 
-Facade.ts:102
+[Facade.ts:102](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L102)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-Facade.ts:74
+[Facade.ts:74](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L74)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-Facade.ts:65
+[Facade.ts:65](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L65)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-Facade.ts:69
+[Facade.ts:69](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L69)
 
 ___
 
@@ -193,4 +193,4 @@ ___
 
 #### Defined in
 
-Facade.ts:45
+[Facade.ts:45](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L45)

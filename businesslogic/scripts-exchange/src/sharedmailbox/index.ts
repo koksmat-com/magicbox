@@ -5,6 +5,7 @@ import {
   Method,
   IEndPointHandler,
   IScript,
+  Events,
 } from "@koksmat/powerpacks";
 
 import { sharedMailbox } from "@koksmat/schemas"
@@ -12,10 +13,11 @@ import { sharedMailbox } from "@koksmat/schemas"
 import Create from "./create";
 import Remove from "./remove";
 
-export const routePath = "/sharedmailbox";
+
 export class SharedMailboxCreate implements IEndPointHandler {
+  eventsHandlers  = Events.newEventHandler();
   method: Method = "post";
-  path = routePath;
+
   summary = "Creates a shared mailbox";
   operationDescription = "Creates a shared mailbox";
   resultDescription = "Response";
@@ -34,8 +36,9 @@ export class SharedMailboxCreate implements IEndPointHandler {
   
 }
 export class SharedMailboxRemove implements IEndPointHandler {
+  eventsHandlers  = Events.newEventHandler();
   method: Method = "delete";
-  path = routePath;
+ 
   summary = "Deletes a shared mailbox";
   operationDescription = "Deletes a shared mailbox";
   resultDescription = "Process result";
