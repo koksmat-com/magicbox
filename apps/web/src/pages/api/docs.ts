@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 
-import { Factory } from "@koksmat/factory"
+import { Facade } from "@koksmat/facade"
 export default function handler(req:NextApiRequest, res:NextApiResponse) {
 
-  const doc = Factory.getInstance().router.openAPIdocument
+  const doc = Facade.getInstance().router.openAPIdocument
   
    
 

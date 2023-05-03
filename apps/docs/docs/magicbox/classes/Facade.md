@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Facade.ts:31](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L31)
+Facade.ts:34
 
 ## Properties
 
@@ -41,7 +41,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Facade.ts:26](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L26)
+Facade.ts:29
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:24](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L24)
+Facade.ts:27
 
 ## Accessors
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:59](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L59)
+Facade.ts:62
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:50](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L50)
+Facade.ts:53
 
 ___
 
@@ -93,9 +93,53 @@ ___
 
 #### Defined in
 
-[Facade.ts:55](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L55)
+Facade.ts:58
 
 ## Methods
+
+### postMessage
+
+▸ **postMessage**(`method`, `route`, `payload`): `Promise`<`IResult`<`any`\>\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `method` | `string` |
+| `route` | `string` |
+| `payload` | `object` |
+
+#### Returns
+
+`Promise`<`IResult`<`any`\>\>
+
+#### Defined in
+
+Facade.ts:102
+
+___
+
+### processMessage
+
+▸ **processMessage**(`method`, `route`, `message`): `Promise`<`IResult`<`any`\>\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `method` | `string` |
+| `route` | `string` |
+| `message` | `IMessage` |
+
+#### Returns
+
+`Promise`<`IResult`<`any`\>\>
+
+#### Defined in
+
+Facade.ts:74
+
+___
 
 ### validateInput
 
@@ -114,7 +158,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L62)
+Facade.ts:65
 
 ___
 
@@ -135,7 +179,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:66](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L66)
+Facade.ts:69
 
 ___
 
@@ -149,4 +193,4 @@ ___
 
 #### Defined in
 
-[Facade.ts:42](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L42)
+Facade.ts:45

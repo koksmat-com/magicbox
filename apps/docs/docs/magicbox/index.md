@@ -1,6 +1,6 @@
 ---
 id: "index"
-title: "@koksmat/factory"
+title: "@koksmat/facade"
 sidebar_label: "Readme"
 sidebar_position: 0
 custom_edit_url: null
@@ -62,7 +62,7 @@ This repo is organized by an ABC model: Apps, Business Logic and Components
 - `apps/docs `: Documenation based on Docusaurus which automatically builds documentation for high level components and the Open API
 - `apps/storybook`: Component documentation site with Storybook
 - `apps/web `: NextJS application used for all interfacing
-- `businesslogic/factory`: Central factory for creating instances of the business logic
+- `businesslogic/facade`: Central facade for creating instances of the business logic
 - `businesslogic/scripts-exchange`: PowerShell for managinbg Exchange Online
 - `components/core`: Core React components
 - `components/utils`: Shared React utilities

@@ -5,7 +5,7 @@ import path from "path";
 import chalk from "chalk";
 import { Messaging } from "@koksmat/messaging";
 import debug from "debug";
-import { Factory } from "@koksmat/factory";
+import { Facade } from "@koksmat/facade";
 
 export default function register(name: string, program: Command): void {
   program
@@ -21,7 +21,7 @@ export default function register(name: string, program: Command): void {
       //const options = program.opts();
       const logger = debug("magicbox.cli");
 
-     const result = await Factory.getInstance().postMessage("post", "exchange/sharedmailbox", {
+     const result = await Facade.getInstance().postMessage("post", "exchange/sharedmailbox", {
         name,
         displayName,
         alias,

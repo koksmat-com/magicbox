@@ -7,24 +7,24 @@ import debug from "debug";
 import { IResult } from "@koksmat/core";
 
 /**
- * Factory class
+ * Facade class
  * 
  * Is the core in MagicBox architecture.
  * 
  * From here you can access to all the other modules. 
  * 
  * ## How to use it
- * The factoryy is implemented using a singleton, so you can access it from anywhere in your code.
+ * The facadey is implemented using a singleton, so you can access it from anywhere in your code.
  * ```typescript
- * import { Factory } from "@koksmat/factory";
+ * import { Facade } from "@koksmat/facade";
  * 
- * const factory = Factory.getInstance();
+ * const facade = Facade.getInstance();
  * 
  * ```
  */
-export class Factory {
+export class Facade {
      /** @private */
-    static _instance: Factory;
+    static _instance: Facade;
      /** @private */
     private _router: Router;
 
@@ -43,10 +43,10 @@ export class Factory {
     }
 
     public static getInstance() {
-        if (!Factory._instance) {
-            Factory._instance = new Factory();
+        if (!Facade._instance) {
+            Facade._instance = new Facade();
         }
-        return Factory._instance;
+        return Facade._instance;
 
     }
     
@@ -72,7 +72,7 @@ export class Factory {
     }
 
     public async processMessage(method:string, route:string,message:IMessage) : Promise<IResult<any>>{
-        const logger = debug("magicbox.factory");
+        const logger = debug("magicbox.facade");
         let result : IResult<any> = {
             hasError: false
         }
@@ -100,7 +100,7 @@ export class Factory {
     }
 
     public async postMessage(method:string, route:string,payload:object) : Promise<IResult<any>>{
-        const logger = debug("magicbox.factory");
+        const logger = debug("magicbox.facade");
         let result : IResult<any> = {
             hasError: false
         }

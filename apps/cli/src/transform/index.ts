@@ -4,7 +4,7 @@ import path from "path";
 import chalk from "chalk";
 import { Messaging } from "@koksmat/messaging";
 import debug from "debug";
-import { Factory } from "@koksmat/factory";
+import { Facade } from "@koksmat/facade";
 import { IResult } from "@koksmat/core";
 import { extractEmails,extractAddressBook } from "@koksmat/schemas";
 

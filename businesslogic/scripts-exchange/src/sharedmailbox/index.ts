@@ -7,7 +7,7 @@ import {
   IScript,
 } from "@koksmat/powerpacks";
 
-import { sharedMailbox } from "../schemas/dist"
+import { sharedMailbox } from "@koksmat/schemas"
 
 import Create from "./create";
 import Remove from "./remove";

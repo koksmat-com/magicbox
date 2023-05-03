@@ -35,9 +35,9 @@ importers:
       '@koksmat/core':
         specifier: workspace:*
         version: link:../../components/core
-      '@koksmat/factory':
+      '@koksmat/facade':
         specifier: workspace:*
-        version: link:../../businesslogic/factory
+        version: link:../../businesslogic/facade
       '@koksmat/messaging':
         specifier: workspace:*
         version: link:../../components/messaging
@@ -203,9 +203,9 @@ importers:
       '@koksmat/core':
         specifier: workspace:*
         version: link:../../components/core
-      '@koksmat/factory':
+      '@koksmat/facade':
         specifier: workspace:*
-        version: link:../../businesslogic/factory
+        version: link:../../businesslogic/facade
       '@koksmat/powerpacks':
         specifier: workspace:*
         version: link:../../components/powerpacks
@@ -278,9 +278,9 @@ importers:
       '@koksmat/core':
         specifier: workspace:*
         version: link:../../components/core
-      '@koksmat/factory':
+      '@koksmat/facade':
         specifier: workspace:*
-        version: link:../../businesslogic/factory
+        version: link:../../businesslogic/facade
       '@koksmat/messaging':
         specifier: workspace:*
         version: link:../../components/messaging
@@ -319,7 +319,7 @@ importers:
         specifier: ^5.0.3
         version: 5.0.3
 
-  businesslogic/factory:
+  businesslogic/facade:
     dependencies:
       '@asteasolutions/zod-to-openapi':
         specifier: ^4.5.0
