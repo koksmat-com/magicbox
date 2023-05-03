@@ -1,11 +1,15 @@
 import { z } from "zod";
-import fields from "../fields";
-import records from "../records";
-
-export class room {
+import fields from "./fields";
+import records from "./records";
+export class sharedMailbox {
+  static view = records.createRequest.extend({
+    primarySmtpAddress: fields.smtpAddress,
+  });
 
   static createRequest = records.createRequest.extend({
-    capacity: fields.roomCapacity
+    owners: fields.owners,
+    members: fields.members,
+    readers: fields.readers,
   });
 
   static createRequestResult = records.createRequestResult.extend({

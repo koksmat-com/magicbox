@@ -1,0 +1,12 @@
+"DisplayName";"Name";"MailTip";"ResourceType";"PrimarySmtpAddress";"WhenCreatedUTC";"ResourceCapacity"
+"Conf Room Baker";"Conf Room Baker";;"Room";"Baker@M365x65867376.OnMicrosoft.com";"24.03.2023 10:30:43";
+"Conf Room Adams";"Conf Room Adams";;"Room";"Adams@M365x65867376.OnMicrosoft.com";"24.03.2023 10:30:39";
+"Conf Room Crystal";"Conf Room Crystal";;"Room";"Crystal@M365x65867376.OnMicrosoft.com";"24.03.2023 10:30:47";
+"Conf Room Hood";"Conf Room Hood";;"Room";"Hood@M365x65867376.OnMicrosoft.com";"24.03.2023 10:30:51";
+"Conf Room Stevens";"Conf Room Stevens";;"Room";"Stevens@M365x65867376.OnMicrosoft.com";"24.03.2023 10:30:58";
+"Conf Room Rainier";"Conf Room Rainier";;"Room";"Rainier@M365x65867376.OnMicrosoft.com";"24.03.2023 10:30:54";
+"test1";"testroom-test1";;"Room";"testroom-test1@M365x65867376.onmicrosoft.com";"01.05.2023 08:43:50";"10"
+"guid";"room-room-guid";;"Room";"room-room-guid@M365x65867376.onmicrosoft.com";"01.05.2023 08:44:43";"10"
+"dc7c10aa-cc77-4184-9f58-28bac1fab239";"room-room-dc7c10aa-cc77-4184-9f58-28bac1fab239";;"Room";"room-room-dc7c10aa-cc77-4184-9f58-28bac1fab239@M365x65867376.onmicrosoft.com";"01.05.2023 08:44:57";"10"
+"5ca421a0-f2be-48c8-8caf-4720d7411ccc";"room-5ca421a0-f2be-48c8-8caf-4720d7411ccc";;"Room";"room-5ca421a0-f2be-48c8-8caf-4720d7411ccc@M365x65867376.onmicrosoft.com";"01.05.2023 08:46:10";"10"
+"db9bdd8a-41e7-4db7-8bc0-a956701bf2d5";"test-room-db9bdd8a-41e7-4db7-8bc0-a956701bf2d5";;"Room";"test-room-db9bdd8a-41e7-4db7-8bc0-a956701bf2d5@M365x65867376.onmicrosoft.com";"01.05.2023 08:46:55";"10"

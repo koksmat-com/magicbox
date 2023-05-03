@@ -3,9 +3,10 @@ import Ingest from "./Ingest"
 
 it("Can connect", async () => {
     const ingest = new Ingest()
-   console.log( await ingest.info())
+    const info = await ingest.info()
+   console.log( info)
  //  await ingest.indexGameOfThrones()
-    expect(1).toBe(1)
+    expect(info.name).toBe("quickstart-es-default-0")
   });
   
 

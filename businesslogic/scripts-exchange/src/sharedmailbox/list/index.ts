@@ -12,19 +12,22 @@ export default class Script implements IScript{
   
   public get code() : string {
     return `# Connector: Exchange
-# Commands: Get-Recipient 
+# Commands: Get-Mailbox
+
+
+# This to ensure a predictalbe output of e.g. dates
+
 $culture = [System.Globalization.CultureInfo]::CreateSpecificCulture("de-DE")
-
-
 [System.Threading.Thread]::CurrentThread.CurrentUICulture = $culture
 [System.Threading.Thread]::CurrentThread.CurrentCulture = $culture
-Get-Recipient -ResultSize Unlimited |
-    Select-Object -Property Name, PrimarySmtpAddress, RecipientType, RecipientTypeDetails, EmailAddresses,WhenCreatedUTC |
-    Export-Csv -Path $PSScriptRoot/recipients.csv -NoTypeInformation -Encoding UTF8 -UseCulture
+
+Get-Mailbox  -ResultSize Unlimited -RecipientTypeDetails SharedMailbox
+     | Select-Object -Property DisplayName,Name,MailTip, PrimarySmtpAddress,WhenCreatedUTC, Alias
+    | Export-Csv -Path $PSScriptRoot/sharedmailboxes.csv -NoTypeInformation -Encoding UTF8 -UseCulture
 `
   }
   public get commands() : string[] {
-    return ['Get-Recipient']
+    return ['Get-Mailbox']
   }
   public get outputs() : string[] {
     return []

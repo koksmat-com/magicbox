@@ -7,7 +7,7 @@ import {
   IScript,
 } from "@koksmat/powerpacks";
 
-import { mailbox } from "@koksmat/schemas"
+import { sharedMailbox } from "../schemas/dist"
 
 import Create from "./create";
 import Remove from "./remove";
@@ -23,11 +23,11 @@ export class SharedMailboxCreate implements IEndPointHandler {
   script: IScript = new Create();
   input = {
     identity: this.constructor.name + "RequestDTO",
-    schema: mailbox.shared.createRequest
+    schema: sharedMailbox.createRequest
   }
   output= {
     identity: this.constructor.name + "ResponseDTO",
-    schema: mailbox.shared.createRequestResult
+    schema: sharedMailbox.createRequestResult
   };
 
  
@@ -41,11 +41,11 @@ export class SharedMailboxRemove implements IEndPointHandler {
   resultDescription = "Process result";
   output = {
     identity: this.constructor.name + "ResponseDTO",
-    schema: mailbox.shared.deleteRequestResult,
+    schema: sharedMailbox.deleteRequestResult,
   };
   input = {
     identity: this.constructor.name + "RequestDTO",
-    schema:  mailbox.shared.deleteRequest
+    schema:  sharedMailbox.deleteRequest
   };
   script =  new Remove();
  

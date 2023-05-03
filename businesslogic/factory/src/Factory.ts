@@ -1,5 +1,5 @@
 import { register as registerExchange } from "@koksmat/scripts-exchange";
-import { IEndPointHandler, PowerPacks, Request } from "@koksmat/powerpacks";
+import { IEndPointHandler, PowerPacks, processPowerPack, Request } from "@koksmat/powerpacks";
 import { IRouter, Router } from "./Router";
 import chalk from "chalk";
 import { Messaging , IMessage } from "@koksmat/messaging";
@@ -95,7 +95,7 @@ export class Factory {
      
         
         const request : Request = {query:"",body:message.payload}
-        result = await handler.process(request)
+        result = await processPowerPack(handler,request)
         return result
     }
 

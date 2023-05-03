@@ -60,5 +60,8 @@ write-output $mailbox | Select name,displayname,Identity,PrimarySmtpAddress`
   public get commands() : string[] {
     return ['New-Mailbox','set-Mailbox','Add-MailboxPermission']
   }
+  public get outputs() : string[] {
+    return []
+  }
 }
     

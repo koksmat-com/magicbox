@@ -18,4 +18,8 @@ static createRequest = this.displayNameAlias.extend({
   name: fields.mailboxname,
 
 });
+static processRequest = this.displayNameAlias.extend({
+  correalationId: fields.identity
+
+});
 }

@@ -12,7 +12,7 @@ export default class Script implements IScript{
   
   public get code() : string {
     return `# Connector: Exchange
-# Commands: New-Mailbox,set-Mailbox,Add-MailboxPermission
+# Commands: New-Mailbox
 param (
     [Parameter(Mandatory = $true)]
     [string]$Name,
@@ -32,7 +32,10 @@ $mailbox = New-Mailbox -Name ($prefix + "room-$alias") -DisplayName "$name" -Roo
 write-output $mailbox.WindowsEmailAddress`
   }
   public get commands() : string[] {
-    return ['New-Mailbox','set-Mailbox','Add-MailboxPermission']
+    return ['New-Mailbox']
+  }
+  public get outputs() : string[] {
+    return []
   }
 }
     

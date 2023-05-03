@@ -23,5 +23,8 @@ write-output "done"`
   public get commands() : string[] {
     return ['Remove-Mailbox']
   }
+  public get outputs() : string[] {
+    return []
+  }
 }
     

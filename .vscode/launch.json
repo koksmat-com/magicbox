@@ -15,7 +15,7 @@
       "type": "node-terminal",
       "request": "launch",
       "cwd": "${workspaceFolder}/apps/web",
-      "command": "npm run dev2"
+      "command": "npm run dev:web"
     },
    
     {

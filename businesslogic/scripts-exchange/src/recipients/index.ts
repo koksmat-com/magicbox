@@ -7,7 +7,7 @@ import {
   IScript,
 } from "@koksmat/powerpacks";
 
-import { resource } from "@koksmat/schemas"
+import { room } from "../schemas/dist"
 
 import List from "./list";
 
@@ -23,11 +23,11 @@ export class RecipientList implements IEndPointHandler {
   script: IScript = new List();
   input = {
     identity: this.constructor.name + "RequestDTO",
-    schema: resource.room.createRequest
+    schema: room.createRequest
   }
   output= {
     identity: this.constructor.name + "ResponseDTO",
-    schema: resource.room.createRequestResult
+    schema: room.createRequestResult
   };
 
  
@@ -35,7 +35,7 @@ export class RecipientList implements IEndPointHandler {
 }
 
  
-}
+
 export function register(path: string, registry: PowerPacks) {
 
   EndPointHandler.register(new RecipientList(), path, registry);
