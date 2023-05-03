@@ -1,2 +1,0 @@
-
-export {Factory} from "./Factory"

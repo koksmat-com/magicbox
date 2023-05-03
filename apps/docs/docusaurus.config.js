@@ -122,8 +122,8 @@ const config = {
 
       // Plugin / TypeDoc options
       {
-        entryPoints: ["../../businesslogic/factory/src/index.ts"],
-        tsconfig: "../../businesslogic/factory/tsconfig.json",
+        entryPoints: ["../../businesslogic/facade/src/index.ts"],
+        tsconfig: "../../businesslogic/facade/tsconfig.json",
         plugin: ["typedoc-plugin-zod"],
         out: "magicbox",
         sidebar: {

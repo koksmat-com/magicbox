@@ -1,23 +1,23 @@
 ---
-id: "Factory"
-title: "Class: Factory"
-sidebar_label: "Factory"
+id: "Facade"
+title: "Class: Facade"
+sidebar_label: "Facade"
 sidebar_position: 0
 custom_edit_url: null
 ---
 
-Factory class
+Facade class
 
 Is the core in MagicBox architecture.
 
 From here you can access to all the other modules. 
 
 ## How to use it
-The factoryy is implemented using a singleton, so you can access it from anywhere in your code.
+The facadey is implemented using a singleton, so you can access it from anywhere in your code.
 ```typescript
-import { Factory } from "@koksmat/factory";
+import { Facade } from "@koksmat/facade";
 
-const factory = Factory.getInstance();
+const facade = Facade.getInstance();
 
 ```
 
@@ -25,13 +25,13 @@ const factory = Factory.getInstance();
 
 ### constructor
 
-• **new Factory**()
+• **new Facade**()
 
 Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:34](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L34)
+[Facade.ts:34](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L34)
 
 ## Properties
 
@@ -41,17 +41,17 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:29](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L29)
+[Facade.ts:29](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L29)
 
 ___
 
 ### \_instance
 
-▪ `Static` `Private` **\_instance**: [`Factory`](Factory.md)
+▪ `Static` `Private` **\_instance**: [`Facade`](Facade.md)
 
 #### Defined in
 
-[Factory.ts:27](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L27)
+[Facade.ts:27](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L27)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:62](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L62)
+[Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L62)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:53](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L53)
+[Facade.ts:53](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L53)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:58](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L58)
+[Facade.ts:58](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L58)
 
 ## Methods
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:102](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L102)
+[Facade.ts:102](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L102)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:74](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L74)
+[Facade.ts:74](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L74)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:65](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L65)
+[Facade.ts:65](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L65)
 
 ___
 
@@ -179,18 +179,18 @@ ___
 
 #### Defined in
 
-[Factory.ts:69](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L69)
+[Facade.ts:69](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L69)
 
 ___
 
 ### getInstance
 
-▸ `Static` **getInstance**(): [`Factory`](Factory.md)
+▸ `Static` **getInstance**(): [`Facade`](Facade.md)
 
 #### Returns
 
-[`Factory`](Factory.md)
+[`Facade`](Facade.md)
 
 #### Defined in
 
-[Factory.ts:45](https://github.com/koksmat-com/magicbox/blob/b91d55f/businesslogic/factory/src/Factory.ts#L45)
+[Facade.ts:45](https://github.com/koksmat-com/magicbox/blob/8ea5210/businesslogic/facade/src/Facade.ts#L45)

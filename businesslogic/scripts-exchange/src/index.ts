@@ -1,8 +1,10 @@
 
-import { register as registerSharedMailbox } from "./sharedmailbox";
+import { register as sharedMailbox } from "./sharedmailbox";
+import { register as room } from "./room";
 import { PowerPacks } from "@koksmat/powerpacks";
 export { SharedMailboxCreate} from "./sharedmailbox"
 
 export function register (path: string,packs:PowerPacks) {
-registerSharedMailbox("/" + path + "/sharedmailbox",packs)
+sharedMailbox("/" + path + "/sharedmailbox",packs)
+room("/" + path + "/room",packs)
 }

@@ -1,23 +1,23 @@
 ---
-id: "Factory"
-title: "Class: Factory"
-sidebar_label: "Factory"
+id: "Facade"
+title: "Class: Facade"
+sidebar_label: "Facade"
 sidebar_position: 0
 custom_edit_url: null
 ---
 
-Factory class
+Facade class
 
 Is the core in MagicBox architecture.
 
 From here you can access to all the other modules. 
 
 ## How to use it
-The factoryy is implemented using a singleton, so you can access it from anywhere in your code.
+The facadey is implemented using a singleton, so you can access it from anywhere in your code.
 ```typescript
-import { Factory } from "@koksmat/factory";
+import { Facade } from "@koksmat/facade";
 
-const factory = Factory.getInstance();
+const facade = Facade.getInstance();
 
 ```
 
@@ -25,13 +25,13 @@ const factory = Factory.getInstance();
 
 ### constructor
 
-• **new Factory**()
+• **new Facade**()
 
 Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:31](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L31)
+[Facade.ts:31](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L31)
 
 ## Properties
 
@@ -41,17 +41,17 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Factory.ts:26](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L26)
+[Facade.ts:26](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L26)
 
 ___
 
 ### \_instance
 
-▪ `Static` `Private` **\_instance**: [`Factory`](Factory.md)
+▪ `Static` `Private` **\_instance**: [`Facade`](Facade.md)
 
 #### Defined in
 
-[Factory.ts:24](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L24)
+[Facade.ts:24](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L24)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:59](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L59)
+[Facade.ts:59](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L59)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:50](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L50)
+[Facade.ts:50](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L50)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:55](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L55)
+[Facade.ts:55](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L55)
 
 ## Methods
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[Factory.ts:62](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L62)
+[Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L62)
 
 ___
 
@@ -135,18 +135,18 @@ ___
 
 #### Defined in
 
-[Factory.ts:66](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L66)
+[Facade.ts:66](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L66)
 
 ___
 
 ### getInstance
 
-▸ `Static` **getInstance**(): [`Factory`](Factory.md)
+▸ `Static` **getInstance**(): [`Facade`](Facade.md)
 
 #### Returns
 
-[`Factory`](Factory.md)
+[`Facade`](Facade.md)
 
 #### Defined in
 
-[Factory.ts:42](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/factory/src/Factory.ts#L42)
+[Facade.ts:42](https://github.com/koksmat-com/magicbox/blob/cc5f06b/businesslogic/facade/src/Facade.ts#L42)

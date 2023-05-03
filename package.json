@@ -22,7 +22,8 @@
     "release": "turbo run build --filter=docs^... && changeset publish",
     "powershellinstall": "pwsh ./scripts/install.ps1",
     "forward:rabbitmq:staging":"kubectl port-forward service/magicbox-rabbitmq 5672:5672 25672:25672 15672:15672 4369:4369 -n magicbox",
-    "forward:elastic:staging":" kubectl port-forward services/quickstart-es-default 9200:9200 -n magicbox"
+    "forward:elastic:staging":" kubectl port-forward services/quickstart-es-default 9200:9200 -n magicbox",
+    "forward:elastic-kabana:staging":"kubectl port-forward services/quickstart-kb-http 5601:5601 -n magicbox"
    
   },
   "license": "MIT",

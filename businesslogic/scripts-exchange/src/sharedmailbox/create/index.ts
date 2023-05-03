@@ -44,7 +44,7 @@ if ($owner -ne $null -and $owner -ne "" ) {
 if ($members -ne $null -and $members -ne "" ) {
     foreach ($member in $members) {
         Add-MailboxPermission -Identity $mailbox.ExchangeObjectId  -User $member  -AccessRights FullAccess -InheritanceType All | Out-Null
-      #  Add-RecipientPermission -Identity $mailbox.ExchangeObjectId  -AccessRights SendAs -Trustee $member -confirm:$false | Out-Null
+        Add-RecipientPermission -Identity $mailbox.ExchangeObjectId  -AccessRights SendAs -Trustee $member -confirm:$false | Out-Null
     }
 }
 
@@ -59,6 +59,9 @@ write-output $mailbox | Select name,displayname,Identity,PrimarySmtpAddress`
   }
   public get commands() : string[] {
     return ['New-Mailbox','set-Mailbox','Add-MailboxPermission']
+  }
+  public get outputs() : string[] {
+    return []
   }
 }
     

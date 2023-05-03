@@ -26,8 +26,8 @@
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^4.5.0",
     "@koksmat/core": "workspace:*",
-    "@koksmat/models": "workspace:*",
-    "@koksmat/factory": "workspace:*",
+    "@koksmat/schemas": "workspace:*",
+    "@koksmat/facade": "workspace:*",
     "@koksmat/messaging": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",

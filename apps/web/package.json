@@ -13,7 +13,7 @@
   "dependencies": {
     "@fluentui/react-components": "^9.18.9",
     "@koksmat/core": "workspace:*",
-    "@koksmat/factory": "workspace:*",
+    "@koksmat/facade": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
     "@koksmat/search": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",

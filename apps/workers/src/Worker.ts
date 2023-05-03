@@ -1,5 +1,5 @@
 import { Messaging ,IMessage} from "@koksmat/messaging";
-import { Factory } from "@koksmat/factory";
+import { Facade } from "@koksmat/facade";
 import { PowershellService } from "@koksmat/core";
 
 /**
@@ -26,7 +26,7 @@ export class Worker {
         if (!message.route){
           return {hasError:true,errorMessage:"No route specified"}
         }
-        const result = await Factory.getInstance().processMessage(message.method,message.route,message)
+        const result = await Facade.getInstance().processMessage(message.method,message.route,message)
        
         return result
       });
