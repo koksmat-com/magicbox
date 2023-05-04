@@ -6,6 +6,10 @@ import { Messaging , IMessage } from "@koksmat/messaging";
 import debug from "debug";
 import { IResult } from "@koksmat/core";
 
+
+
+
+
 /**
  * Facade class
  * 
@@ -22,11 +26,14 @@ import { IResult } from "@koksmat/core";
  * 
  * ```
  */
+
+
 export class Facade {
      /** @private */
     static _instance: Facade;
      /** @private */
     private _router: Router;
+   
 
     /**
      * Constructor is setting up the PowerPacks and the router

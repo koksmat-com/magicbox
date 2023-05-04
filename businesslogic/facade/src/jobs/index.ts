@@ -6,6 +6,8 @@ import {
   IEndPointHandler,
 } from "@koksmat/powerpacks";
 import * as path from "path";
+import { prototype } from "events";
+import debug from "debug";
 export default class Jobs {
   async importRooms(pathName: string) {
     const importer = new Importer();
@@ -13,11 +15,17 @@ export default class Jobs {
     const items = await importer.importCSV(pathName);
 
     const facade = Facade.getInstance();
-    const endPoint = facade.router.matchRoute("post", "room/import");
-    const eventHandler = endPoint?.eventsHandlers?.get("POSTPOWERSHELL");
+    const endPoint: any = facade.router.matchRoute(
+      "post",
+      "exchange/room/import"
+    );
 
-    if (eventHandler) {
-      await eventHandler.emit(items);
+    if (endPoint) {
+      if (endPoint.onPostProcessPowerShellRequest) {
+        debug("magicbox.facade")("Calling onPostProcessPowerShellRequest")
+        endPoint.onPostProcessPowerShellRequest(items.data);
+      }
+      // await eventHandler.emit(items);
     }
   }
 }

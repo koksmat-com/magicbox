@@ -106,7 +106,7 @@ export default class Script implements IScript{
   public get commands() : string[] {
     return [${commandsNames}]
   }
-  public get outputs() : string[] {
+  public get outputFiles() : string[] {
     return [${outputs}]
   }
 }

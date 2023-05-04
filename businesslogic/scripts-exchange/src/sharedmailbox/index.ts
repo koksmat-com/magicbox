@@ -4,6 +4,7 @@ import {
   EndPointHandler,
   Method,
   IEndPointHandler,
+  ITestCase,
   IScript,
   Events,
 } from "@koksmat/powerpacks";
@@ -15,6 +16,7 @@ import Remove from "./remove";
 
 
 export class SharedMailboxCreate implements IEndPointHandler {
+  testCases: ITestCase[] = [];
   eventsHandlers  = Events.newEventHandler();
   method: Method = "post";
 
@@ -36,6 +38,7 @@ export class SharedMailboxCreate implements IEndPointHandler {
   
 }
 export class SharedMailboxRemove implements IEndPointHandler {
+  testCases: ITestCase[] = [];
   eventsHandlers  = Events.newEventHandler();
   method: Method = "delete";
  

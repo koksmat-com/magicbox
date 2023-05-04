@@ -1,5 +1,5 @@
 # Connector: Exchange
-# Commands: New-Mailbox,set-Mailbox,Add-MailboxPermission
+# Commands: New-Mailbox,set-Mailbox,Add-MailboxPermission,Add-RecipientPermission 
 param (
     [Parameter(Mandatory = $true)]
     [string]$Name,

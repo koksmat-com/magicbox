@@ -26,7 +26,7 @@ Get-Recipient -ResultSize Unlimited |
   public get commands() : string[] {
     return ['Get-Recipient']
   }
-  public get outputs() : string[] {
+  public get outputFiles() : string[] {
     return []
   }
 }

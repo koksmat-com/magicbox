@@ -5,7 +5,7 @@
 
 # This to ensure a predictalbe output of e.g. dates
 
-$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture("de-DE")
+$culture = [System.Globalization.CultureInfo]::CreateSpecificCulture("se-SE")
 [System.Threading.Thread]::CurrentThread.CurrentUICulture = $culture
 [System.Threading.Thread]::CurrentThread.CurrentCulture = $culture
 

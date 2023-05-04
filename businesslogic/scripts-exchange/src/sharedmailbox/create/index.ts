@@ -12,7 +12,7 @@ export default class Script implements IScript{
   
   public get code() : string {
     return `# Connector: Exchange
-# Commands: New-Mailbox,set-Mailbox,Add-MailboxPermission
+# Commands: New-Mailbox,set-Mailbox,Add-MailboxPermission,Add-RecipientPermission 
 param (
     [Parameter(Mandatory = $true)]
     [string]$Name,
@@ -58,9 +58,9 @@ if ($readers -ne $null -and $readers -ne "" ) {
 write-output $mailbox | Select name,displayname,Identity,PrimarySmtpAddress`
   }
   public get commands() : string[] {
-    return ['New-Mailbox','set-Mailbox','Add-MailboxPermission']
+    return ['New-Mailbox','set-Mailbox','Add-MailboxPermission','Add-RecipientPermission']
   }
-  public get outputs() : string[] {
+  public get outputFiles() : string[] {
     return []
   }
 }

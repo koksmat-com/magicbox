@@ -17,7 +17,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "build:pack": "npx rimraf build && npx tsc",
     "copyfiles": "npx ts-node copyfiles.ts",
-    "pack": "npx ts-node --project tsconfig-ecma.json pack",
+  
     "test-ts": "pwsh -File ./src/connectors/exchange.ps1 && pwsh -File ./src/packs/sharedmailbox/create.mail1.test.ps1 &&  npx ts-node ./src/packs/sharedmailbox/create.ps1.test.ts"
   },
   "dependencies": {

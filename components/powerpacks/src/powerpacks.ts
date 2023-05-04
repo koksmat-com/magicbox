@@ -1,5 +1,5 @@
 import { extendZodWithOpenApi, OpenAPIRegistry,
-    OpenAPIGenerator, } from '@asteasolutions/zod-to-openapi';
+    OpenAPIGenerator} from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 import { EndPointHandler, IEndPointHandler } from './EndPointHandler';
 import { Route } from './Route';
@@ -67,7 +67,7 @@ public get isLoaded() : boolean {
   return this._isLoaded
 }
 
-public getOpenApiDocumentation() : any {
+public getOpenApiDocumentation()  {
   const generator = new OpenAPIGenerator(this._registry.definitions, '3.0.0');
   return generator.generateDocument({
     info: {

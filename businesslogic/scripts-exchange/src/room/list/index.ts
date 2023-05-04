@@ -23,14 +23,14 @@ $culture = [System.Globalization.CultureInfo]::CreateSpecificCulture("de-DE")
 [System.Threading.Thread]::CurrentThread.CurrentCulture = $culture
 
 Get-Mailbox  -ResultSize Unlimited -RecipientTypeDetails RoomMailbox 
-     | Select-Object -Property DisplayName,Name,MailTip,ResourceType, PrimarySmtpAddress,WhenCreatedUTC, ResourceCapacity
+     | Select-Object -Property DisplayName,Name,MailTip,ResourceType, PrimarySmtpAddress,WhenCreatedUTC, ResourceCapacity, Alias
     | Export-Csv -Path $PSScriptRoot/rooms.csv -NoTypeInformation -Encoding UTF8 -UseCulture
 #| fl`
   }
   public get commands() : string[] {
     return ['Get-Mailbox']
   }
-  public get outputs() : string[] {
+  public get outputFiles() : string[] {
     return ['rooms.csv']
   }
 }

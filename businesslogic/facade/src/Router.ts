@@ -1,3 +1,4 @@
+import { OpenAPI } from "@asteasolutions/zod-to-openapi";
 import {
   PowerPacks,
   EndPointHandler,
@@ -7,6 +8,7 @@ import {
   processPowerPack
 } from "@koksmat/powerpacks";
 import debug from "debug";
+import {OpenAPI3,OperationObject,PathItemObject, ReferenceObject} from "openapi-typescript";
 
 export interface IRouter {
   process: (req: Request, method: string, slug: string) => Promise<Response>;
@@ -19,7 +21,19 @@ export class Router implements IRouter {
   }
 
   public get openAPIdocument(): string {
-    return this._powerPacks.getOpenApiDocumentation();
+    const res = this._powerPacks.getOpenApiDocumentation();
+    return res
+  }
+
+  public matchRouteOpenAPI(method: ("get"|"put"|"post"|"delete"),route:string) : OperationObject | ReferenceObject | undefined | null{
+
+    // Wrong defintion out type in openapi-typescript, hence casting needed
+    const api : OpenAPI3 = (this.openAPIdocument as any) as OpenAPI3;
+    const item : PathItemObject = api.paths?.["/"+route] as PathItemObject
+    if (!item) {
+      return null
+    }
+    return item[method]
   }
 
   matchRoute(method: string, slug: string): IEndPointHandler | null {

@@ -34,7 +34,7 @@ write-output $mailbox.WindowsEmailAddress`
   public get commands() : string[] {
     return ['New-Mailbox']
   }
-  public get outputs() : string[] {
+  public get outputFiles() : string[] {
     return []
   }
 }

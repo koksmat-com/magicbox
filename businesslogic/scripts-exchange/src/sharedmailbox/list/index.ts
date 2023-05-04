@@ -29,7 +29,7 @@ Get-Mailbox  -ResultSize Unlimited -RecipientTypeDetails SharedMailbox
   public get commands() : string[] {
     return ['Get-Mailbox']
   }
-  public get outputs() : string[] {
+  public get outputFiles() : string[] {
     return []
   }
 }

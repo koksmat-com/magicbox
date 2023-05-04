@@ -31,6 +31,11 @@ export class Events {
  }
  
 }
+export interface ITestCase {
+  name : string,
+  description : string,
+  data:string
+}
 export interface IEndPointHandler {
  method: Method;
    script: IScript;
@@ -40,6 +45,7 @@ export interface IEndPointHandler {
    input: { identity: string; schema: z.ZodSchema<any> };
    output: { identity: string; schema: z.ZodSchema<any> }
    eventsHandlers: EventHandlers;
+   testCases: Array<ITestCase>
   
 
 }

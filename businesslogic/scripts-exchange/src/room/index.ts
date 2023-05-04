@@ -3,6 +3,7 @@ import {
   EndPointHandler,
   Method,
   IEndPointHandler,
+  ITestCase,
   EventHandler,
   IScript,
   EventHandlers,
@@ -22,17 +23,17 @@ const item = room.view;
 type targetType = z.infer<typeof item>;
 
 
-
-export class RoomCreate implements IEndPointHandler {
+class ExchangeBase {
   eventsHandlers  = Events.newEventHandler();
-
+}
+export class RoomCreate extends ExchangeBase implements IEndPointHandler {
   method: Method = "post";
-
+  testCases: ITestCase[] = [];
   summary = "Creates a room";
   operationDescription = "Creates a room";
   resultDescription = "Response";
 
-  script: IScript = new Create();
+  script = new Create();
   input = {
     identity: this.constructor.name + "RequestDTO",
     schema: room.createRequest,
@@ -41,11 +42,13 @@ export class RoomCreate implements IEndPointHandler {
     identity: this.constructor.name + "ResponseDTO",
     schema: room.createRequestResult,
   };
-}
-export class RoomRemove implements IEndPointHandler {
-  eventsHandlers  = Events.newEventHandler();
-  method: Method = "delete";
 
+  
+}
+export class RoomRemove extends ExchangeBase  implements IEndPointHandler {
+
+  method: Method = "delete";
+  testCases: ITestCase[] = [];
   summary = "Deletes a room";
   operationDescription = "Deletes a room";
   resultDescription = "Process result";
@@ -60,37 +63,10 @@ export class RoomRemove implements IEndPointHandler {
   script = new Remove();
 }
 
-export class EventHandlerLocal {
-  private _data :any
-  private _handler : (data:any)=>void
-
-
-  constructor(handler: (data: any) => void) {
-
-    this._handler = handler;
-  
-  }
-  async emit(data:any) {
-    return this._handler(data);
-  }
-}
-export class RoomImport implements IEndPointHandler {
+export class RoomImport extends ExchangeBase implements IEndPointHandler {
  
-  async postProcess(input : any) {
-   
-     return  this.postProcessPowerShellRequest(input as inputType[]);
-    
-  }
-
-  eventsHandlers  = Events.newEventHandler();
-  constructor() {
-    
-    const handler = new EventHandler(async (data: any) => {})
-    this.eventsHandlers.set("POSTPOWERSHELL",handler )
-  
-  }
   method: Method = "post";
-
+  testCases: ITestCase[] = [];
   summary = "Import Rooms from Exchange";
   operationDescription = "Import Rooms from Exchange";
   resultDescription = "Process result";
@@ -104,7 +80,7 @@ export class RoomImport implements IEndPointHandler {
   };
   script = new List();
 
-   mapCSV(input:inputType) : targetType {
+   mapCSV(input:inputType) : IResult<targetType> {
     const target : targetType = {
       displayName: input.DisplayName,
       name: input.Name,
@@ -115,13 +91,24 @@ export class RoomImport implements IEndPointHandler {
       capacity: parseInt(input.ResourceCapacity),
       alias : input.Alias,
     }
-    return target;
+    const parsedData =  item.safeParse(target);
+    if (!parsedData.success ) {
+      return {hasError:true,errorMessage:parsedData.error.message}
+    }else{
+      return {hasError:false,data:parsedData.data}
+    }
+   
   }
-  async postProcessPowerShellRequest(input: inputType[]) {
+  async onPostProcessPowerShellRequest(input: inputType[]) {
     for (let index = 0; index < input.length; index++) {
       const element = input[index];
       
-      const item = this.mapCSV(element);
+      const mapItemResult = this.mapCSV(element);
+      if (mapItemResult.hasError) {
+
+      }else{
+        console.log(mapItemResult.data?.displayName,mapItemResult.data?.primarySmtpAddress)
+      }
     }
    
   }
