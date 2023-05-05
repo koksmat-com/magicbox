@@ -60,14 +60,16 @@ export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Re
 
     }
     
-    const outputParse = powerpack.output.schema.safeParse(powerShellResult.data.success[0]);
+    // const outputParse = powerpack.output.schema.safeParse(powerShellResult.data.success[0]);
 
-    if (!outputParse.success) {
-      result.hasError = true;
-      result.errorMessage = JSON.parse(outputParse.error.message);
-      return result;
-    }
+    // if (!outputParse.success) {
+    //   result.hasError = true;
+    //   result.errorMessage = JSON.parse(outputParse.error.message);
+    //   return result;
+    // }
 
-    result.data = outputParse.data;
+    // result.data = outputParse.data;
+
+    result.data  = powerShellResult.data.success[0]
     return result;
   }

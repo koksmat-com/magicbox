@@ -16,7 +16,17 @@ import Remove from "./remove";
 
 
 export class SharedMailboxCreate implements IEndPointHandler {
-  testCases: ITestCase[] = [];
+  testCases: ITestCase[] = [{
+    name: "Create shared mailbox",
+    data: {
+      "name": "mailbox-name",
+      "displayName": "Mailbox Name",
+      "alias": "mailbox-alias",
+      "owners": "[\"AlexW\"]",
+      "members": "[\"AlexW\", \"DebraB\"]",
+      "readers": "[\"AlexW\", \"DebraB\"]"
+    }}];
+    
   eventsHandlers  = Events.newEventHandler();
   method: Method = "post";
 

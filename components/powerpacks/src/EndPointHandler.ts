@@ -33,8 +33,8 @@ export class Events {
 }
 export interface ITestCase {
   name : string,
-  description : string,
-  data:string
+
+  data:object
 }
 export interface IEndPointHandler {
  method: Method;
