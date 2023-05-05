@@ -1,8 +1,8 @@
-/// <reference types="react/experimental" />
-import { Facade } from "@koksmat/facade"
-import { Suspense } from "react"
 
-// Function that sleeps
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { Facade } from "@koksmat/facade"
+import { Suspense } from "react"// Function that sleeps
 
 function sleep(ms: number): Promise<string> {
   return new Promise(resolve => setTimeout(()=>{resolve("done")}, ms));
@@ -12,7 +12,7 @@ function sleep(ms: number): Promise<string> {
 
 
 // @ts-expect-error
-export  async function Process({method, path}:{method:("get" | "put" | "post" | "delete"), path:string}) : any {
+  async function Process({method, path}:{method:("get" | "put" | "post" | "delete"), path:string}) : any {
   const facade = Facade.getInstance()
   const endPoint = facade.router.matchRoute(method, path)
   const payload = endPoint?.testCases[0]?.data as object
@@ -36,49 +36,53 @@ export  async function Process({method, path}:{method:("get" | "put" | "post" | 
       <div className="text-2xl pb-2">Result</div>
       {result.hasError && <div className="bg-red-600 text-white p-10">{result.errorMessage}</div>}
       {!result.hasError && <div className="bg-green-600 text-white p-10">Success</div>}
-    <pre >
+   {/* //   <SyntaxHighlighter language="javascript" style={docco}>
       {JSON.stringify(result,null,2)}
-    </pre>
+    </SyntaxHighlighter> */}
+
+    <pre> {JSON.stringify(result,null,2)}</pre>
     </div>
   );
 }
 
-export default async function Page({ params }: { params: { slug: string[], action: string } }) {
+export default async function Page({ params }: { params: { slug: string[] } }) {
+
 
   const facade = Facade.getInstance()
-
+ 
   const slug = decodeURIComponent(params.slug.join("/"))
   const path = slug.split(":").shift() as string
   const method = slug.split(":").pop() as ("get" | "put" | "post" | "delete")
 
   const endPoint = facade.router.matchRoute(method, path)
   const openAPI = facade.router.matchRouteOpenAPI(method, path)
+  const payload = endPoint?.testCases[0]?.data as object
 
-  if (!openAPI) {
-    return <div>Open API definition not found</div>
+  async function process(){
+'use server'
+    if (!payload){
+      return console.log("No test cases found for this endpoint")
+    }
+    const result = await facade.processMessage(method, path,{method,route:path,payload})
+    console.log(result)
   }
-
-  if (!endPoint) {
-    return <div>Endpoint not found</div>
-  }
-
-
 
   return (
     <div>
       <div className="text-3xl " >{endPoint?.summary}</div>
       <div className="text--l pb-8" >{slug}</div>
       <div className="text-2xl pb-2">Test cases</div>
+      <button onClick={process}>Run</button>
       {endPoint?.testCases.map((testCase, index) => {
         return <div key={index}>
           <div>{testCase.name}</div>
           <div className="text-blue-600" >{JSON.stringify(testCase.data,null,2)}</div></div>
       })}
-      <Suspense fallback={<div className="bg-slate-200 p-10" >Processing ...</div>}>
+      {/* <Suspense fallback={<div className="bg-slate-200 p-10" >Processing ...</div>}>
       <Process method={method} path={path}/>
 
         
-      </Suspense>
+      </Suspense> */}
 
       <div className="text-2xl pb-2">Script</div>
 

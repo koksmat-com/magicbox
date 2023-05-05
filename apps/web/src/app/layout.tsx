@@ -1,5 +1,8 @@
+import Header from '@/components-highlevel/Header'
+import Layout from '@/components-highlevel/Layout';
 import Link from 'next/link'
 import './globals.css'
+import { NextAuthProvider } from "./providers";
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,15 +17,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className='flex p-10'>
-      <Link className='p-3' href={"/"}>Home</Link>
-      <Link className='p-3' href={"/tests"}>Tests</Link>
-      </div>
-        <div> {children}</div>
+        <NextAuthProvider>
+          <Layout>
        
-        
-        
-        </body>
+       
+            <div className='flex p-10'>
+              <Link className='p-3' href={"/"}>Home</Link>
+              <Link className='p-3' href={"/tests"}>Tests</Link>
+            </div>
+            {children}
+
+          </Layout>
+
+
+        </NextAuthProvider>
+      </body>
     </html>
   )
 }
