@@ -1,88 +1,96 @@
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { Facade } from "@koksmat/facade"
+import { Facade,PowerPackMethods } from "@koksmat/facade"
 import { Suspense } from "react"// Function that sleeps
 
-function sleep(ms: number): Promise<string> {
-  return new Promise(resolve => setTimeout(()=>{resolve("done")}, ms));
-}
+import { revalidateTag } from 'next/cache';
+import { ViewSourceCode } from "@koksmat/react-components";
+import { ViewPowerShellCodeInstance } from "./ViewPowerShellCodeInstance";
 
 
+/*
+
+function runs on server due to the "use server" comment 
+
+A "hack" into the action property of the form tag is used to tell the compiler to post formdata to the server and not the client, this 
+allow us to get access to all server side methods.
 
 
-// @ts-expect-error
-  async function Process({method, path}:{method:("get" | "put" | "post" | "delete"), path:string}) : any {
+The current only way to communicate back to the client is to invalidate the cache, this will trigger a revalidation of the parts of the page depended
+on the cache tag 
+*/
+async function startProcess(formData: FormData) {
+  'use server'
   const facade = Facade.getInstance()
-  const endPoint = facade.router.matchRoute(method, path)
-  const payload = endPoint?.testCases[0]?.data as object
+  const method : PowerPackMethods = formData.get("method") as PowerPackMethods
+  const path = formData.get("path") as string
+  const payload = JSON.parse(formData.get("payload") as string)
 
-  if (!payload){
-    return "No test cases found for this endpoint"
-  }
-  const result = await facade.processMessage(method, path,{method,route:path,payload})
-// const result = {
-//   "hasError": true,
-//   "errorMessage":"Error message",
-//   "data": {
-//     "Name": "test729d6f29-d1e4-42a8-9d62-c39a7d223e78",
-//     "DisplayName": "test729d6f29-d1e4-42a8-9d62-c39a7d223e78",
-//     "Identity": "test729d6f29-d1e4-42a8-9d62-c39a7d223e78",
-//     "PrimarySmtpAddress": "test729d6f29-d1e4-42a8-9d62-c39a7d223e78@M365x65867376.onmicrosoft.com"
-//   }
-//}
-  return (
-    <div>
-      <div className="text-2xl pb-2">Result</div>
-      {result.hasError && <div className="bg-red-600 text-white p-10">{result.errorMessage}</div>}
-      {!result.hasError && <div className="bg-green-600 text-white p-10">Success</div>}
-   {/* //   <SyntaxHighlighter language="javascript" style={docco}>
-      {JSON.stringify(result,null,2)}
-    </SyntaxHighlighter> */}
+  console.log("Processing on server")
 
-    <pre> {JSON.stringify(result,null,2)}</pre>
-    </div>
-  );
+
+   const result = await facade.processMessage(method, path, payload)
+  console.log(result)
+  revalidateTag("test")
+  return "done"
 }
+
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
 
 
   const facade = Facade.getInstance()
- 
+
   const slug = decodeURIComponent(params.slug.join("/"))
   const path = slug.split(":").shift() as string
-  const method = slug.split(":").pop() as ("get" | "put" | "post" | "delete")
+  const method = slug.split(":").pop() as PowerPackMethods
 
   const endPoint = facade.router.matchRoute(method, path)
   const openAPI = facade.router.matchRouteOpenAPI(method, path)
   const payload = endPoint?.testCases[0]?.data as object
 
-  async function process(){
-'use server'
-    if (!payload){
-      return console.log("No test cases found for this endpoint")
-    }
-    const result = await facade.processMessage(method, path,{method,route:path,payload})
-    console.log(result)
-  }
+
+
 
   return (
-    <div>
+    <div className="w-max">
       <div className="text-3xl " >{endPoint?.summary}</div>
       <div className="text--l pb-8" >{slug}</div>
       <div className="text-2xl pb-2">Test cases</div>
-      <button onClick={process}>Run</button>
+  {/* 
+  // @ts-ignore */}
+      <form action={startProcess} className=" overflow-auto w-max flex">
+        <div className="flex-grow w-max">
+          <div>
+          <div >
+        <input type="text" name="method" value={method} readOnly/>
+        </div>
+        <div>
+        <input type="text" name="path" value={path} readOnly/>
+        </div>
+        <textarea className="w-max  h-52" name="payload" value={JSON.stringify(payload)} readOnly >
+
+
+        </textarea>
+        </div>
+        </div>
+
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full h-8' type="submit">Submit</button>
+      
+       
+      </form>
+
+    
+{/* 
       {endPoint?.testCases.map((testCase, index) => {
         return <div key={index}>
           <div>{testCase.name}</div>
-          <div className="text-blue-600" >{JSON.stringify(testCase.data,null,2)}</div></div>
-      })}
-      {/* <Suspense fallback={<div className="bg-slate-200 p-10" >Processing ...</div>}>
-      <Process method={method} path={path}/>
+          <div className="text-blue-600" >{JSON.stringify(testCase.data, null, 2)}</div></div>
+      })} */}
+       <Suspense fallback={<div className="bg-slate-200 p-10" >Processing ...</div>}>
+      <ViewPowerShellCodeInstance method={method} path={path}/>
 
         
-      </Suspense> */}
+      </Suspense>  
 
       <div className="text-2xl pb-2">Script</div>
 
@@ -90,23 +98,23 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 
 
 
-      <div className="text-xl pb-2">Commands used</div>
-      {endPoint?.script.commands.map((command, index) => { return <div className="text-blue-600" key={index}>{command}</div> })}
+      <div className="text-xl pb-2">PowerShell Commands used</div>
+      {endPoint?.script.commands.map((command, index) => { return <div className="text-green-600 bg-slate-800" key={index}>{command}</div> })}
 
 
-      <div className="text-xl pb-2">File output</div>
-      {endPoint?.script.outputFiles?.map((fileName, index) => { return <div className="text-blue-600" key={index}>{fileName}</div> })}
+      <div className="text-xl pb-2">File output if any</div>
+      {endPoint?.script.outputFiles?.map((fileName, index) => { return <div className="text-green-600  bg-slate-800" key={index}>{fileName}</div> })}
 
 
 
       <div className="text-2xl pb-2">Source</div>
 
-      <pre className="text-blue-600 text-sm">
-        {endPoint?.script.code}
 
-      </pre>
- 
+      <ViewSourceCode language="powershell" code={endPoint?.script.code as string} />
   
+
+
+
     </div>
   )
 }

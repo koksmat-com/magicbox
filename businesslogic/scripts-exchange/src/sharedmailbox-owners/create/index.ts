@@ -63,5 +63,17 @@ write-output $mailbox | Select name,displayname,Identity,PrimarySmtpAddress`
   public get outputFiles() : string[] {
     return []
   }
+
+  mapPowerShellInput(input:any) : string {
+     return `$Name = "${input.name}" 
+$DisplayName = "${input.displayName}" 
+$Alias = "${input.alias}" 
+$Owner = "${input.owner}" 
+$Members = "${input.members}" 
+$Readers = "${input.readers}" `
+}
+get mapInput() : string {
+  return `-Name  $Name -DisplayName  $DisplayName -Alias  $Alias -Owner  $Owner -Members  $Members -Readers  $Readers`
+}
 }
     

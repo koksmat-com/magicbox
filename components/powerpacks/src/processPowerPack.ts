@@ -8,12 +8,20 @@ import {
   Request,
   Response,
   IScript,
+  LifecycleEvents,
 } from ".";
 import debug from 'debug';
 import { v4 as uuidv4 } from "uuid";
+import  moment from 'moment';
 
-export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Request): Promise<IResult<any>> {
+
+export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Request,returnPreview?:boolean): Promise<IResult<any>> {
     const log = debug("magicbox:businesslogic:scripts-exchange:sharedmailbox:create")
+
+    const events = (powerpack as any).events ? (powerpack as any).events : {}
+    const lifecycleEvents : LifecycleEvents = events
+
+
     let result: IResult<z.infer<typeof powerpack.output.schema>> = {
       hasError: false,
     };
@@ -25,7 +33,17 @@ export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Re
     }
     const input = zodParse.data;
     const shell = new PowershellService();
-    const uuid = uuidv4()
+
+
+    const timestamp = (moment()).format('DD-MM-YYYYTHHmmss')
+    const uuid =  timestamp + uuidv4()
+    let inputVariables = ""
+    if (lifecycleEvents.onProcess) {
+      inputVariables = await lifecycleEvents.onProcess(input);
+   
+    }
+    
+    
   
 
     let script = `
@@ -34,11 +52,15 @@ export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Re
     function powerbrick {
       ${powerpack.script.code}
     }
+    
+    ${inputVariables}
 
-    powerbrick -Name "test${uuid}" -DisplayName "test${uuid}" -Alias "test${uuid}" -Owner "test" -Members "test" -Readers "test"
+    powerbrick ${powerpack.script.mapInput}
 
     `
-
+if (returnPreview){
+  return {hasError:false,data:script}
+}
    const powerShellResult = await shell.executeExchange({
       commandsToLoad: powerpack.script.commands,
       script,
@@ -59,17 +81,25 @@ export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Re
       return result;
 
     }
-    
-    // const outputParse = powerpack.output.schema.safeParse(powerShellResult.data.success[0]);
 
-    // if (!outputParse.success) {
-    //   result.hasError = true;
-    //   result.errorMessage = JSON.parse(outputParse.error.message);
-    //   return result;
-    // }
+    if (lifecycleEvents.onProcessed) {
+      result.data = await lifecycleEvents.onProcessed(powerShellResult.data);
+      
+    }else{
+      result.data  = powerShellResult.data.success[0]
+    }
 
-    // result.data = outputParse.data;
+    //onProcessed
+    const outputParse = powerpack.output.schema.safeParse(result.data);
 
-    result.data  = powerShellResult.data.success[0]
+    if (!outputParse.success) {
+      result.hasError = true;
+      result.errorMessage = JSON.parse(outputParse.error.message);
+      return result;
+    }
+
+    result.data = outputParse.data;
+
+  
     return result;
   }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@fluentui/react-components": "^9.18.9",
     "@koksmat/core": "workspace:*",
+    "@koksmat/react-components": "workspace:*",
     "@koksmat/facade": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",
@@ -27,6 +28,7 @@
     "@types/react-syntax-highlighter": "^15.5.6",
     "eslint": "8.36.0",
     "eslint-config-next": "13.4.1",
+    "moment": "^2.29.4",
     "next": "13.4.1",
     "next-auth": "^4.22.0",
     "postcss": "8.4.21",

@@ -26,5 +26,12 @@ write-output "done"`
   public get outputFiles() : string[] {
     return []
   }
+
+  mapPowerShellInput(input:any) : string {
+     return `$smtpAddress = "${input.smtpAddress}" `
+}
+get mapInput() : string {
+  return `-smtpAddress  $smtpAddress`
+}
 }
     

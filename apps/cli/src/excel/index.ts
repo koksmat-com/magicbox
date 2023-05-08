@@ -3,7 +3,7 @@ import { Command } from "commander";
 import * as fs from "fs";
 import path from "path";
 import chalk from "chalk";
-import { ExcelUtility } from "@koksmat/utils";
+import { ExcelUtility } from "@koksmat/react-components";
 import debug from "debug";
 import * as Excel from "exceljs";
 

@@ -19,7 +19,7 @@
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^4.5.0",
     "@koksmat/core": "workspace:*",
-    "@koksmat/utils": "workspace:*",
+    "@koksmat/react-components": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
     "@koksmat/facade": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",

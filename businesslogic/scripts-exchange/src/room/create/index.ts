@@ -37,5 +37,14 @@ write-output $mailbox.WindowsEmailAddress`
   public get outputFiles() : string[] {
     return []
   }
+
+  mapPowerShellInput(input:any) : string {
+     return `$Name = "${input.name}" 
+$capacity = "${input.capacity}" 
+$prefix = "${input.prefix}" `
+}
+get mapInput() : string {
+  return `-Name  $Name -capacity  $capacity -prefix  $prefix`
+}
 }
     

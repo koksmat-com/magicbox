@@ -5,9 +5,9 @@ export default class fields extends coreFields{
   static alias = z.string().trim().openapi({ example: "mailbox-alias" });
   static mailboxname = z.string().trim().openapi({ example: "mailbox-name" });
   static displayName = z.string().trim().openapi({ example: "Mailbox Name" });
-  static owners = z.string().openapi({ example: '["AlexW"]' });
-  static members = z.string().openapi({ example: '["AlexW", "DebraB"]' });
-  static readers = z.string().openapi({ example: '["AlexW", "DebraB"]' });
+  static owners = z.string().array().openapi({ example: ["AlexW"] });
+  static members = z.string().array().openapi({ example: ["AlexW", "DebraB"] });
+  static readers = z.string().array().openapi({ example: ["AlexW", "DebraB"] });
  
    
 

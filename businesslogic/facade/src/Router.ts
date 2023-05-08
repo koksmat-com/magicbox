@@ -20,7 +20,7 @@ export class Router implements IRouter {
     this._powerPacks = powerPacks;
   }
 
-  public get openAPIdocument(): string {
+  public get openAPIdocument() {
     const res = this._powerPacks.getOpenApiDocumentation();
     return res
   }

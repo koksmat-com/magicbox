@@ -1,5 +1,5 @@
 {
-  "name": "@koksmat/utils",
+  "name": "@koksmat/react-components",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,8 +10,8 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx  --sourcemap --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.tsx  --sourcemap --format esm,cjs --watch --dts --external react",
+    "build": "tsup src/index.tsx  --sourcemap --dts",
+    "dev": "tsup src/index.tsx  --sourcemap --watch --dts",
     "lint": "eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@koksmat/core": "workspace:*",
-    "exceljs": "^4.3.0"
+    "exceljs": "^4.3.0",
+    "react-syntax-highlighter": "^15.5.0"
   }
 }

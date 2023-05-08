@@ -15,7 +15,7 @@ export interface IDefinitions {
   delete?: IPowerPackDefinition;
   list?: IPowerPackDefinition;
 }
-
+export type PowerPackMethods = "get" | "put" | "post" | "delete"
 export abstract class PowerPack {
   abstract definition: IPowerPackDefinition;
   validateInput(input: any) {

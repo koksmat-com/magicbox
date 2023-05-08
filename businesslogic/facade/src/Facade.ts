@@ -78,7 +78,7 @@ export class Facade {
 
     }
 
-    public async processMessage(method:string, route:string,message:IMessage) : Promise<IResult<any>>{
+    public async processMessage(method:"get" | "put" | "post" | "delete" , route:string,payload:object,viewScript?:boolean) : Promise<IResult<any>>{
         const logger = debug("magicbox.facade");
         let result : IResult<any> = {
             hasError: false
@@ -92,7 +92,7 @@ export class Facade {
   
        
   
-        const validationResult = this.validateInput(handler,message.payload)
+        const validationResult = this.validateInput(handler,payload)
         if (!validationResult.success){
             result.hasError = true
             result.errorMessage = JSON.stringify(validationResult.error,null,2)
@@ -101,8 +101,8 @@ export class Facade {
         }
      
         
-        const request : Request = {query:"",body:message.payload}
-        result = await processPowerPack(handler,request)
+        const request : Request = {query:"",body:payload}
+        result = await processPowerPack(handler,request,viewScript)
         return result
     }
 

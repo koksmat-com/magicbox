@@ -2,7 +2,7 @@ import { z } from "zod";
 import { IResult } from "@koksmat/core";
 import { PowerPacks } from "./powerpacks";
 import { IScript } from "./IScript";
-import { Request, Response } from ".";
+import { LifecycleEvents, Request, Response } from ".";
 export type Method = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'options' | 'trace';
 
 export enum EventTypes {
@@ -46,7 +46,7 @@ export interface IEndPointHandler {
    output: { identity: string; schema: z.ZodSchema<any> }
    eventsHandlers: EventHandlers;
    testCases: Array<ITestCase>
-  
+   events : LifecycleEvents
 
 }
 

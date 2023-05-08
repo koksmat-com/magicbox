@@ -32,5 +32,12 @@ Get-Mailbox  -ResultSize Unlimited -RecipientTypeDetails SharedMailbox
   public get outputFiles() : string[] {
     return []
   }
+
+  mapPowerShellInput(input:any) : string {
+     return ``
+}
+get mapInput() : string {
+  return ``
+}
 }
     

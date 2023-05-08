@@ -59,11 +59,62 @@ foreach ($parameter in $parameters.Keys) {
           
           break;
       }
+      
       return  camelize(name) + " : " + tsType
         
       ;
     })
     const parameters = params.join(",");
+
+
+    const inputParams = scriptResult.info.map((x:string) => {
+      const [name, type] = x.replace("\n","").split(" ");
+      let tsType = ""
+      switch (type) {
+        case "String":
+          tsType = "string"
+          break;
+          case "String[]":
+            tsType = "string[]"
+          break;
+          case "Object":
+            tsType = "any"
+            break
+           
+        default:
+          tsType = "any"
+          
+          break;
+      }
+      const dollarCurly = "${"
+    return  `-${name}  $${name}`
+      
+  })
+  const map = inputParams.join(" ");
+  const valuesParams = scriptResult.info.map((x:string) => {
+    const [name, type] = x.replace("\n","").split(" ");
+    let tsType = ""
+    switch (type) {
+      case "String":
+        tsType = "string"
+        break;
+        case "String[]":
+          tsType = "string[]"
+        break;
+        case "Object":
+          tsType = "any"
+          break
+         
+      default:
+        tsType = "any"
+        
+        break;
+    }
+    const dollarCurly = "${"
+  return  `\$${name} = "${dollarCurly}input.${camelize(name)}}" `
+    
+})
+const values = valuesParams.join("\n");
     //result.raw
     console.log(result);
 
@@ -109,6 +160,13 @@ export default class Script implements IScript{
   public get outputFiles() : string[] {
     return [${outputs}]
   }
+
+  mapToPowerShellInputVariables(input:IParameters) : string {
+     return \`${values}\`
+}
+get commandParameters() : string {
+  return \`${map}\`
+}
 }
     `;
 

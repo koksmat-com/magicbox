@@ -7,8 +7,8 @@ import {
   EventHandler,
   IScript,
   EventHandlers,
-  Events,
-  EventTypes
+  EventTypes,
+  LifecycleEvents
 } from "@koksmat/powerpacks";
 import * as path from "path";
 import { room, process } from "@koksmat/schemas";
@@ -18,15 +18,14 @@ import Remove from "./remove";
 import List from "./list";
 import { inputType } from "./rooms.csv";
 import { IResult } from "@koksmat/core";
+import { ExchangeBase } from "./ExchangeBase";
 
 const item = room.view;
 type targetType = z.infer<typeof item>;
 
 
-class ExchangeBase {
-  eventsHandlers  = Events.newEventHandler();
-}
 export class RoomCreate extends ExchangeBase implements IEndPointHandler {
+  events: LifecycleEvents = {}
   method: Method = "post";
   testCases: ITestCase[] = [];
   summary = "Creates a room";
@@ -46,7 +45,7 @@ export class RoomCreate extends ExchangeBase implements IEndPointHandler {
   
 }
 export class RoomRemove extends ExchangeBase  implements IEndPointHandler {
-
+  events: LifecycleEvents = {}
   method: Method = "delete";
   testCases: ITestCase[] = [];
   summary = "Deletes a room";
@@ -64,7 +63,7 @@ export class RoomRemove extends ExchangeBase  implements IEndPointHandler {
 }
 
 export class RoomImport extends ExchangeBase implements IEndPointHandler {
- 
+  events: LifecycleEvents = {}
   method: Method = "post";
   testCases: ITestCase[] = [];
   summary = "Import Rooms from Exchange";

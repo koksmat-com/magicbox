@@ -31,7 +31,7 @@
     "@koksmat/messaging": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",
     "@koksmat/scripts-exchange": "workspace:*",
-    "@koksmat/utils": "workspace:*",
+    "@koksmat/react-components": "workspace:*",
     "chalk": "^4.1.2",
     "commander": "^10.0.0",
     "csv": "^6.2.10",
