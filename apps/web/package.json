@@ -12,6 +12,8 @@
   "dependencies": {
     "@fluentui/react-components": "^9.18.9",
     "@koksmat/core": "workspace:*",
+    "@koksmat/templates": "workspace:*",
+    "@koksmat/webex": "workspace:*",
     "@koksmat/react-components": "workspace:*",
     "@koksmat/facade": "workspace:*",
     "@koksmat/powerpacks": "workspace:*",

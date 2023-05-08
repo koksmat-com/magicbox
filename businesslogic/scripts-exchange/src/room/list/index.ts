@@ -34,10 +34,10 @@ Get-Mailbox  -ResultSize Unlimited -RecipientTypeDetails RoomMailbox
     return ['rooms.csv']
   }
 
-  mapPowerShellInput(input:any) : string {
+  mapPowerShellInput(input:IParameters) : string {
      return ``
 }
-get mapInput() : string {
+get commandParameters() : string {
   return ``
 }
 }

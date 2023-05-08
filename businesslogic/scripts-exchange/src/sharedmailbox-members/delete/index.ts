@@ -27,10 +27,10 @@ write-output "done"`
     return []
   }
 
-  mapPowerShellInput(input:any) : string {
+  mapPowerShellInput(input:IParameters) : string {
      return `$smtpAddress = "${input.smtpAddress}" `
 }
-get mapInput() : string {
+get commandParameters() : string {
   return `-smtpAddress  $smtpAddress`
 }
 }

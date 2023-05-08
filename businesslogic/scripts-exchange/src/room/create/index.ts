@@ -38,12 +38,12 @@ write-output $mailbox.WindowsEmailAddress`
     return []
   }
 
-  mapPowerShellInput(input:any) : string {
+  mapPowerShellInput(input:IParameters) : string {
      return `$Name = "${input.name}" 
 $capacity = "${input.capacity}" 
 $prefix = "${input.prefix}" `
 }
-get mapInput() : string {
+get commandParameters() : string {
   return `-Name  $Name -capacity  $capacity -prefix  $prefix`
 }
 }

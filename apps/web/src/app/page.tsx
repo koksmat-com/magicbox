@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <div>
 
-HOME
-
+HOME v1.0.0
     </div>
   )}

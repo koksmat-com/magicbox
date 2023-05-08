@@ -1,5 +1,5 @@
 
-import { Facade,PowerPackMethods } from "@koksmat/facade"
+import { Facade, PowerPackMethods } from "@koksmat/facade"
 import { Suspense } from "react"// Function that sleeps
 
 import { revalidateTag } from 'next/cache';
@@ -21,14 +21,14 @@ on the cache tag
 async function startProcess(formData: FormData) {
   'use server'
   const facade = Facade.getInstance()
-  const method : PowerPackMethods = formData.get("method") as PowerPackMethods
+  const method: PowerPackMethods = formData.get("method") as PowerPackMethods
   const path = formData.get("path") as string
   const payload = JSON.parse(formData.get("payload") as string)
 
   console.log("Processing on server")
 
 
-   const result = await facade.processMessage(method, path, payload)
+  const result = await facade.processMessage(method, path, payload)
   console.log(result)
   revalidateTag("test")
   return "done"
@@ -56,41 +56,36 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       <div className="text-3xl " >{endPoint?.summary}</div>
       <div className="text--l pb-8" >{slug}</div>
       <div className="text-2xl pb-2">Test cases</div>
-  {/* 
+      {/* 
   // @ts-ignore */}
-      <form action={startProcess} className=" overflow-auto w-max flex">
-        <div className="flex-grow w-max">
+      <form action={startProcess} className=" overflow-auto w-8/12 flex">
+        <div className="flex-grow w-60">
           <div>
-          <div >
-        <input type="text" name="method" value={method} readOnly/>
-        </div>
-        <div>
-        <input type="text" name="path" value={path} readOnly/>
-        </div>
-        <textarea className="w-max  h-52" name="payload" value={JSON.stringify(payload)} readOnly >
+            <div >
+              <input type="text" name="method" value={method} readOnly />
+            </div>
+            <div>
+              <input type="text" name="path" value={path} readOnly />
+            </div>
+            <textarea className=" w-8/12  h-52" name="payload" value={JSON.stringify(payload)} readOnly >
 
 
-        </textarea>
-        </div>
+            </textarea>
+          </div>
         </div>
 
         <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full h-8' type="submit">Submit</button>
-      
-       
+
+
       </form>
 
-    
-{/* 
-      {endPoint?.testCases.map((testCase, index) => {
-        return <div key={index}>
-          <div>{testCase.name}</div>
-          <div className="text-blue-600" >{JSON.stringify(testCase.data, null, 2)}</div></div>
-      })} */}
-       <Suspense fallback={<div className="bg-slate-200 p-10" >Processing ...</div>}>
-      <ViewPowerShellCodeInstance method={method} path={path}/>
 
-        
-      </Suspense>  
+
+      <Suspense fallback={<div className="bg-slate-200 p-10" >Processing ...</div>}>
+        <ViewPowerShellCodeInstance method={method} path={path} />
+
+
+      </Suspense>
 
       <div className="text-2xl pb-2">Script</div>
 
@@ -111,7 +106,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 
 
       <ViewSourceCode language="powershell" code={endPoint?.script.code as string} />
-  
+
 
 
 
