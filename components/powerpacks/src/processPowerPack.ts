@@ -55,7 +55,7 @@ export async function processPowerPack(powerpack: IEndPointHandler, rawInput: Re
     
     ${inputVariables}
 
-    powerbrick ${powerpack.script.mapInput}
+    powerbrick ${powerpack.script.mapPowerShellInput}
 
     `
 if (returnPreview){

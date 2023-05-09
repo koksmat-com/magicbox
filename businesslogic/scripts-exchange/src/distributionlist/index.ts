@@ -31,7 +31,7 @@ export class DistributionListCreate implements IEndPointHandler {
     },
   ];
 
-  eventsHandlers = Events.newEventHandler();
+  
   method: Method = "post";
 
   summary = "Creates a DL";
@@ -95,5 +95,5 @@ export class DistributionListRemove implements IEndPointHandler {
 }*/
 export function register(path: string, registry: PowerPacks) {
   //EndPointHandler.register(new SharedMailboxRemove(), path, registry);
-  EndPointHandler.register(new DistributionListCreate(), path, registry);
+  EndPointHandler.register(new DistributionListCreate(),"post", path, registry);
 }

@@ -10,7 +10,7 @@ Facade class
 
 Is the core in MagicBox architecture.
 
-From here you can access to all the other modules. 
+From here you can access to all the other modules.
 
 ## How to use it
 The facadey is implemented using a singleton, so you can access it from anywhere in your code.
@@ -31,7 +31,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Facade.ts:34](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L34)
+[businesslogic/facade/src/Facade.ts:42](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L42)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[Facade.ts:29](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L29)
+[businesslogic/facade/src/Facade.ts:37](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L37)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:27](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L27)
+[businesslogic/facade/src/Facade.ts:35](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L35)
 
 ## Accessors
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L62)
+[businesslogic/facade/src/Facade.ts:65](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L65)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:53](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L53)
+[businesslogic/facade/src/Facade.ts:57](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L57)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:58](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L58)
+[businesslogic/facade/src/Facade.ts:61](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L61)
 
 ## Methods
 
@@ -115,21 +115,22 @@ ___
 
 #### Defined in
 
-[Facade.ts:102](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L102)
+[businesslogic/facade/src/Facade.ts:104](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L104)
 
 ___
 
 ### processMessage
 
-▸ **processMessage**(`method`, `route`, `message`): `Promise`<`IResult`<`any`\>\>
+▸ **processMessage**(`method`, `route`, `payload`, `viewScript?`): `Promise`<`IResult`<`any`\>\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `method` | `string` |
+| `method` | `Method` |
 | `route` | `string` |
-| `message` | `IMessage` |
+| `payload` | `object` |
+| `viewScript?` | `boolean` |
 
 #### Returns
 
@@ -137,7 +138,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:74](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L74)
+[businesslogic/facade/src/Facade.ts:75](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L75)
 
 ___
 
@@ -158,7 +159,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:65](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L65)
+[businesslogic/facade/src/Facade.ts:68](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L68)
 
 ___
 
@@ -179,7 +180,7 @@ ___
 
 #### Defined in
 
-[Facade.ts:69](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L69)
+[businesslogic/facade/src/Facade.ts:71](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L71)
 
 ___
 
@@ -193,4 +194,4 @@ ___
 
 #### Defined in
 
-[Facade.ts:45](https://github.com/koksmat-com/magicbox/blob/bfa3b68/businesslogic/facade/src/Facade.ts#L45)
+[businesslogic/facade/src/Facade.ts:50](https://github.com/koksmat-com/magicbox/blob/5d37625/businesslogic/facade/src/Facade.ts#L50)

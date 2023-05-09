@@ -18,13 +18,13 @@ import Remove from "./remove";
 import List from "./list";
 import { inputType } from "./rooms.csv";
 import { IResult } from "@koksmat/core";
-import { ExchangeBase } from "./ExchangeBase";
+
 
 const item = room.view;
 type targetType = z.infer<typeof item>;
 
 
-export class RoomCreate extends ExchangeBase implements IEndPointHandler {
+export class RoomCreate  implements IEndPointHandler {
   events: LifecycleEvents = {}
   method: Method = "post";
   testCases: ITestCase[] = [];
@@ -44,7 +44,7 @@ export class RoomCreate extends ExchangeBase implements IEndPointHandler {
 
   
 }
-export class RoomRemove extends ExchangeBase  implements IEndPointHandler {
+export class RoomRemove  implements IEndPointHandler {
   events: LifecycleEvents = {}
   method: Method = "delete";
   testCases: ITestCase[] = [];
@@ -62,7 +62,7 @@ export class RoomRemove extends ExchangeBase  implements IEndPointHandler {
   script = new Remove();
 }
 
-export class RoomImport extends ExchangeBase implements IEndPointHandler {
+export class RoomImport implements IEndPointHandler {
   events: LifecycleEvents = {}
   method: Method = "post";
   testCases: ITestCase[] = [];
@@ -117,7 +117,7 @@ export class RoomImport extends ExchangeBase implements IEndPointHandler {
 }
 
 export function register(rootPath: string, registry: PowerPacks) {
-  EndPointHandler.register(new RoomRemove(), rootPath, registry);
-  EndPointHandler.register(new RoomCreate(), rootPath, registry);
-  EndPointHandler.register(new RoomImport(), path.join(rootPath, "import"), registry);
+  EndPointHandler.register(new RoomRemove(), "delete",rootPath, registry);
+  EndPointHandler.register(new RoomCreate(), "post",rootPath, registry);
+  EndPointHandler.register(new RoomImport(), "post",path.join(rootPath, "import"), registry);
 }

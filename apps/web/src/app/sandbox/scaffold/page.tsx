@@ -6,10 +6,10 @@ import PageTitle from "@/components-lowlevel/PageTitle"
 import { redirect } from 'next/navigation';
 import { NextRequest } from "next/server";
 
-export default async function Home({ params,searchParams,request}: { params: { id: string },searchParams: any,request: NextRequest }) {
+export default async function Home({ params,searchParams}: { params: { id: string },searchParams: any }) {
   const projectName = decodeURIComponent(searchParams.project)
   console.log(searchParams)
-  console.log(request)
+
   const proj = new Project("/Users/nielsgregersjohansen/code/koksmat/magicbox/"+projectName)
   
   async function addClass(formData: FormData) {

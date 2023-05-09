@@ -20,6 +20,7 @@
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^4.5.0",
     "@koksmat/core": "workspace:*",
+    "@koksmat/powerpacks": "workspace:*",
     "@types/amqplib": "^0.10.1",
     "@types/lodash": "^4.14.191",
     "@types/uuid": "^9.0.1",

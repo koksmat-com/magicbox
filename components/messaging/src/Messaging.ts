@@ -1,4 +1,5 @@
 import { IResult } from "@koksmat/core";
+import { Method } from "@koksmat/powerpacks";
 import { Connection, Channel, connect, ConsumeMessage } from "amqplib";
 import { v4 as uuidv4 } from "uuid";
 
@@ -23,7 +24,7 @@ export interface IEnvelope {
 
 
 export interface IMessage{
-  method:string
+  method:Method
   route: string
   payload: object
 }
