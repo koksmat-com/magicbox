@@ -28,8 +28,6 @@ export default class SharedMailboxCreate implements IEndPointHandler {
   ];
 
 
-
-
   summary = "Creates a shared mailbox";
   operationDescription = "Creates a shared mailbox";
   resultDescription = "Response";
