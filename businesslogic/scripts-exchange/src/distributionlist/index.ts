@@ -7,6 +7,7 @@ import {
   IScript,
   Events,
   LifecycleEvents,
+  getExampleFromOpenAPIDefinition,
 } from "@koksmat/powerpacks";
 import { z } from "zod";
 
@@ -17,19 +18,7 @@ import Remove from "./remove";
 import { PowerShellStreams } from "@koksmat/core";
 
 export class DistributionListCreate implements IEndPointHandler {
-  testCases: ITestCase[] = [
-    {
-      name: "Create distribution list",
-      data: {
-        name: "dl2-name",
-        displayName: "DL 2 Name",
-        alias: "dl2-alias",
-        owners: ['AlexW'],
-        members: ['DebraB']
-     
-      },
-    },
-  ];
+
 
   
   method: Method = "post";
@@ -39,17 +28,18 @@ export class DistributionListCreate implements IEndPointHandler {
   resultDescription = "Response";
 
   script: IScript = new Create();
-  input = {
-    identity: this.constructor.name + "RequestDTO",
-    schema: distributionList.createRequest,
-  };
-  output = {
-    identity: this.constructor.name + "ResponseDTO",
-    schema: distributionList.createRequestResult,
-  };
-
+  input = distributionList.createRequest
+  
+  output =  distributionList.createRequestResult
+  testCases: ITestCase[] = [
+    {
+      name: "Generated from schema",
+      data: getExampleFromOpenAPIDefinition(this.input)
+      
+    },
+  ];
   events: LifecycleEvents = {
-    onProcess: async (input: z.infer<typeof distributionList.createRequest> ) => {
+    onProcess: async (input: z.infer<typeof this.input> ) => {
       const powerShellMapper = new Create()
       const powerShellVars : ICreateParameters = {
         name: input.name,
@@ -63,7 +53,7 @@ export class DistributionListCreate implements IEndPointHandler {
     
     },
     onProcessed: async (input: PowerShellStreams) => {
-      const target: z.infer<typeof distributionList.createRequestResult> = {
+      const target: z.infer<typeof this.output> = {
         displayName: input.success[0].DisplayName,
         identity: input.success[0].Identity,
         name: input.success[0].Name,

@@ -3,7 +3,7 @@
     */
 import { IScript } from "@koksmat/powerpacks";
 import { z } from "zod";
-import { sharedMailbox as itemClass } from "../schemas/dist";
+import { sharedMailbox as itemClass } from "@koksmat/schemas";
 
 const item = itemClass.view;
 type targetType = z.infer<typeof item>;

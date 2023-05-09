@@ -2,7 +2,7 @@ export type { IContext } from "./context";
 
 import * as React from "react";
 export { Pack, type PackProps } from "./components";
-export { PowerPacks  } from "./powerpacks"
+export { PowerPacks ,getExampleFromOpenAPIDefinition } from "./powerpacks"
 export { EndPointHandler, type Method, type IEndPointHandler,  EventHandler ,type EventHandlers ,type EventTypes,Events, type ITestCase } from "./EndPointHandler"
 export { Route , type Request,type Response} from "./Route"
 

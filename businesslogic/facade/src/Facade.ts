@@ -66,10 +66,10 @@ export class Facade {
     return PowerPacks.getInstance();
   }
   validateInput(endPoint: IEndPointHandler, input: any): any {
-    return endPoint.input.schema.safeParse(input);
+    return endPoint.input.safeParse(input);
   }
   validateOutput(endPoint: IEndPointHandler, output: any): any {
-    return endPoint.output.schema.safeParse(output);
+    return endPoint.output.safeParse(output);
   }
 
   public async processMessage(

@@ -1,9 +1,8 @@
 import {
-  Method,
   IEndPointHandler,
   ITestCase,
-  Events,
-  LifecycleEvents
+  LifecycleEvents,
+  getExampleFromOpenAPIDefinition
 } from "@koksmat/powerpacks";
 import { sharedMailbox } from "@koksmat/schemas";
 import PowerShell from "./powershell";
@@ -11,20 +10,17 @@ import PowerShell from "./powershell";
 
 export default class SharedMailboxRemove implements IEndPointHandler {
   events: LifecycleEvents = {};
-  testCases: ITestCase[] = [];
-
-
 
   summary = "Deletes a shared mailbox";
   operationDescription = "Deletes a shared mailbox";
   resultDescription = "Process result";
-  output = {
-    identity: this.constructor.name + "ResponseDTO",
-    schema: sharedMailbox.deleteRequestResult,
-  };
-  input = {
-    identity: this.constructor.name + "RequestDTO",
-    schema: sharedMailbox.deleteRequest,
-  };
+  output = sharedMailbox.deleteRequestResult
+  input = sharedMailbox.deleteRequest
+  testCases: ITestCase[] = [
+    {
+      name: "Generated from schema",
+      data: getExampleFromOpenAPIDefinition(this.input)     
+    }
+  ];
   script = new PowerShell();
 }

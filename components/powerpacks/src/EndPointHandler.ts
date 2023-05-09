@@ -42,8 +42,9 @@ export interface IEndPointHandler {
    summary: string;
    operationDescription : string;
    resultDescription : string;
-   input: { identity: string; schema: z.ZodSchema<any> };
-   output: { identity: string; schema: z.ZodSchema<any> }
+   input: z.ZodSchema<any> 
+   output:  z.ZodSchema<any> 
+
    testCases: Array<ITestCase>
    events : LifecycleEvents
 
@@ -52,6 +53,15 @@ export interface IEndPointHandler {
 export  class EndPointHandler { 
  
   static register(endPoint: IEndPointHandler,method:Method,  path: string,powerPacks:PowerPacks)  {
+
+    const inputSchema : { identity: string; schema: z.ZodSchema<any> }= {
+      identity: path.replace(/\//g, "") + "RequestDTO",
+      schema: endPoint.input
+    }
+    const outputSchema : { identity: string; schema: z.ZodSchema<any> }= {
+      identity: path.replace(/\//g, "") + "ResponseDTO",
+      schema: endPoint.output
+    }
     powerPacks.addEndpoint(path,method,endPoint)
     powerPacks.registry.registerPath({  
       method: method as any,
@@ -62,7 +72,7 @@ export  class EndPointHandler {
           description: endPoint.operationDescription,
           content: {
             "application/json": {
-              schema: endPoint.input.schema,
+              schema: inputSchema //endPoint.input.schema,
             },
           },
         },
@@ -72,7 +82,7 @@ export  class EndPointHandler {
           description: endPoint.resultDescription,
           content: {
             "application/json": {
-              schema: endPoint.output.schema,
+              schema: outputSchema
             },
           },
         },

@@ -4,11 +4,8 @@ import {
   Method,
   IEndPointHandler,
   ITestCase,
-  EventHandler,
-  IScript,
-  EventHandlers,
-  EventTypes,
-  LifecycleEvents
+  LifecycleEvents,
+  getExampleFromOpenAPIDefinition
 } from "@koksmat/powerpacks";
 import * as path from "path";
 import { room, process } from "@koksmat/schemas";
@@ -27,56 +24,62 @@ type targetType = z.infer<typeof item>;
 export class RoomCreate  implements IEndPointHandler {
   events: LifecycleEvents = {}
   method: Method = "post";
-  testCases: ITestCase[] = [];
+  
   summary = "Creates a room";
   operationDescription = "Creates a room";
   resultDescription = "Response";
 
   script = new Create();
-  input = {
-    identity: this.constructor.name + "RequestDTO",
-    schema: room.createRequest,
-  };
-  output = {
-    identity: this.constructor.name + "ResponseDTO",
-    schema: room.createRequestResult,
-  };
+  input = room.createRequest
+  output = room.createRequestResult
+  testCases: ITestCase[] = [
+    {
+      name: "Generated from schema",
+      data: getExampleFromOpenAPIDefinition(this.input)
+      
+    },
+  ];
 
   
 }
 export class RoomRemove  implements IEndPointHandler {
   events: LifecycleEvents = {}
   method: Method = "delete";
-  testCases: ITestCase[] = [];
+ 
   summary = "Deletes a room";
   operationDescription = "Deletes a room";
   resultDescription = "Process result";
-  output = {
-    identity: this.constructor.name + "ResponseDTO",
-    schema: room.deleteRequestResult,
-  };
-  input = {
-    identity: this.constructor.name + "RequestDTO",
-    schema: room.deleteRequest,
-  };
+  output =room.deleteRequestResult
+  
+  input =room.deleteRequest
+
   script = new Remove();
+  testCases: ITestCase[] = [
+    {
+      name: "Generated from schema",
+      data: getExampleFromOpenAPIDefinition(this.input)
+      
+    },
+  ];
 }
 
 export class RoomImport implements IEndPointHandler {
   events: LifecycleEvents = {}
   method: Method = "post";
-  testCases: ITestCase[] = [];
+  
   summary = "Import Rooms from Exchange";
   operationDescription = "Import Rooms from Exchange";
   resultDescription = "Process result";
-  output = {
-    identity: this.constructor.name + "ResponseDTO",
-    schema: process.processRequest,
-  };
-  input = {
-    identity: this.constructor.name + "RequestDTO",
-    schema: room.deleteRequest,
-  };
+  output = process.processRequest
+  input =  room.deleteRequest
+
+  testCases: ITestCase[] = [
+    {
+      name: "Generated from schema",
+      data: getExampleFromOpenAPIDefinition(this.input)
+      
+    },
+  ];
   script = new List();
 
    mapCSV(input:inputType) : IResult<targetType> {
