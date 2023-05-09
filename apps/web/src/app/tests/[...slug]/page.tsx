@@ -52,30 +52,30 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
 
 
   return (
-    <div className="w-max">
+    <div className="container mx-auto px-4">
       <div className="text-3xl " >{endPoint?.summary}</div>
       <div className="text--l pb-8" >{slug}</div>
       <div className="text-2xl pb-2">Test cases</div>
       {/* 
   // @ts-ignore */}
-      <form action={startProcess} className=" overflow-auto w-8/12 flex">
-        <div className="flex-grow w-60">
-          <div>
+      <form action={startProcess} >
+        <div className="flex flex-wrap ">
+          <div className="grow bg-slate-100">
             <div >
-              <input type="text" name="method" value={method} readOnly />
+              <input type="text" name="method" defaultValue={method} readOnly />
             </div>
             <div>
-              <input type="text" name="path" value={path} readOnly />
+              <input type="text" name="path" defaultValue={path} readOnly />
             </div>
-            <textarea className=" w-8/12  h-52" name="payload" value={JSON.stringify(payload)} readOnly >
+            <textarea className="w-full" name="payload" defaultValue={JSON.stringify(payload)}  >
 
 
             </textarea>
           </div>
-        </div>
+       
 
         <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full h-8' type="submit">Submit</button>
-
+        </div>
 
       </form>
 

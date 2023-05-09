@@ -7,7 +7,7 @@ export async function ViewPowerShellCodeInstance({ method, path }: { method: Pow
   function sleep(ms: number): Promise<string> {
     return new Promise(resolve => setTimeout(() => { resolve("done") }, ms));
   }
-  await sleep(4000);
+
   const facade = Facade.getInstance();
   const endPoint = facade.router.matchRoute(method, path);
   const payload = endPoint?.testCases[0]?.data as object;

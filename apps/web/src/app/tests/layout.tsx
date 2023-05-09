@@ -21,7 +21,7 @@ export default function RootLayout({
         </ul>
       </div>
 
-      <div style={{ minHeight: "100px", marginLeft: "auto", marginRight: "auto", maxWidth: "1024px" }}>{children}</div>
+      <div className="mx-auto w-max" >{children}</div>
     </div>
   )
 }

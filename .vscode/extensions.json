@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        "wayou.vscode-todo-highlight",
+        "gruntfuggly.todo-tree",
+        "github.vscode-github-actions",
+        "github.copilot",
+        "eamodio.gitlens",
+        "orta.vscode-jest",
+        "firsttris.vscode-jest-runner",
+        "browserstackcom.nightwatch",
+        "ms-vscode.powershell",
+        "mechatroner.rainbow-csv",
+        "bradlc.vscode-tailwindcss",
+        "spmeesseman.vscode-taskexplorer",
+        "infeng.vscode-react-typescript"
+    ]
+}
