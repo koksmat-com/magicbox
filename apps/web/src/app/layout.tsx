@@ -18,18 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NextAuthProvider>
-          <Layout>
-       
-       
-            <div className='flex p-10'>
-              <Link className='p-3' href={"/"}>Home</Link>
-              <Link className='p-3' href={"/tests"}>Tests</Link>
-            </div>
-            <div className="bg-red-200 min-h-screen">
-            {children}
-            </div>
-
-          </Layout>
+{children}
 
 
         </NextAuthProvider>

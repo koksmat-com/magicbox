@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div>
+    <div className="container mx-auto">
 
 HOME v1.0.0
     </div>
