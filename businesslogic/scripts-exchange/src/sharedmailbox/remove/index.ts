@@ -16,11 +16,6 @@ export default class SharedMailboxRemove implements IEndPointHandler {
   resultDescription = "Process result";
   output = sharedMailbox.deleteRequestResult
   input = sharedMailbox.deleteRequest
-  testCases: ITestCase[] = [
-    {
-      name: "Generated from schema",
-      data: getExampleFromOpenAPIDefinition(this.input)     
-    }
-  ];
+  testCases = [getExampleFromOpenAPIDefinition(this.input)];
   script = new PowerShell();
 }

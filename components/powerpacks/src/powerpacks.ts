@@ -1,7 +1,7 @@
 import { extendZodWithOpenApi, OpenAPIRegistry,
     OpenAPIGenerator} from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
-import { EndPointHandler, IEndPointHandler } from './EndPointHandler';
+import { EndPointHandler, IEndPointHandler, ITestCase } from './EndPointHandler';
 import { Route } from './Route';
 import debug from 'debug';
 import {OpenAPI3,OperationObject,PathItemObject, ReferenceObject} from "openapi-typescript";
@@ -83,7 +83,7 @@ public getOpenApiDocumentation()  {
 }
 
 
-export function getExampleFromOpenAPIDefinition(schema : z.ZodSchema)  {
+export function getExampleFromOpenAPIDefinition(schema : z.ZodSchema) : ITestCase {
   const __registry = new OpenAPIRegistry();
 
 
@@ -129,7 +129,10 @@ export function getExampleFromOpenAPIDefinition(schema : z.ZodSchema)  {
     example[key] = props[key].example
 
   })
-  return example
+  return {
+    name: "example from schema",
+    data: example
+  }
 
 }
  

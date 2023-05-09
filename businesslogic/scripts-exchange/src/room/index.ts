@@ -32,13 +32,7 @@ export class RoomCreate  implements IEndPointHandler {
   script = new Create();
   input = room.createRequest
   output = room.createRequestResult
-  testCases: ITestCase[] = [
-    {
-      name: "Generated from schema",
-      data: getExampleFromOpenAPIDefinition(this.input)
-      
-    },
-  ];
+  testCases = [getExampleFromOpenAPIDefinition(this.input)];
 
   
 }
@@ -54,13 +48,7 @@ export class RoomRemove  implements IEndPointHandler {
   input =room.deleteRequest
 
   script = new Remove();
-  testCases: ITestCase[] = [
-    {
-      name: "Generated from schema",
-      data: getExampleFromOpenAPIDefinition(this.input)
-      
-    },
-  ];
+  testCases = [getExampleFromOpenAPIDefinition(this.input)];
 }
 
 export class RoomImport implements IEndPointHandler {
@@ -72,14 +60,7 @@ export class RoomImport implements IEndPointHandler {
   resultDescription = "Process result";
   output = process.processRequest
   input =  room.deleteRequest
-
-  testCases: ITestCase[] = [
-    {
-      name: "Generated from schema",
-      data: getExampleFromOpenAPIDefinition(this.input)
-      
-    },
-  ];
+  testCases = [getExampleFromOpenAPIDefinition(this.input)];
   script = new List();
 
    mapCSV(input:inputType) : IResult<targetType> {
@@ -87,9 +68,7 @@ export class RoomImport implements IEndPointHandler {
       displayName: input.DisplayName,
       name: input.Name,
       mailTip: input.MailTip,
-      //resourceType : input.ResourceType,
       primarySmtpAddress: input.PrimarySmtpAddress,
-      //whenCreatedUTC : input.WhenCreatedUTC,
       capacity: parseInt(input.ResourceCapacity),
       alias : input.Alias,
     }

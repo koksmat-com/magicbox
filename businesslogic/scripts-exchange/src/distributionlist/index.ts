@@ -1,12 +1,7 @@
 import {
   PowerPacks,
   EndPointHandler,
-  Method,
   IEndPointHandler,
-  ITestCase,
-  IScript,
-  Events,
-  LifecycleEvents,
   getExampleFromOpenAPIDefinition,
 } from "@koksmat/powerpacks";
 import { z } from "zod";
@@ -14,31 +9,25 @@ import { z } from "zod";
 import { distributionList } from "@koksmat/schemas";
 
 import Create,{IParameters as ICreateParameters} from "./create";
-import Remove from "./remove";
+
 import { PowerShellStreams } from "@koksmat/core";
 
 export class DistributionListCreate implements IEndPointHandler {
 
 
   
-  method: Method = "post";
+  method = "post";
 
   summary = "Creates a DL";
   operationDescription = "Creates a DL";
   resultDescription = "Response";
 
-  script: IScript = new Create();
+  script = new Create();
   input = distributionList.createRequest
   
   output =  distributionList.createRequestResult
-  testCases: ITestCase[] = [
-    {
-      name: "Generated from schema",
-      data: getExampleFromOpenAPIDefinition(this.input)
-      
-    },
-  ];
-  events: LifecycleEvents = {
+  testCases = [getExampleFromOpenAPIDefinition(this.input)];
+  events = {
     onProcess: async (input: z.infer<typeof this.input> ) => {
       const powerShellMapper = new Create()
       const powerShellVars : ICreateParameters = {

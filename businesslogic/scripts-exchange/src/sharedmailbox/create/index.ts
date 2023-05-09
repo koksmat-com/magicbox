@@ -18,17 +18,12 @@ export default class SharedMailboxCreate implements IEndPointHandler {
     members: exchangeFields.members,
     readers: exchangeFields.readers,
   });
-  
+
   output = exchangeRecords.createRequestResult.extend({
     primarySmtpAddress: exchangeFields.smtpAddress,
   });
 
-  testCases = [
-    {
-      name: "Generated from schema",
-      data: getExampleFromOpenAPIDefinition(this.input),
-    },
-  ];
+  testCases = [getExampleFromOpenAPIDefinition(this.input)];
   events = {
     onProcess: async (input: z.infer<typeof this.input>) => {
       const powerShellVars: IParameters = {
