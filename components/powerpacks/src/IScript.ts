@@ -6,5 +6,6 @@ export interface IScript {
     outputFiles?: string[];
     
     mapPowerShellInput(input:any) : string;
+    commandParameters: string;
     //parameters: object;
 }
