@@ -3,7 +3,8 @@ import {
   IEndPointHandler, LifecycleEvents,
   getExampleFromOpenAPIDefinition
 } from "@koksmat/powerpacks";
-import { room } from "@koksmat/schemas";
+
+import { exchangeFields, exchangeRecords } from "@koksmat/schemas";
 import PowerShell from "./powershell";
 
 
@@ -17,8 +18,12 @@ export default class RoomCreate implements IEndPointHandler {
   resultDescription = "Response";
 
   script = new PowerShell();
-  input = room.createRequest;
-  output = room.createRequestResult;
+  input = exchangeRecords.createRequest.extend({
+    capacity: exchangeFields.roomCapacity
+  });
+  output = exchangeRecords.createRequestResult.extend({
+    primarySmtpAddress: exchangeFields.smtpAddress,
+  });
   testCases = [getExampleFromOpenAPIDefinition(this.input)];
 
 

@@ -3,13 +3,18 @@ import {
   IEndPointHandler, LifecycleEvents,
   getExampleFromOpenAPIDefinition
 } from "@koksmat/powerpacks";
-import { room, process } from "@koksmat/schemas";
+
+import { process,exchangeFields, exchangeRecords } from "@koksmat/schemas";
 import PowerShell from "./powershell";
 import { inputType } from "./rooms.csv";
 import { IResult } from "@koksmat/core";
 import { z } from "zod";
 
- const item = room.view;
+ const item = exchangeRecords.createRequest.extend({
+  capacity: exchangeFields.roomCapacity,
+  primarySmtpAddress: exchangeFields.smtpAddress,
+  mailTip: exchangeFields.mailTip,
+});
  type targetType = z.infer<typeof item>;
 
 
@@ -20,8 +25,10 @@ export default class RoomImport implements IEndPointHandler {
   summary = "Import Rooms from Exchange";
   operationDescription = "Import Rooms from Exchange";
   resultDescription = "Process result";
-  output = process.processRequest;
-  input = room.deleteRequest;
+  output = process.processRequestResult
+  input = z.object({
+    email: exchangeFields.smtpAddress
+  });
   testCases = [getExampleFromOpenAPIDefinition(this.input)];
   script = new PowerShell();
 
