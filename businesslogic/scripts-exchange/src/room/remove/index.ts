@@ -3,9 +3,10 @@ import {
   IEndPointHandler, LifecycleEvents,
   getExampleFromOpenAPIDefinition
 } from "@koksmat/powerpacks";
-import { room } from "@koksmat/schemas";
+
 import { z } from "zod";
-import { exchangeFields, exchangeRecords } from "@koksmat/schemas";
+import { exchangeFields, exchangeRecords ,coreFields} from "@koksmat/schemas";
+
 import PowerShell from "./powershell";
 
 
@@ -17,7 +18,9 @@ export default class RoomRemove implements IEndPointHandler {
   summary = "Deletes a room";
   operationDescription = "Deletes a room";
   resultDescription = "Process result";
-  output = room.deleteRequestResult;
+  output = z.object({
+    result: coreFields.processResult
+  });
 
   input =  z.object({
     email: exchangeFields.smtpAddress

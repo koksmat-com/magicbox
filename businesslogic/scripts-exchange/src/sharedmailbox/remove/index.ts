@@ -4,7 +4,8 @@ import {
   LifecycleEvents,
   getExampleFromOpenAPIDefinition
 } from "@koksmat/powerpacks";
-import { sharedMailbox } from "@koksmat/schemas";
+import { z } from "zod";
+import { exchangeFields, exchangeRecords,coreFields} from "@koksmat/schemas";
 import PowerShell from "./powershell";
 
 
@@ -14,8 +15,13 @@ export default class SharedMailboxRemove implements IEndPointHandler {
   summary = "Deletes a shared mailbox";
   operationDescription = "Deletes a shared mailbox";
   resultDescription = "Process result";
-  output = sharedMailbox.deleteRequestResult
-  input = sharedMailbox.deleteRequest
+  output = z.object({
+    result: coreFields.processResult
+  });
+  input = z.object({
+    email: coreFields.smtpAddress
+  })
   testCases = [getExampleFromOpenAPIDefinition(this.input)];
   script = new PowerShell();
 }
+

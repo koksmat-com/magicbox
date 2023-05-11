@@ -1,6 +1,6 @@
 "use client"
 import LeftNav from "./leftnav"
-import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme,webDarkTheme } from '@fluentui/react-components';
 
 export default function Layout({
   children,
@@ -8,7 +8,7 @@ export default function Layout({
   children: React.ReactNode
 }) {
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider theme={webDarkTheme}>
     <div className="flex">
       <div className="w-96">
       <LeftNav/>

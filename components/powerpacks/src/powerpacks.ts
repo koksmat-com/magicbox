@@ -44,14 +44,16 @@ public get routeKeys() : string[] {
   return Array.from(this._routes.keys())
 }
 
-addEndpoint(path:string,method:string,endpoint:IEndPointHandler) {
+addEndpoint(path:string,method:string,endpoint:IEndPointHandler) : boolean {
   const log = debug("magicbox:PowerPacks:addEndpoint")
   const route = new Route(path,method,endpoint);  
   if (this._routes.has(route.key)) {
-    throw new Error(`Route ${route.key} already exists`)
+    console.log(`Route ${route.key} already exists`)
+    return false
   }
   this._routes.set(route.key,route);
   log(`Added route ${route.key}`)
+  return true
 }
 
 public endPointHandler(key:string) : IEndPointHandler {

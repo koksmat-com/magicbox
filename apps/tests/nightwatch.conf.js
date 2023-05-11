@@ -43,7 +43,7 @@ module.exports = {
       launch_url: 'http://localhost:5301',
 
       screenshots: {
-        enabled: false,
+        enabled: true,
         path: 'screens',
         on_failure: true
       },
@@ -70,7 +70,7 @@ module.exports = {
           args: [
             //'--no-sandbox',
             //'--ignore-certificate-errors',
-            //'--allow-insecure-localhost',
+            '--allow-insecure-localhost',
             //'--headless'
           ]
         }
@@ -80,7 +80,7 @@ module.exports = {
         start_process: true,
         server_path: '',
         cli_args: [
-          // --verbose
+           "--verbose"
         ]
       }
     },

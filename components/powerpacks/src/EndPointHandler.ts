@@ -62,7 +62,10 @@ export  class EndPointHandler {
       identity: path.replace(/\//g, "") + "ResponseDTO",
       schema: endPoint.output
     }
-    powerPacks.addEndpoint(path,method,endPoint)
+    const didAdd = powerPacks.addEndpoint(path,method,endPoint)
+    if (!didAdd){
+      return
+    }
     powerPacks.registry.registerPath({  
       method: method as any,
       path,
