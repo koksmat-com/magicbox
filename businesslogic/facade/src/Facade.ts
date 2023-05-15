@@ -47,7 +47,7 @@ export class Facade {
     registerExchange("exchange", powerPacks);
 
     this._router = new Router(powerPacks);
-    this._mongoDB = MongoDB.getInstance("mongodb://localhost:27017")
+    this._mongoDB = MongoDB.getInstance(process.env.MONGO_SERVER as string)
 
 
   }
