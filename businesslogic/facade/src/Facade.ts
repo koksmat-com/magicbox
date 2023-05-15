@@ -12,6 +12,7 @@ import chalk from "chalk";
 import { Messaging, IMessage } from "@koksmat/messaging";
 import debug from "debug";
 import { IResult } from "@koksmat/core";
+import { MongoDB} from "@koksmat/storage"
 
 /**
  * Facade class
@@ -35,6 +36,7 @@ export class Facade {
   static _instance: Facade;
   /** @private */
   private _router: Router;
+  private _mongoDB: MongoDB
 
   /**
    * Constructor is setting up the PowerPacks and the router
@@ -45,6 +47,9 @@ export class Facade {
     registerExchange("exchange", powerPacks);
 
     this._router = new Router(powerPacks);
+    this._mongoDB = MongoDB.getInstance("mongodb://localhost:27017")
+
+
   }
 
   public static getInstance() {
@@ -60,6 +65,10 @@ export class Facade {
 
   public get router(): Router {
     return this._router;
+  }
+
+  public get mongoDB(): MongoDB {
+    return this._mongoDB;
   }
 
   public get powerPacks(): PowerPacks {
