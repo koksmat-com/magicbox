@@ -1,5 +1,5 @@
 {
-  "name": "@nexi-magicbox/scripts-exchange",
+  "name": "@koksmat/scripts-exchange",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -18,13 +18,17 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "copyfiles": "npx ts-node copyfiles.ts",
     "pack": "npx ts-node --project tsconfig-ecma.json ./src/pack",
+    "parsecsv": "npx ts-node --project tsconfig-ecma.json ./src/parsecsv",
     "test-ts": "pwsh -File ./src/connectors/exchange.ps1 && pwsh -File ./src/packs/sharedmailbox/create.mail1.test.ps1 &&  npx ts-node ./src/packs/sharedmailbox/create.ps1.test.ts"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^4.5.0",
-    "@nexi-magicbox/powerpacks": "workspace:*",
-    "@nexi-magicbox/core": "workspace:*",
+    "@koksmat/core": "workspace:*",
+    "@koksmat/powerpacks": "workspace:*",
+    "@koksmat/schemas": "workspace:*",
     "@types/lodash": "^4.14.191",
+    "csv": "^6.2.10",
+    "csv-parse": "^5.3.8",
     "debug": "^4.3.4",
     "expree": "^2.1.0",
     "glob": "^9.3.2",
@@ -33,7 +37,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@nexi-magicbox/tsconfig": "workspace:*",
+    "@koksmat/tsconfig": "workspace:*",
     "@types/node": "18.11.18",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",

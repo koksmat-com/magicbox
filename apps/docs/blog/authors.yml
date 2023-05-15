@@ -1,17 +1,6 @@
-endi:
-  name: Endilie Yacop Sucipto
-  title: Maintainer of Docusaurus
-  url: https://github.com/endiliey
-  image_url: https://github.com/endiliey.png
+nielsgregers:
+  name:  Niels Gregers Johansen
+  title: Inventor of KOKSMAT
+  url: https://www.jumpto365.com/about
+  image_url: https://assets-global.website-files.com/5d5a3c3b83100b074a079db9/6045084d5bba09b62ce6fc00_Niels%20Square%20512-p-500.png
 
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
-
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png

@@ -1,0 +1,36 @@
+{
+  "name": "@koksmat/react-components",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx  --sourcemap --dts",
+    "dev": "tsup src/index.tsx  --sourcemap --watch --dts",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@koksmat/tsconfig": "workspace:*",
+    "@types/react": "^18.0.29",
+    "@types/react-dom": "^18.0.11",
+    "eslint": "^8.36.0",
+    "eslint-config-acme": "workspace:*",
+    "react": "^18.2.0",
+    "tsup": "^5.12.9",
+    "typescript": "^4.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@koksmat/core": "workspace:*",
+    "exceljs": "^4.3.0",
+    "react-syntax-highlighter": "^15.5.0"
+  }
+}

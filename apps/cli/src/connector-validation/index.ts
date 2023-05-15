@@ -2,8 +2,8 @@ import {Command} from "commander"
 
 import fs from "fs"
 import path from "path"
-import chalk from "chalk";
-import {PowershellService  } from "@nexi-magicbox/core"
+   import chalk from "chalk";
+import {PowershellService  } from "@koksmat/core"
 import debug from "debug"
 export default function register(name:string,program:Command) : void{
     
@@ -31,7 +31,7 @@ program.command(name)
                organization: process.env.EXCHORGANIZATION as string,
             })
             console.log(chalk.whiteBright("Exchange First mailbox"))
-            console.log(chalk.yellowBright((result.success[0] as any)?.UserPrincipalName))
+            console.log(chalk.yellowBright((result.data.success[0] as any)?.UserPrincipalName))
             logger("Exchange Result",result)
             break;
       

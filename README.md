@@ -2,7 +2,11 @@
 
 This is a monorepo for the Koksmat project. 
 
-This guide explains how to use a React design system starter powered by:
+The foundation for this project is the Turbo monorepo starter.
+
+This guide explains how to use a React design system starter build by Vercel - https://github.com/vercel/turbo/tree/main/examples/design-system
+
+I have left most of the original documentation in place. I have added a few sections to explain how I have used the starter to build the Koksmat project.
 
 - 🏎 [Turborepo](https://turbo.build/repo) — High-performance build system for Monorepos
 - 🚀 [React](https://reactjs.org/) — JavaScript library for user interfaces
@@ -17,7 +21,7 @@ As well as a few others tools preconfigured:
 - [Changesets](https://github.com/changesets/changesets) for managing versioning and changelogs
 - [GitHub Actions](https://github.com/changesets/action) for fully automated package publishing
 
-## Using this example
+## Using the original example
 
 Clone the design system example locally or [from GitHub](https://github.com/vercel/turbo/tree/main/examples/design-system):
 
@@ -44,13 +48,22 @@ Using Turborepo simplifes managing your design system monorepo, as you can have 
 
 ## Apps & Packages
 
-This Turborepo includes the following packages and applications:
+This repo is organized by an ABC model: Apps, Business Logic and Components
 
-- `apps/docs`: Component documentation site with Storybook
-- `packages/@acme/core`: Core React components
-- `packages/@acme/utils`: Shared React utilities
-- `packages/@acme/tsconfig`: Shared `tsconfig.json`s used throughout the Turborepo
-- `packages/eslint-config-acme`: ESLint preset
+
+- `apps/cli `: Command Line Interface (CLI)
+- `apps/docs `: Documenation based on Docusaurus which automatically builds documentation for high level components and the Open API
+- `apps/storybook`: Component documentation site with Storybook
+- `apps/web `: NextJS application used for all interfacing
+- `businesslogic/facade`: Central facade for creating instances of the business logic
+- `businesslogic/scripts-exchange`: PowerShell for managinbg Exchange Online
+- `components/core`: Core React components
+- `components/utils`: Shared React utilities
+- `components/tsconfig`: Shared `tsconfig.json`s used throughout the Turborepo
+- `components/eslint-config-acme`: ESLint preset
+- `components/mongo`: MongoDB configuration
+- `components/powershell`: PowerShell scripts used by the CLI
+- `components/powerpacks`: PowerPacks 
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/). Workspaces enables us to "hoist" dependencies that are shared between packages to the root `package.json`. This means smaller `node_modules` folders and a better local dev experience. To install a dependency for the entire monorepo, use the `-w` workspaces flag with `pnpm add`.
 
@@ -72,7 +85,7 @@ tsup src/index.tsx --format esm,cjs --dts --external react
 
 ```json:acme-core/package.json
 {
-  "name": "@nexi-magicbox/core",
+  "name": "@koksmat/core",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

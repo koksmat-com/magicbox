@@ -16,16 +16,17 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'DIY Business Solutions ',
+    title: 'Admin automation',
     img: img1,
     description: (
       <>
-        We are a team of "Power Chefs" who have developed a lot of applications which we would love to share with you. But we rater like to teach you how to "Do it yourself"
-      </>
+      Microsoft 365 automation using whatever admin interfaces Microsofts provides, including unattende PowerShell execution. 
+      Also covers full DevOps pipeline utilizing Azure DevOps, GitHub, and Azure.
+            </>
     ),
   },
   {
-    title: 'Governance that works',
+    title: 'Microsoft 365',
     img: img2,
     description: (
       <>
@@ -35,7 +36,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Great User Experience',
+    title: 'Power Platform',
     img: img3,
     description: (
       <>

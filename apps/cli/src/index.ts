@@ -3,36 +3,38 @@
 const figlet = require("figlet");
 const { Command } = require("commander");
 const program = new Command();
-import { register,SharedMailboxCreate } from "@nexi-magicbox/scripts-exchange";
-import { PowerPacks } from "@nexi-magicbox/powerpacks";
-import connectorValidation from "./connector-validation"
+
+import connectorValidation from "./connector-validation";
+import excel from "./excel";
+import message from "./message";
+import sharedmailbox from "./sharedmailbox";
+import transform from "./transform";
 import { CommanderError } from "commander";
 import chalk from "chalk";
 
 console.log(figlet.textSync("MagicBox"));
 
-program
-  .version("1.0.0")
-  .description("CLI for MagicBox")
-  
+program.version("1.0.0").description("CLI for KOKSMAT MagicBox");
 
-  connectorValidation("validate",program)
- 
-
-  program.exitOverride((err: CommanderError) => {
-    if (err) {
-      chalk.redBright("Command Error", err.message);
-    }
-  });
-  
-  try {
-    program.parse();
-  } catch (err) {
-    chalk.redBright("CLI error", err);
-  } finally {
-    //  client.flush()
+connectorValidation("validate", program);
+excel("excel", program);
+message("message", program);
+sharedmailbox("sharedmailbox", program);
+transform("transform", program);
+program.exitOverride((err: CommanderError) => {
+  if (err) {
+    chalk.redBright("Command Error", err.message);
   }
-  
+});
+
+try {
+  program.parse();
+} catch (err) {
+  chalk.redBright("CLI error", err);
+} finally {
+  //  client.flush()
+}
+
 /*
 const options = program.opts();
 

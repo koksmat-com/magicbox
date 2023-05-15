@@ -3,19 +3,27 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/koksmat-com/magicbox"},
+    "url": "https://github.com/koksmat-com/magicbox"
+  },
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build ",
+    "build:workers": "turbo run build --filter=/apps/workers",
+    "docker:build:workers": "docker buildx build --platform linux/amd64 -t magicbox-workers:v1 -f ./Dockerfile.workers .",
+    "docker:build:powershell": "docker buildx build --platform linux/amd64 -t powershell-test:v1 -f ./Dockerfile.powershell .",
     "graph": "turbo run build --graph",
-    "dev": "export DEBUG=magicbox* && dotenv -- turbo run dev --no-cache --continue  --concurrency 20",
+    "dev": "export DEBUG=magicbox* && dotenv -- turbo run dev --no-cache --continue  --concurrency 40",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "inst": "pnpm install",
     "changeset": "changeset",
     "version-packages": "changeset version",
-
-    "release": "turbo run build --filter=docs^... && changeset publish"
+    "publish:docs": "npx vercel --prod  ",
+    "release": "turbo run build --filter=docs^... && changeset publish",
+    "powershellinstall": "pwsh ./scripts/install.ps1",
+    "forward:rabbitmq:staging": "kubectl port-forward service/magicbox-rabbitmq 5672:5672 25672:25672 15672:15672 4369:4369 -n magicbox",
+    "forward:elastic:staging": " kubectl port-forward services/quickstart-es-default 9200:9200 -n magicbox",
+    "forward:elastic-kabana:staging": "kubectl port-forward services/quickstart-kb-http 5601:5601 -n magicbox"
   },
   "license": "MIT",
   "devDependencies": {
@@ -23,11 +31,12 @@
     "eslint": "^8.36.0",
     "eslint-config-acme": "workspace:0.0.0",
     "prettier": "^2.8.7",
-    "turbo": "latest"
+    "turbo": "^1.9.3"
   },
   "packageManager": "pnpm@7.15.0",
   "dependencies": {
     "dotenv-cli": "^7.1.0",
+    "nightwatch": "^2.6.20",
     "node-powershell": "^5.0.1"
   }
 }

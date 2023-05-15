@@ -1,0 +1,38 @@
+{
+  "name": "@koksmat/workers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "magicbox": "./bin/index.js"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "clean": "rm -rf .turbo && rm -rf node_modules ",
+    "dev": "npx tsc --watch",
+    "run": "export DEBUG=magicbox* && dotenv -e ../../.env node ./dist/. ",
+    "debug": "export DEBUG=magicbox* && dotenv -e ../../.env node ./dist/. ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^4.5.0",
+    "@koksmat/core": "workspace:*",
+    "@koksmat/react-components": "workspace:*",
+    "@koksmat/powerpacks": "workspace:*",
+    "@koksmat/facade": "workspace:*",
+    "@koksmat/scripts-exchange": "workspace:*",
+    "@koksmat/messaging": "workspace:*",
+    "chalk": "^4.1.2",
+    "commander": "^10.0.0",
+    "exceljs": "^4.3.0",
+    "figlet": "^1.5.2"
+  },
+  "devDependencies": {
+    "@koksmat/tsconfig": "workspace:0.0.0",
+    "@types/node": "^18.15.11",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  }
+}

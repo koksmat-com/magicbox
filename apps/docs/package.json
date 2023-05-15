@@ -6,7 +6,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules ",
     "docusaurus": "docusaurus",
     "gendoc": "docusaurus gen-api-docs all",
-    "dev": "export debug= && docusaurus start",
+    "dev:docs": "export debug= && docusaurus start",
     "build": "export debug=* && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

@@ -15,29 +15,51 @@
       "type": "node-terminal",
       "request": "launch",
       "cwd": "${workspaceFolder}/apps/web",
-      "command": "npm run dev2"
+      "command": "npm run dev:web"
     },
+   
     {
-      "name": "CLI run:validate:exchange debug",
+      "name": "CLI debug",
       "type": "node-terminal",
       "request": "launch",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/apps/cli",
-      "command": "npm run run:validate:exchange "
+      "command": "npm run debug "
     },
     {
-      "name": "CLI create debug",
+      "name": "CLI  debug:validate:exchange",
       "type": "node-terminal",
       "request": "launch",
+      "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/apps/cli",
-      "command": "npm run run:create "
+      "command": "npm run  debug:validate:exchange "
     },
+   
+    {
+      "name": "Workers debug",
+      "type": "node-terminal",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/apps/workers",
+      "command": "npm run debug "
+    },
+
+   
     {
       "name": "scripts-exchange pack",
       "type": "node-terminal",
       "request": "launch",
-      "cwd": "${workspaceFolder}/integrations/scripts-exchange",
+      "cwd": "${workspaceFolder}/businesslogic/scripts-exchange",
       "command": "npm run build:pack"
+    },
+
+   
+    {
+      "name": "scripts-exchange parsecsv",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/businesslogic/scripts-exchange",
+      "command": "npm run parsecsv"
     }
   ]
 }

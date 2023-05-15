@@ -1,0 +1,13 @@
+# Address lookup
+#
+# 
+# 
+GET _search // _search
+{
+  "query": {
+//    "${exampleVariable2}": {} // match_all
+    "match": {
+      "address": "kmrak"
+    }
+  }
+}
