@@ -18,4 +18,4 @@ custom_edit_url: null
 
 #### Defined in
 
-components/powerpacks/dist/index.d.ts:114
+components/powerpacks/dist/index.d.ts:110

@@ -18,12 +18,13 @@ export async function ViewPowerShellCodeInstance({ method, path }: { method: Pow
   const result = await facade.processMessage(method, path, payload, true);
 
   return (
-    <div>
+    <div id="ViewPowerShellCodeInstance">
       <div className="text-2xl pb-2">Resulting PowerShell code</div>
+      <div id="ViewPowerShellCodeInstanceResult">
       {result.hasError && <div className="bg-red-600 text-white p-10">{result.errorMessage}</div>}
       {!result.hasError && <div className="bg-green-600 text-white p-10">Success</div>}
 
-
+      </div>
       <ViewSourceCode language="powershell" code={result.data as string} />
     </div>
   );

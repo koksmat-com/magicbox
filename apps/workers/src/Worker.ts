@@ -22,7 +22,7 @@ export class Worker {
     
 
     while (!this._shutdown) {
-      await messageServer.receive( "exchangeonline",  async (message: IMessage) => {
+      await messageServer.receive( "x$",  async (message: IMessage) => {
         if (!message.route){
           return {hasError:true,errorMessage:"No route specified"}
         }
