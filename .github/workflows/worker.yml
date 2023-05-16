@@ -3,7 +3,7 @@ name: workers
 on:
   push:
     branches:
-      - version1
+      - master
 
 jobs:
   docker:
@@ -27,4 +27,4 @@ jobs:
         with:
           file: ./Dockerfile.workers
           push: true
-          tags: nielsgregers/magicbox-workers:v3
+          tags: nielsgregers/magicbox-workers:v4
