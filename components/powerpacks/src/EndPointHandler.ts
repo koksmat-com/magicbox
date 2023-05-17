@@ -75,7 +75,7 @@ export  class EndPointHandler {
           description: endPoint.operationDescription,
           content: {
             "application/json": {
-              schema: inputSchema //endPoint.input.schema,
+              schema: inputSchema.schema //endPoint.input.schema,
             },
           },
         },
@@ -85,7 +85,7 @@ export  class EndPointHandler {
           description: endPoint.resultDescription,
           content: {
             "application/json": {
-              schema: outputSchema
+              schema: outputSchema.schema 
             },
           },
         },

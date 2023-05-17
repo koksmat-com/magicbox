@@ -2,11 +2,12 @@ import { MongoClient, MongoClientOptions } from "mongodb"
 
 export class MongoDB  {
 private static _instance : MongoDB
-private _client : MongoClient
+private _client : MongoClient | undefined
 
 constructor (url: string, options?: MongoClientOptions | undefined){
-    this._client = new MongoClient(url,options)
-
+    // If URL not set, don't try to setup
+    this._client = url ? new MongoClient(url,options) : undefined
+    
 }
 
 static getInstance(url: string, options?: MongoClientOptions | undefined) : MongoDB {
@@ -18,7 +19,7 @@ static getInstance(url: string, options?: MongoClientOptions | undefined) : Mong
 }
 
 get client() : MongoClient{
-    return this._client
+    return this._client as MongoClient
 }
 
 }
