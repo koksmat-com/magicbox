@@ -17,12 +17,12 @@ export class Worker {
   }
   async run() {
     // eslint-disable-next-line turbo/no-undeclared-env-vars
-    const messageServer = await Messaging.getInstance(process.env.RABBITMQ_HOST as string);
+    const messageServer = await Messaging.getInstance(process.env.REDIS as string);
     console.log("setting up");
     
 
     while (!this._shutdown) {
-      await messageServer.receive( "x$",  async (message: IMessage) => {
+      await messageServer.receive( "test",  async (message: IMessage) => {
         if (!message.route){
           return {hasError:true,errorMessage:"No route specified"}
         }

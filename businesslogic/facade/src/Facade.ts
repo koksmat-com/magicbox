@@ -70,7 +70,12 @@ export class Facade {
   public get mongoDB(): MongoDB {
     return this._mongoDB;
   }
+  public async messenger() {
+    return await Messaging.getInstance(
+      process.env.REDIS as string
+    );
 
+  }
   public get powerPacks(): PowerPacks {
     return PowerPacks.getInstance();
   }

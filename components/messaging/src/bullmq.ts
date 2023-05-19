@@ -1,100 +1,110 @@
 import { IResult } from "@koksmat/core";
-import { Queue,Worker } from 'bullmq';
+import { Queue, Worker } from "bullmq";
 import { v4 as uuidv4 } from "uuid";
 import { IMessage, ISendOptions, IEnvelope } from "./IMessage";
-import IORedis from "ioredis"
+import IORedis from "ioredis";
+import debug from "debug";
+import { MessageEvents } from "./MessageEvents";
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-function connect(){
-return {connection:new IORedis({username:"default",password:"MRIQpvqAJh"})}
-}
+
+
 export class Messaging {
   private static _instance: Messaging;
- 
- 
- 
+  private events: MessageEvents = new MessageEvents();
+  private _connectionString: string;
+
+  constructor(connectionString : string) {
+    this._connectionString = connectionString;
+    this.events.receive(this.connect());
+  }
+
   public static async getInstance(connectionString: string) {
     // open for connection pooling based on connectiong string differences
     if (!this._instance) {
-      this._instance = new Messaging();
+      this._instance = new Messaging(connectionString);
+     
     }
     return this._instance;
   }
-
-  send(queueName: string, message: IMessage,options? :ISendOptions) : Promise<IResult<any>> {
-    
-    return new Promise(async (resolve, reject) => {
-    const result : IResult<any> = {
-      hasError: false
-    }
-    const queue = new Queue(queueName,connect() )
-    const correlationId = uuidv4()
-    var envelope: IEnvelope = {
-      correlationId,
-      route: message.route,
-      method : message.method,
-      payload: message.payload
+   connect() {
+    return {
+      connection: new IORedis(this._connectionString),
+      defaultJobOptions: { removeOnComplete: true },
     };
+  }
+  send(
+    queueName: string,
+    message: IMessage,
+    options?: ISendOptions
+  ): Promise<IResult<any>> {
+    return new Promise(async (resolve, reject) => {
+      const result: IResult<any> = {
+        hasError: false,
+      };
+      const queue = new Queue(queueName, this.connect());
+      const correlationId = uuidv4();
+      var envelope: IEnvelope = {
+        correlationId,
+        route: message.route,
+        method: message.method,
+        payload: message.payload,
+      };
+      const log = debug("magicbox.messaging.send");
+      // return a GUID
+      const queueResult = await queue.add("jobname", envelope);
+      const jobId = queueResult.id;
+      log("jobId", jobId);
 
-    // return a GUID
-    queue.add('queueName', message);
-    
-    try {
-      const worker = new Worker(queueName, async job => {
-        if (job.name === correlationId) {
-          result.hasError = false
-          result.data = job.data
-          await queue.close();
-          resolve(result)
-        }
-      },connect() );
-      const timeout = (options?.timeoutSeconds ? options.timeoutSeconds : 30) * 1000 
+      this.events.subscribe(jobId as string, (message) => {
+        log("message", message);
+        this.events.unsubscribe(jobId as string);
+        resolve(message);
+      });
+      // const channel = await connection.createChannel();
 
-      setTimeout(async function() {
-        result.hasError = true
-        result.errorMessage = "Timeout after " +timeout+ " seconds"
-        await queue.close();
-        resolve(result)
+      const timeout =
+        (options?.timeoutSeconds ? options.timeoutSeconds : 5) * 1000;
+
+      setTimeout(async function () {
+        result.hasError = true;
+        result.errorMessage = "Timeout after " + timeout + " seconds";
+
+        queue.close();
+        resolve(result);
       }, timeout);
-      
-    } catch (error : any) {
-      result.hasError = true
-      result.errorMessage = error.message
-      await queue.close();
-      resolve(result)
-    } 
-    
-  });
+      await sleep(
+        ((options?.timeoutSeconds ? options.timeoutSeconds : 5) + 1) * 1000
+      );
+    });
   }
 
-  async receive(queueName: string, processMessage: (message: any) => Promise<any>) {
-    console.log("connect");
-    
-   
+  async receive(
+    queueName: string,
+    processMessage: (message: any) => Promise<any>
+  ) {
     try {
-     
-      console.log("consuming messages from queue: ", queueName);
-      let counter = 0;
-      while (true) {
-        const worker = new Worker(queueName, async job => {
-     
-              console.log("Received message: ", job.data);
-              const msgDecoded : IMessage = JSON.parse(job.data.content.toString())
-              const result = await processMessage(msgDecoded);
-        },connect() );
+      const log = debug("magicbox.messaging.receive");
+      log("consuming messages from queue: ", queueName);
+      const worker = new Worker(
+        queueName,
+        async (job) => {
+          log("Received message: ", job.data);
+          return "hello";
+          //const msgDecoded: IMessage = JSON.parse(job.data.content.toString());
+          //const result = await processMessage(msgDecoded);
+        },
+        this.connect()
+      );
 
-        await sleep(100);
-        counter++;
-        if (counter > 100) {
-          console.log("Waiting for message");
-          counter = 0;
-        }
+      while (true) {
+        log("Waiting for message");
+        await sleep(10000);
       }
     } catch (error) {
     } finally {
-      
     }
   }
   hookup() {

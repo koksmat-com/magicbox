@@ -32,6 +32,8 @@ export default function RootLayout({
           </div>
           <div>        <Link href="/tests/components/storage">Storage</Link>
           </div>
+          <div>        <Link href="/tests/components/messaging">Messaging</Link>
+          </div>
         </div>
 
         <div className="mx-auto w-max" >{children}</div>
