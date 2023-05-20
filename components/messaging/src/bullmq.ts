@@ -61,7 +61,7 @@ export class Messaging {
       this.events.subscribe(jobId as string, (message) => {
         log("message", message);
         this.events.unsubscribe(jobId as string);
-        resolve(message);
+        resolve(JSON.parse(message.returnvalue));
       });
       // const channel = await connection.createChannel();
 
@@ -93,7 +93,7 @@ export class Messaging {
         async (job) => {
           log("Received message: ", job.data);
           const result =  await processMessage(job.data);
-          return result
+          return JSON.stringify(result)
         },
         this.connect()
       );
