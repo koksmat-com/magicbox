@@ -66,7 +66,7 @@ export class Messaging {
       // const channel = await connection.createChannel();
 
       const timeout =
-        (options?.timeoutSeconds ? options.timeoutSeconds : 5) * 1000;
+        (options?.timeoutSeconds ? options.timeoutSeconds : 30) * 1000;
 
       setTimeout(async function () {
         result.hasError = true;
@@ -76,7 +76,7 @@ export class Messaging {
         resolve(result);
       }, timeout);
       await sleep(
-        ((options?.timeoutSeconds ? options.timeoutSeconds : 5) + 1) * 1000
+        ((options?.timeoutSeconds ? options.timeoutSeconds : 30) + 1) * 1000
       );
     });
   }
@@ -92,9 +92,8 @@ export class Messaging {
         queueName,
         async (job) => {
           log("Received message: ", job.data);
-          return "hello";
-          //const msgDecoded: IMessage = JSON.parse(job.data.content.toString());
-          //const result = await processMessage(msgDecoded);
+          const result =  await processMessage(job.data);
+          return result
         },
         this.connect()
       );

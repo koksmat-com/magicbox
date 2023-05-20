@@ -26,7 +26,7 @@ export class Worker {
         if (!message.route){
           return {hasError:true,errorMessage:"No route specified"}
         }
-        const result = await Facade.getInstance().processMessage(message.method ,message.route,message)
+        const result = await Facade.getInstance().processMessage(message.method ,message.route,message.payload)
        
         return result
       });
