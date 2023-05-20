@@ -8,8 +8,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const facade = Facade.getInstance()
 
 
-  const result = await facade.router.process(req,method,slug)
+  const result = await facade.postMessage(method,slug,req.body)
+  
+  //router.process(req,method,slug)
  
 
-  res.status(result.status).json(result.body);
+  res.status(result.hasError ? 500: 200 ).json(result.hasError ? result.errorMessage : result.data);
 }
