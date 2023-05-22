@@ -9,7 +9,7 @@ export class WebEx {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "Bearer YjYxMzk4NzgtYTc2Zi00ODc0LTlkMjEtYzJkNTdlY2ExNDU5ZDVjZWQ3MGItNDcw_PE93_5b8236b1-3020-41a1-bc44-af60a6abd940"
+      "Bearer NDI4MjJlMGEtYTMzOS00MTcwLWI3NDQtY2RmM2ZhYjhlZWU1OGFkYWI4ZDEtNDU3_PE93_5b8236b1-3020-41a1-bc44-af60a6abd940"
     );
 
     var requestOptions: RequestInit = {
