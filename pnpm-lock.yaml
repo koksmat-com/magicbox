@@ -269,6 +269,9 @@ importers:
       '@types/react-dom':
         specifier: 18.0.11
         version: 18.0.11
+      '@types/react-svg-map':
+        specifier: ^2.1.2
+        version: 2.1.2
       '@types/react-syntax-highlighter':
         specifier: ^15.5.6
         version: 15.5.6
@@ -296,6 +299,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-svg-map:
+        specifier: ^2.2.0
+        version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
       react-syntax-highlighter:
         specifier: ^15.5.0
         version: 15.5.0(react@18.2.0)
@@ -813,7 +819,7 @@ importers:
         specifier: ^4.5.0
         version: 4.5.0(zod@3.21.4)
       '@koksmat/core':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../core
       '@koksmat/powerpacks':
         specifier: workspace:*
@@ -10214,6 +10220,12 @@ packages:
     dependencies:
       '@types/history': 4.7.11
       '@types/react': 18.0.29
+
+  /@types/react-svg-map@2.1.2:
+    resolution: {integrity: sha512-Mm8udymAR45B96EJJJRucSN0WZS/2bDsacrnJX3zOziDvuN7hkqM5jo564psUVdVLv3xHU47VXvPs94EJwBZEg==}
+    dependencies:
+      '@types/react': 18.0.29
+    dev: false
 
   /@types/react-syntax-highlighter@15.5.6:
     resolution: {integrity: sha512-i7wFuLbIAFlabTeD2I1cLjEOrG/xdMa/rpx2zwzAoGHuXJDhSqp9BSfDlMHSh9JSuNfxHk9eEmMX6D55GiyjGg==}
@@ -24975,6 +24987,17 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-svg-map@2.2.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-slZTt4ffXgOb3ND/WEHOc0ojX5lBEv9FKbTU3tWnTLZPQ9L0e686SBqgVxmsuTD+o52Aor87InMzAzDRTQedpA==}
+    peerDependencies:
+      react: ^16.0.0
+      react-dom: ^16.0.0
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-syntax-highlighter@15.5.0(react@18.2.0):
