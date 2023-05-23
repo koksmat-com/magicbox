@@ -7,8 +7,11 @@ import { SVGMap } from "react-svg-map";
 export default async function Page({ params }: { params: { slug: string[] } }) {
  
   return (
-   <SVGInteraction>
-<div>x</div>
- </SVGInteraction>
+    <div>
+  
+   <SVGInteraction  svgFile="/africa.svg"/>
+
+
+ </div>
   )
 }
