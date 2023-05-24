@@ -1,10 +1,8 @@
-// import Redis from "ioredis"
-// export default class KV  {
-//     _redis: Redis = null
-//     constructor() {
-       
-//     }
-//     public static getInstace() {
-//         KV._redis = new Redis()
-// }
-// }
+import Redis from "ioredis";
+export default class KV {
+  private _redis: Redis;
+  constructor() {
+    this._redis = new Redis();
+  }
+  public static getInstace() {}
+}

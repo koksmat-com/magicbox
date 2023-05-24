@@ -1,38 +1,9 @@
 import { IResult } from "@koksmat/core";
-import { Method } from "@koksmat/powerpacks";
 import { Connection, Channel, connect, ConsumeMessage } from "amqplib";
 import { v4 as uuidv4 } from "uuid";
+import { IMessage, ISendOptions, IEnvelope } from "./IMessage";
 
 
-// https://www.rabbitmq.com/direct-reply-to.html
-
-export interface IProcessMessage {
-  call(message: any): Promise<any>;
-}
-
-export interface IReplyToMessage {
-  call(message: any): Promise<any>;
-}
-
-export interface IEnvelope {
-  correlationId: string;
-  route: string;
-  method:string;
-  context?:any;
-  payload: object;
-}
-
-
-export interface IMessage{
-  method:Method
-  route: string
-  payload: object
-}
-export interface ISendOptions {
-  timeoutSeconds? : number
-
-
-}
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

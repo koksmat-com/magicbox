@@ -29,7 +29,7 @@ export async function processPowerPack(
   let result: IResult<z.infer<typeof powerpack.output>> = {
     hasError: false,
   };
-  const zodParse = powerpack.input.safeParse(rawInput.body);
+  const zodParse = powerpack.input.safeParse(rawInput.body.payload);
   if (!zodParse.success) {
     result.hasError = true;
     result.errorMessage = JSON.parse(zodParse.error.message);

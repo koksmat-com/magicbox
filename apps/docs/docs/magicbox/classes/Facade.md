@@ -13,12 +13,13 @@ Is the core in MagicBox architecture.
 From here you can access to all the other modules.
 
 ## How to use it
+
 The facadey is implemented using a singleton, so you can access it from anywhere in your code.
+
 ```typescript
 import { Facade } from "@koksmat/facade";
 
 const facade = Facade.getInstance();
-
 ```
 
 ## Constructors
@@ -31,19 +32,9 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:44](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L44)
+[businesslogic/facade/src/Facade.ts:44](https://github.com/koksmat-com/magicbox/blob/2f87020/businesslogic/facade/src/Facade.ts#L44)
 
 ## Properties
-
-### \_mongoDB
-
-• `Private` **\_mongoDB**: `MongoDB`
-
-#### Defined in
-
-[businesslogic/facade/src/Facade.ts:39](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L39)
-
-___
 
 ### \_router
 
@@ -51,9 +42,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:38](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L38)
+[businesslogic/facade/src/Facade.ts:37](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L37)
 
-___
+---
 
 ### \_instance
 
@@ -61,23 +52,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:36](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L36)
+[businesslogic/facade/src/Facade.ts:35](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L35)
 
 ## Accessors
-
-### mongoDB
-
-• `get` **mongoDB**(): `MongoDB`
-
-#### Returns
-
-`MongoDB`
-
-#### Defined in
-
-[businesslogic/facade/src/Facade.ts:70](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L70)
-
-___
 
 ### powerPacks
 
@@ -89,9 +66,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:74](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L74)
+[businesslogic/facade/src/Facade.ts:65](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L65)
 
-___
+---
 
 ### routeKeys
 
@@ -103,9 +80,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L62)
+[businesslogic/facade/src/Facade.ts:57](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L57)
 
-___
+---
 
 ### router
 
@@ -117,9 +94,23 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:66](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L66)
+[businesslogic/facade/src/Facade.ts:61](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L61)
 
 ## Methods
+
+### messenger
+
+▸ **messenger**(): `Promise`<`Messaging`\>
+
+#### Returns
+
+`Promise`<`Messaging`\>
+
+#### Defined in
+
+[businesslogic/facade/src/Facade.ts:73](https://github.com/koksmat-com/magicbox/blob/2f87020/businesslogic/facade/src/Facade.ts#L73)
+
+---
 
 ### postMessage
 
@@ -127,10 +118,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `method` | `string` |
-| `route` | `string` |
+| Name      | Type     |
+| :-------- | :------- |
+| `method`  | `string` |
+| `route`   | `string` |
 | `payload` | `object` |
 
 #### Returns
@@ -139,21 +130,21 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:113](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L113)
+[businesslogic/facade/src/Facade.ts:104](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L104)
 
-___
+---
 
 ### processMessage
 
-▸ **processMessage**(`method`, `route`, `payload`, `viewScript?`): `Promise`<`IResult`<`any`\>\>
+▸ **processMessage**(`method`, `route`, `powerpack`, `viewScript?`): `Promise`<`IResult`<`any`\>\>
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `method` | `Method` |
-| `route` | `string` |
-| `payload` | `object` |
+| Name          | Type      |
+| :------------ | :-------- |
+| `method`      | `Method`  |
+| `route`       | `string`  |
+| `powerpack`   | `any`     |
 | `viewScript?` | `boolean` |
 
 #### Returns
@@ -162,9 +153,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:84](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L84)
+[businesslogic/facade/src/Facade.ts:75](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L75)
 
-___
+---
 
 ### validateInput
 
@@ -172,10 +163,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type               |
+| :--------- | :----------------- |
 | `endPoint` | `IEndPointHandler` |
-| `input` | `any` |
+| `input`    | `any`              |
 
 #### Returns
 
@@ -183,9 +174,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:77](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L77)
+[businesslogic/facade/src/Facade.ts:68](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L68)
 
-___
+---
 
 ### validateOutput
 
@@ -193,10 +184,10 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name       | Type               |
+| :--------- | :----------------- |
 | `endPoint` | `IEndPointHandler` |
-| `output` | `any` |
+| `output`   | `any`              |
 
 #### Returns
 
@@ -204,9 +195,9 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:80](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L80)
+[businesslogic/facade/src/Facade.ts:71](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L71)
 
-___
+---
 
 ### getInstance
 
@@ -218,4 +209,4 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:55](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L55)
+[businesslogic/facade/src/Facade.ts:50](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L50)

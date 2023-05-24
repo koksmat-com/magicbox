@@ -28,7 +28,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	,"postCreateCommand": "npm install -g pnpm turbo && pnpm install && pnpm run build && pnp run powershellinstall",
+	,"postCreateCommand": "npm install -g pnpm turbo && pnpm install && pnpm run build && pnp run powershellinstall && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
