@@ -31,9 +31,19 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:42](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L42)
+[businesslogic/facade/src/Facade.ts:44](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L44)
 
 ## Properties
+
+### \_mongoDB
+
+• `Private` **\_mongoDB**: `MongoDB`
+
+#### Defined in
+
+[businesslogic/facade/src/Facade.ts:39](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L39)
+
+___
 
 ### \_router
 
@@ -41,7 +51,7 @@ Constructor is setting up the PowerPacks and the router
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:37](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L37)
+[businesslogic/facade/src/Facade.ts:38](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L38)
 
 ___
 
@@ -51,9 +61,23 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:35](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L35)
+[businesslogic/facade/src/Facade.ts:36](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L36)
 
 ## Accessors
+
+### mongoDB
+
+• `get` **mongoDB**(): `MongoDB`
+
+#### Returns
+
+`MongoDB`
+
+#### Defined in
+
+[businesslogic/facade/src/Facade.ts:70](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L70)
+
+___
 
 ### powerPacks
 
@@ -65,7 +89,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:65](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L65)
+[businesslogic/facade/src/Facade.ts:74](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L74)
 
 ___
 
@@ -79,7 +103,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:57](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L57)
+[businesslogic/facade/src/Facade.ts:62](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L62)
 
 ___
 
@@ -93,7 +117,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:61](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L61)
+[businesslogic/facade/src/Facade.ts:66](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L66)
 
 ## Methods
 
@@ -115,7 +139,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:104](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L104)
+[businesslogic/facade/src/Facade.ts:113](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L113)
 
 ___
 
@@ -138,7 +162,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:75](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L75)
+[businesslogic/facade/src/Facade.ts:84](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L84)
 
 ___
 
@@ -159,7 +183,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:68](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L68)
+[businesslogic/facade/src/Facade.ts:77](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L77)
 
 ___
 
@@ -180,7 +204,7 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:71](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L71)
+[businesslogic/facade/src/Facade.ts:80](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L80)
 
 ___
 
@@ -194,4 +218,4 @@ ___
 
 #### Defined in
 
-[businesslogic/facade/src/Facade.ts:50](https://github.com/koksmat-com/magicbox/blob/4829979/businesslogic/facade/src/Facade.ts#L50)
+[businesslogic/facade/src/Facade.ts:55](https://github.com/koksmat-com/magicbox/blob/6c094b5/businesslogic/facade/src/Facade.ts#L55)
