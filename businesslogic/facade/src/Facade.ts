@@ -70,7 +70,12 @@ export class Facade {
   public get mongoDB(): MongoDB {
     return this._mongoDB;
   }
+  public async messenger() {
+    return await Messaging.getInstance(
+      process.env.REDIS as string
+    );
 
+  }
   public get powerPacks(): PowerPacks {
     return PowerPacks.getInstance();
   }
@@ -84,7 +89,7 @@ export class Facade {
   public async processMessage(
     method: Method,
     route: string,
-    payload: object,
+    powerpack: any,
     viewScript?: boolean
   ): Promise<IResult<any>> {
     const logger = debug("magicbox.facade");
@@ -98,14 +103,14 @@ export class Facade {
       return result;
     }
 
-    const validationResult = this.validateInput(handler, payload);
+    const validationResult = this.validateInput(handler, powerpack.payload);
     if (!validationResult.success) {
       result.hasError = true;
       result.errorMessage = JSON.stringify(validationResult.error, null, 2);
       return result;
     }
 
-    const request: Request = { query: "", body: payload };
+    const request: Request = { query: "", body: powerpack };
     result = await processPowerPack(handler, request, viewScript);
     return result;
   }
@@ -144,11 +149,11 @@ export class Facade {
     };
 
     // eslint-disable-next-line turbo/no-undeclared-env-vars
-    const host = process.env.RABBITMQ_HOST
-      ? (process.env.RABBITMQ_HOST as string)
-      : "amqp://localhost";
+    const host = process.env.REDIS
+      ? (process.env.REDIS as string)
+      : "redis://127.0.0.1:6379";
     const messaging = await Messaging.getInstance(host);
-    const response = await messaging.send("exchangeonline", message);
+    const response = await messaging.send("test", message);
     result = response;
     return result;
   }

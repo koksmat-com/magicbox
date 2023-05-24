@@ -71,6 +71,7 @@ export class Router implements IRouter {
 
         log("query", req.query);
         log("body", req.body);
+        
         const result = await processPowerPack(endPointHandler,req);
       
         if (result.hasError){

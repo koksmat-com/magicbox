@@ -27,4 +27,4 @@ jobs:
         with:
           file: ./Dockerfile.web
           push: true
-          tags: nielsgregers/magicbox-web:v4
+          tags: nielsgregers/magicbox-web:v0.0.1
