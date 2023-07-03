@@ -299,6 +299,9 @@ importers:
       next-auth:
         specifier: ^4.22.0
         version: 4.22.0(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+      openapi-fetch:
+        specifier: ^0.6.0
+        version: 0.6.0
       postcss:
         specifier: 8.4.21
         version: 8.4.21
@@ -23161,6 +23164,10 @@ packages:
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       is-wsl: 2.2.0
+    dev: false
+
+  /openapi-fetch@0.6.0:
+    resolution: {integrity: sha512-EA9Ic4CvaPXPOXWkQl/S5ZVxD9YeKgIQsYsYhvTZgeXnrN/sllN2jF/xgzXYFqXvB7Jec8XUWv4dT1NQNiiAeg==}
     dev: false
 
   /openapi-typescript@6.2.4:
