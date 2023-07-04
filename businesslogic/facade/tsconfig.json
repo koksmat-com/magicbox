@@ -1,9 +1,0 @@
-{
-  "extends": "./node_modules/@koksmat/tsconfig/node16.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "resolveJsonModule": true
-  },
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
-}

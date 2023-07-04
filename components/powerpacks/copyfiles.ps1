@@ -1,1 +1,0 @@
-Copy-Item "$psscriptroot/src/packs"  -Destination "$psscriptroot/dist/powershell"  -Filter *.ps1 -Recurse

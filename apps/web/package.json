@@ -11,14 +11,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.18.9",
-    "@koksmat/core": "workspace:*",
-    "@koksmat/facade": "workspace:*",
-    "@koksmat/powerpacks": "workspace:*",
-    "@koksmat/react-components": "workspace:*",
-    "@koksmat/scripts-exchange": "workspace:*",
-    "@koksmat/search": "workspace:*",
-    "@koksmat/templates": "workspace:*",
-    "@koksmat/webex": "workspace:*",
+  
     "@tanstack/react-query": "^4.28.0",
     "@trpc/client": "^10.18.0",
     "@trpc/next": "^10.18.0",

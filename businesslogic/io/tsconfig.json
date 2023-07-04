@@ -1,9 +1,0 @@
-{
-  "extends": "./node_modules/@koksmat/tsconfig/react-library.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "resolveJsonModule": true
-  },
-  "include": [".", "src/.connectors"],
-  "exclude": ["dist", "build", "node_modules"]
-}
