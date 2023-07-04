@@ -3,7 +3,7 @@ name: web
 on:
   push:
     branches:
-      - master
+      - masterxx
 
 jobs:
   docker:
