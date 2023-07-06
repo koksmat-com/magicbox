@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { client } from "../../../../page";
+import { NOAPPKEY, getClient } from "../../../../page";
 
 
 
@@ -11,7 +11,13 @@ export const metadata = {
   
 
 export default async function KoksmatAdmin({ params }: { params: { type: string,date: string,hour: string } }) {
-    const  {get} = await client();
+  const {client,token} = await getClient();
+  // happends under build in Docker if the env variable is not set
+  // impact is that the page is not pre-rendered
+  if (token===NOAPPKEY){ 
+    return null
+  }
+  const get = client.get 
     const {date,hour,type} = params;
 
 

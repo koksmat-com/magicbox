@@ -1,11 +1,17 @@
-import { client } from "../page";
+import { NOAPPKEY, getClient } from "../page";
 export const metadata = {
   title: 'Auditlog PowerShell details',
 
 }
 
 export default async function KoksmatAdmin({ params }: { params: { objectId: string } }) {
-  const { get } = await client();
+  const {client,token} = await getClient();
+  // happends under build in Docker if the env variable is not set
+  // impact is that the page is not pre-rendered
+  if (token===NOAPPKEY){ 
+    return null
+  }
+  const get = client.get 
   const { objectId } = params;
   const { data, error } = await get("/v1/admin/auditlogs/powershell/{objectId}", {
     cache: "no-cache",

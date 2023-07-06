@@ -5,13 +5,15 @@ import createClient from "openapi-fetch";
 // npx openapi-typescript http://localhost:4322/docs/admin/openapi.json --output admin.d.ts --useOptions --exportClient
 import { paths, components } from "../admin.api"; // (generated from openapi-typescript)
 import Link from "next/link";
-
+export const NOAPPKEY =  "NOAPPKEY"
  async function authenticate(): Promise<{ token: string | undefined }> {
   const { post } = createClient<paths>({
     baseUrl: process.env.KOKSMAT_HOST
 
   });
-
+  if (!process.env.KOKSMAT_APPKEY){
+    return { token: NOAPPKEY};
+  }
   const { data, error } = await post("/authorize", {
     cache: "no-cache",
     body: {
@@ -36,20 +38,28 @@ const groupBy = <T, K extends keyof any>(list: T[], getKey: (item: T) => K) =>
   }, {} as Record<K, T[]>);
 
 
-  export async function  client () {
+  export async function  getClient () {
     const { token } = await authenticate();
-    const c = createClient<paths>({
+    const client = createClient<paths>({
       baseUrl: process.env.KOKSMAT_HOST,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return c;
+    return {
+      client,token
+    };
   }
 
 export default async function AuditLogEntries() {
   
-  const  {get} = await client();
+  const {client,token} = await getClient();
+  // happends under build in Docker if the env variable is not set
+  // impact is that the page is not pre-rendered
+  if (token===NOAPPKEY){ 
+    return null
+  }
+  const get = client.get 
 
 
   const { data, error } = await get("/v1/admin/auditlogsummary", {
