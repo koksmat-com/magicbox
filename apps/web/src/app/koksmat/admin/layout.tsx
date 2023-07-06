@@ -13,10 +13,8 @@ export default function Layout({
           <LeftNavAdmin />
 
 
-      <div className="w-96">
-    
-      </div>
-      <div className="overflow-auto h-max w-max">
+ 
+      <div className="overflow-auto h-max w-full">
       {children}
       </div>
     </div>
