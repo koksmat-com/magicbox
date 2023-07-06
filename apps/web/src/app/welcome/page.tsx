@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "@/components-highlevel/Layout";
 import createClient from "openapi-fetch";
 import { paths } from "./data/schemas/magicbox.nets-intranets"; // (generated from openapi-typescript)
@@ -14,7 +15,7 @@ export default async function Intranet() {
   );
 }
 
-export async function Countries() {
+ async function Countries() {
   const { get } = createClient<paths>({
     baseUrl: "https://magicbox.nets-intranets.com",
     // headers: {
@@ -41,7 +42,7 @@ export async function Countries() {
   );
 }
 
-export async function Units() {
+ async function Units() {
   const { get } = createClient<paths>({
     baseUrl: "https://magicbox.nets-intranets.com",
     // headers: {
