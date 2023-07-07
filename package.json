@@ -8,6 +8,7 @@
   "scripts": {
     "build": "turbo run build ",
     "build:web": "turbo run build --filter=@koksmat/web",
+    "buildrun:web": "turbo run build --filter=@koksmat/web && cd /usr/src/app/apps/web && npm run start",
     "graph": "turbo run build --graph",
     "dev": "export DEBUG=magicbox* && dotenv -- turbo run dev --no-cache --continue  --concurrency 40",
     "lint": "turbo run lint",
