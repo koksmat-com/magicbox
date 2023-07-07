@@ -4,7 +4,7 @@ COPY . .
 RUN npm install -g pnpm turbo
 RUN pnpm install
 RUN mkdir -p /tmp/root/365admin-nodejs
-# RUN turbo run build --filter=@koksmat/web
-# WORKDIR /usr/src/app/apps/web
+RUN turbo run build --filter=@koksmat/web
+WORKDIR /usr/src/app/apps/web
 EXPOSE 5301
-CMD ["npm", "run","buildrun:web"]
+CMD ["npm", "run","start"]
