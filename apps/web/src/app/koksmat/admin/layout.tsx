@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import LeftNavAdmin from './leftnav'
-
+ function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
+  return <div>Loading</div>
+}
 export default function Layout({
   children,
 }: {
@@ -15,7 +18,8 @@ export default function Layout({
 
  
       <div className="overflow-auto h-max w-full">
-      {children}
+        <Suspense fallback={<Loading />}>
+      {children}</Suspense>
       </div>
     </div>
 

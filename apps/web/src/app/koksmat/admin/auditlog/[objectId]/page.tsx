@@ -1,8 +1,30 @@
 import { NOAPPKEY, getClient } from "../page";
+import {ansicolor,ParsedSpan} from "ansicolor"
 export const metadata = {
   title: 'Auditlog PowerShell details',
 
 }
+
+export interface AnsiSpanType {
+  spans: ParsedSpan[]
+}
+
+
+
+export interface Code {
+  value?: number
+}
+
+export interface Color {
+  name: string
+  bright: boolean
+}
+
+// function  AnsiSpan (props : {span : ParsedSpan}) {
+//   render() {
+//     return <span style={{color:props.color}}>{this.props.children}</span>
+//   }
+// }
 
 export default async function KoksmatAdmin({ params }: { params: { objectId: string } }) {
   const {client,token} = await getClient();
@@ -14,7 +36,8 @@ export default async function KoksmatAdmin({ params }: { params: { objectId: str
   const get = client.get 
   const { objectId } = params;
   const { data, error } = await get("/v1/admin/auditlogs/powershell/{objectId}", {
-    cache: "no-cache",
+    cache:  "default", // "no-cache",
+  
     params: {
       path: {
         objectId
@@ -26,6 +49,9 @@ export default async function KoksmatAdmin({ params }: { params: { objectId: str
     return <div>{error as string}</div>;
   }
   const logEntry = data?.powershellauditlog
+
+  
+  const consoleHTML = ansicolor.parse(logEntry?.console as string)
   return <div className="w-full">
 
     
@@ -99,7 +125,7 @@ export default async function KoksmatAdmin({ params }: { params: { objectId: str
       <div>
         Console output
       </div>
-      <textarea readOnly className="w-full h-40" value={logEntry?.console} />
+      <textarea readOnly className="w-full h-40" value={JSON.stringify(consoleHTML)} />
     </div>
   </div>
 }

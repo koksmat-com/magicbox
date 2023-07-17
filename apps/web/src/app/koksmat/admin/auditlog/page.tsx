@@ -15,7 +15,8 @@ export const NOAPPKEY =  "NOAPPKEY"
     return { token: NOAPPKEY};
   }
   const { data, error } = await post("/authorize", {
-    cache: "no-cache",
+    cache:  "default", // "no-cache",
+    next: { revalidate: 300 } ,
     body: {
       appkey: process.env.KOKSMAT_APPKEY,
     }
@@ -57,22 +58,25 @@ export default async function AuditLogEntries() {
   // happends under build in Docker if the env variable is not set
   // impact is that the page is not pre-rendered
   if (token===NOAPPKEY){ 
+    console.log("No app key defined")
     return null
   }
   const get = client.get 
 
 
   const { data, error } = await get("/v1/admin/auditlogsummary", {
-    cache: "no-cache",
+    cache:  "default", // "no-cache",
+    next: { revalidate: 60 } ,
     params: {
 
     },
   });
 
   if (error) {
+    console.log("Error",error)
     return <div>{error as string}</div>;
   }
-
+  console.log("Number of records",data?.length)
   const results = groupBy(data, i => i.subject as string);
   const powershellLogentries = groupBy(results["powershell"], i => i.date as string);
 
