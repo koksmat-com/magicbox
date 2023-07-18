@@ -15,10 +15,17 @@ const groupBy = <T, K extends keyof any>(list: T[], getKey: (item: T) => K) =>
   }, {} as Record<K, T[]>);
 
 
-export default async function AuditLogEntries(
-
-) {
-
+export default async function AuditLogEntries({
+ 
+  searchParams, // if included, this page is considered to be a dynamic route, caching is done in data fetching
+}: {
+  
+  searchParams: { [key: string]: string | string[] | undefined }
+})  {
+  if (searchParams.refresh){
+    console.log("Refresh")
+   
+  }
   const { client, token } = await getClient();
   // happends under build in Docker if the env variable is not set
   // impact is that the page is not pre-rendered
@@ -26,6 +33,7 @@ export default async function AuditLogEntries(
     console.log("No app key defined")
     return null
   }
+ 
   const get = client.get
 
 
