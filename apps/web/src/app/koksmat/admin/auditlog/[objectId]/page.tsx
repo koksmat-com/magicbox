@@ -1,4 +1,5 @@
-import { NOAPPKEY, getClient } from "../page";
+import { NOAPPKEY } from "../constants";
+import { getClient } from "../getClient";
 import {ansicolor,ParsedSpan} from "ansicolor"
 export const metadata = {
   title: 'Auditlog PowerShell details',
@@ -36,7 +37,7 @@ export default async function KoksmatAdmin({ params }: { params: { objectId: str
   const get = client.get 
   const { objectId } = params;
   const { data, error } = await get("/v1/admin/auditlogs/powershell/{objectId}", {
-    cache:  "default", // "no-cache",
+    cache:  "default", 
   
     params: {
       path: {

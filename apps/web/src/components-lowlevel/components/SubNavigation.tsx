@@ -20,7 +20,7 @@ export const SubMenuItem = (props: { selectParent: () => void,node: NavigationNo
         props.selectParent()
 
 
-    }, [])
+    }, [props])
     
     return (<div style={{ display: "flex" }}
         onMouseOver={() => {

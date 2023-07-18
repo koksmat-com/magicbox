@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { NOAPPKEY, getClient } from "../../../../page";
+import { NOAPPKEY } from "../../../../constants";
+import { getClient } from "../../../../getClient";
 
 
 
@@ -22,7 +23,7 @@ export default async function KoksmatAdmin({ params }: { params: { type: string,
 
 
     const { data, error } = await get("/v1/admin/auditlogs/date/{date}/{hour}", {
-      cache: "no-cache",
+      next: { revalidate: 60 } ,
       params: {
         path: {
             date,
