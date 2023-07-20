@@ -82,8 +82,8 @@ export default async function AuditLogEntries({
 
 function LinktoPowerShellAuditLogHour(props: { item: components["schemas"]["AuditAuditLogSum"] }) {
   return <div className="p-3">
-    <Link href={`/koksmat/admin/auditlog/subject/powershell/${props.item.date}/${props.item.hour}`}>
-      <div>{props.item.hour}:00</div><div className="text-sm"> {props.item.count} records</div></Link></div>;
+    <a href={`/koksmat/admin/auditlog/subject/powershell/${props.item.date}/${props.item.hour}`}>
+      <div>{props.item.hour}:00</div><div className="text-sm"> {props.item.count} records</div></a></div>;
 }
 
 

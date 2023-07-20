@@ -53,6 +53,8 @@ export default async function KoksmatAdmin({ params }: { params: { objectId: str
 
   
   const consoleHTML = ansicolor.parse(logEntry?.console as string)
+  //const console = JSON.stringify(consoleHTML)
+  const console = logEntry?.console as string
   return <div className="w-full">
 
     
@@ -126,7 +128,7 @@ export default async function KoksmatAdmin({ params }: { params: { objectId: str
       <div>
         Console output
       </div>
-      <textarea readOnly className="w-full h-40" value={JSON.stringify(consoleHTML)} />
+      <textarea readOnly className="w-full h-40" value={console} />
     </div>
   </div>
 }

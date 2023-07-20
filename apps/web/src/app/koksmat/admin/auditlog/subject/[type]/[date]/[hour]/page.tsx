@@ -41,7 +41,7 @@ Audit Log Entries (PREVIEW) {params.type} {params.date} {params.hour}
 
 {data?.auditlogs?.map((item, id) => {
     return <div key={id}>
-        <div><Link href={"/koksmat/admin/auditlog/"+item.id}>{item.scriptname}</Link></div>
+        <div><a href={"/koksmat/admin/auditlog/"+item.id}>{item.scriptname}</a></div>
     </div>;} )}
 
  </div>
